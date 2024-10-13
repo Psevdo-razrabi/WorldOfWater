@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Cysharp.Threading.Tasks;
+using Game.MVVM;
+using System.Collections.Generic;
 
 namespace Game.Services
 {
@@ -6,6 +8,19 @@ namespace Game.Services
     {
         private readonly Dictionary<string, View> _views = new();
         private string _currentViewId;
+
+        public async void Create(List<View> views)
+        {
+            foreach (var view in views)
+            {
+                await UniTask.WaitUntil(() => view.Id != string.Empty);
+
+                view.gameObject.SetActive(view.IsActivedOnStart);
+                _views.Add(view.Id, view);
+            }
+
+            Open(ViewIds.CONTRACTS);
+        }
 
         public void Open(string id)
         {
@@ -20,7 +35,7 @@ namespace Game.Services
         {
             if (_views.TryGetValue(_currentViewId, out var view))
             {
-                view.gameObject.SetActive(true);
+                view.gameObject.SetActive(view.IsActivedOnStart);
             }
         }
     }

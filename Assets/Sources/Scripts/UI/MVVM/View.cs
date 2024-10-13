@@ -1,11 +1,11 @@
 ﻿using Game.MVVM;
-using Game.Services;
 using UnityEngine;
 using Zenject;
 
 public abstract class View : MonoBehaviour
 {
-    protected string Id;
+    public string Id { get; set; }
+    public bool IsActivedOnStart { get; set; }
 
     [Inject]
     private void Construct(ViewModelFactory viewModelFactory)

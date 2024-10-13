@@ -1,10 +1,10 @@
 ﻿namespace Game.MVVM.Computer
 {
-    public class ContractsView : View
+    public class MapView : View
     {
         public override void Init(ViewModelFactory viewModelFactory)
         {
-            Id = ViewIds.CONTRACTS;
+            Id = ViewIds.MAP;
         }
     }
 }

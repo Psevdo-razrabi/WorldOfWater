@@ -1,5 +1,4 @@
 ﻿using Game.Services;
-using UnityEngine;
 using Zenject;
 
 namespace Game.MVVM

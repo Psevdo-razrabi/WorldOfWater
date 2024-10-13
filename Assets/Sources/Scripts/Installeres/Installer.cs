@@ -1,14 +1,18 @@
 using Game.MVVM;
 using Game.Services;
+using UnityEngine;
 
 namespace Game.DI
 {
     public class Installer : BaseBindings
     {
+        [SerializeField] private ComputerViewsContainer _computerViewsContainer;
+
         public override void InstallBindings()
         {
             BindServices();
             BindFactories();
+            BindViewsContainers();
         }
 
         private void BindServices()
@@ -20,6 +24,11 @@ namespace Game.DI
         private void BindFactories()
         {
             BindNewInstance<ViewModelFactory>();
+        }
+
+        private void BindViewsContainers()
+        {
+            BindInstance(_computerViewsContainer);
         }
     }
 }
