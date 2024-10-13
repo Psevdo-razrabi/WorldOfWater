@@ -14,6 +14,7 @@ namespace Game.DI
         private void BindServices()
         {
             BindNewInstance<ContractsService>();
+            BindNewInstance<ViewsService>();
         }
 
         private void BindFactories()
