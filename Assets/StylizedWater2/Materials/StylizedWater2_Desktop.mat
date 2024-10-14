@@ -10,6 +10,8 @@ Material:
   m_Name: StylizedWater2_Desktop
   m_Shader: {fileID: -6465566751694194690, guid: d7b0192b9bf19c949900035fa781fdc4,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ADVANCED_SHADING
   - _CAUSTICS
@@ -24,6 +26,7 @@ Material:
   - ADVANCED_LIGHTING
   - _DEPTHEXP_ON
   - _DEPTH_TEX
+  - _RECEIVEDYNAMICEFFECTS_ON
   - _SIMPLE_LIGHTING
   - _VERTEXCOLORWAVEFLATTENING_ON
   - _WORLDSPACEUV_ON
@@ -34,6 +37,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: _ReflectionLighting
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -165,7 +169,7 @@ Material:
     - _EnvironmentReflectionsOn: 1
     - _FlatShadingOn: 0
     - _FlowSpeed: 1
-    - _FoamBaseAmount: 0.297
+    - _FoamBaseAmount: 0.183
     - _FoamClipping: 0
     - _FoamDistortion: 0
     - _FoamOn: 1
@@ -187,11 +191,11 @@ Material:
     - _GlossyReflections: 0
     - _HorizonDistance: 8
     - _IntersectionClipping: 0.395
-    - _IntersectionDistortion: 0.2
-    - _IntersectionFalloff: 1
-    - _IntersectionLength: 2.27
+    - _IntersectionDistortion: 0.421
+    - _IntersectionFalloff: 0.906
+    - _IntersectionLength: 1.8
     - _IntersectionRippleDist: 16
-    - _IntersectionRippleStrength: 0.125
+    - _IntersectionRippleStrength: 0.398
     - _IntersectionSize: 0.944
     - _IntersectionSource: 0
     - _IntersectionSpeed: 0.06999999
@@ -218,6 +222,7 @@ Material:
     - _PointSpotLightReflectionSize: 0
     - _PointSpotLightReflectionStrength: 10
     - _QueueOffset: 0
+    - _ReceiveDynamicEffects: 1
     - _ReceiveShadows: 1
     - _ReflectionBlur: 0
     - _ReflectionDistortion: 0.146
@@ -247,15 +252,15 @@ Material:
     - _SlopeThreshold: 0.25
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SparkleIntensity: 0
-    - _SparkleSize: 0.302
+    - _SparkleIntensity: 5.38
+    - _SparkleSize: 0.805
     - _SpecularHighlights: 1
     - _SpecularReflectionsOn: 1
     - _Speed: 1
     - _SrcBlend: 1
-    - _SunReflectionDistortion: 0.762
+    - _SunReflectionDistortion: 0.884
     - _SunReflectionPerturbance: 0.386
-    - _SunReflectionSize: 0.932
+    - _SunReflectionSize: 0.82
     - _SunReflectionStrength: 10
     - _Surface: 0
     - _TEXTURE_INTERSECTIONOn: 0
@@ -266,7 +271,7 @@ Material:
     - _TranslucencyExp: 4
     - _TranslucencyOn: 1
     - _TranslucencyReflectionMask: 0
-    - _TranslucencyStrength: 1
+    - _TranslucencyStrength: 1.14
     - _TranslucencyStrengthDirect: 0.05
     - _UnderwaterRefractionOffset: 0.2
     - _UnderwaterSurfaceSmoothness: 0.8
@@ -298,13 +303,14 @@ Material:
     - _IntersectionColor: {r: 1, g: 1, b: 1, a: 1}
     - _NormalTiling: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShallowColor: {r: 0, g: 1, b: 0.98136926, a: 0.3764706}
+    - _ShallowColor: {r: 0, g: 0.9069977, b: 1, a: 0.3764706}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _WaterColor: {r: 0.21176466, g: 0.6745098, b: 1, a: 1}
     - _WaterShallowColor: {r: 0, g: 0.9394503, b: 1, a: 1}
     - _WaveDirection: {r: -1, g: -1, b: -1, a: -1}
     - _WaveFadeDistance: {r: 26.666674, g: 143.33331, b: 0, a: 0}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!114 &6498140463000427223
 MonoBehaviour:
   m_ObjectHideFlags: 11
