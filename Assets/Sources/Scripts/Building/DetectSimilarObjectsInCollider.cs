@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(Rigidbody))]
 public class DetectSimilarObjectsInCollider : MonoBehaviour
 {
     [SerializeField] LayerMask layerMask;
@@ -33,5 +35,11 @@ public class DetectSimilarObjectsInCollider : MonoBehaviour
                 isDetected = false;
             }
         }
+    }
+
+    public void ClearList()
+    {
+        collidingObjects.Clear();
+        collidingObjectsOnLayerCount = 0;
     }
 }

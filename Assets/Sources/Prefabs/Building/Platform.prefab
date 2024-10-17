@@ -879,7 +879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a88e0b3f506a7840a4ce014d5dd8dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGridInEditMode: 1
   plotPrefab: {fileID: 6026512910846894947, guid: ea83c16ed695fdd4483bf33501bba124,
     type: 3}
   yOffsetForPlot: -0.1
@@ -888,6 +887,10 @@ MonoBehaviour:
   gridPointPrefab: {fileID: 2874622554574051187, guid: 887c15268dfb6a8428570617023bc7d4,
     type: 3}
   isBuildMode: 0
+  isAnimateSpawn: 1
+  animationSpeed: 0.5
+  animationYOffset: 0.5
+  animationType: 0
 --- !u!1 &8464806592709772164
 GameObject:
   m_ObjectHideFlags: 0

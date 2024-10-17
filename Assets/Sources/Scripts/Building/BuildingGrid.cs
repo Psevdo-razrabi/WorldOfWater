@@ -5,15 +5,23 @@ using UnityEngine;
 
 public class BuildingGrid : MonoBehaviour
 {
-    [SerializeField] bool changeBuildMode;
-    [SerializeField] bool isBuildMode;
-    [SerializeField] GameObject platformsHolder;
+    [Tooltip("Отображает, включен ли режим строительства. (НЕ МЕНЯТЬ!)")]
+    [SerializeField] public bool isBuildMode;
+
+    [Tooltip("Если ближайшая платформа дальше этой дистанции, то зона строительства пропадает.")]
     [SerializeField] public float maxBuildDistance;
+
+    [Tooltip("Число юнитов, которое должен пройти игрок, чтобы обновилась информация о ближайшей платформе.")]
     [SerializeField] float moveThresholdToUpdateBuildingPlatform;
+
+    [Tooltip("Объект, в котором содержатся все сплатформы на сцене.")]
+    [SerializeField] GameObject platformsHolder;
+
+    [Tooltip("Все платформы в platformsHolder.")]
     [SerializeField] public List<GameObject> platforms = new List<GameObject>();
 
-    public Action OnPlatformsCountUpdate;
-    public Action<bool> OnBuildModeChange;
+    [NonSerialized] public Action OnPlatformsCountUpdate;
+    [NonSerialized] public Action<bool> OnBuildModeChange;
     Vector3 lastPosition;
     CreateGrid currentPlatform, newPlatform;
 
@@ -47,7 +55,6 @@ public class BuildingGrid : MonoBehaviour
 
             OnBuildModeChange?.Invoke(isBuildMode);
 
-            changeBuildMode = false;
         }
 
         if (isBuildMode)

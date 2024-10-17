@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using DG.Tweening;
 
 public class CreateGrid : MonoBehaviour
 {
-    [SerializeField] bool showGridInEditMode;
 
     [Header("Grid settings")]
     [SerializeField] GameObject plotPrefab;
@@ -15,10 +14,22 @@ public class CreateGrid : MonoBehaviour
     [SerializeField] float gridOffset;
     [SerializeField] GameObject gridPointPrefab;
     [SerializeField] bool isBuildMode;
+    [Header("Animation settings")]
+    [SerializeField] bool isAnimateSpawn; 
+    [SerializeField] float animationSpeed;
+    [SerializeField] float animationYOffset;
+    [SerializeField] AnimationType animationType;
     
-    
+    enum AnimationType
+    {
+        Continuous, StepByStep
+    }
+
+
+
     [NonSerialized] public float sizeOfObject;
     List<GridPiece> gridPieces = new List<GridPiece>();
+    List<GameObject> plotPieces = new List<GameObject>();
     void Awake()
     {
         GenerateGrid();
@@ -29,17 +40,30 @@ public class CreateGrid : MonoBehaviour
     
     void GenerateRaftPieces()
     {
+        if(!isAnimateSpawn)
+        {
+            animationYOffset = 0;
+        }
         System.Random rand = new System.Random();
         for(int i = 0; i < gridPieces.Count; i++)
         {
             Transform temp = Instantiate(plotPrefab, Vector3.zero, Quaternion.identity).transform;
             temp.SetParent(transform);
             temp.position = gridPieces[i].center;
-            temp.position = new Vector3(temp.position.x, temp.position.y + yOffsetForPlot, temp.position.z);
+            temp.position = new Vector3(temp.position.x, temp.position.y + yOffsetForPlot + animationYOffset, temp.position.z);
             temp.localRotation = Quaternion.Euler(0, 90 * rand.Next(0, 4), 0);
+
+
+            plotPieces.Add(temp.gameObject);
+        }
+
+        if(isAnimateSpawn)
+        {
+
+            AnimateSpawn(0, animationSpeed);
         }
     }
-    
+
     void HideMaterial()
     {
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
@@ -50,7 +74,6 @@ public class CreateGrid : MonoBehaviour
     {
         sizeOfObject = gameObject.transform.localScale.x * 10; // remove * 10
         if(gridResolution < 2) gridResolution = 2;
-
         gridPieces.Clear();
         ClearPoints();
 
@@ -78,11 +101,28 @@ public class CreateGrid : MonoBehaviour
             }
         }
 
-        if(!Application.isPlaying && showGridInEditMode)
-        {
-            EnterBuildMode();
-        }
+        
 
+    }
+
+    void AnimateSpawn(int pointer, float speed)
+    {
+        if(pointer < gridPieces.Count && pointer > -1)
+        {
+            if(animationType == AnimationType.Continuous)
+            {
+                Vector3 initScale = plotPieces[pointer].transform.localScale;
+                plotPieces[pointer].transform.localScale = Vector3.zero;
+                plotPieces[pointer].transform.DOScale(initScale, speed / 2).SetEase(Ease.OutBack);
+                plotPieces[pointer].transform.DOMove(new Vector3(gridPieces[pointer].center.x, gridPieces[pointer].center.y + yOffsetForPlot, gridPieces[pointer].center.z), speed, false).SetEase(Ease.OutBack);
+                AnimateSpawn(pointer + 1, animationSpeed * (pointer + 1));
+            }
+            else if(animationType == AnimationType.StepByStep)
+            {
+                plotPieces[pointer].transform.DOMove(new Vector3(gridPieces[pointer].center.x, gridPieces[pointer].center.y + yOffsetForPlot, gridPieces[pointer].center.z), speed, false).OnComplete(() => AnimateSpawn(pointer + 1, speed)).SetEase(Ease.OutBack);
+            }
+
+        }
     }
 
     void ClearPoints()
@@ -97,26 +137,8 @@ public class CreateGrid : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
-    {
-        if(Application.isPlaying) return;
-        if(!Application.isPlaying && showGridInEditMode)
-        {
-            EnterBuildMode();
-        }
-        else if(!Application.isPlaying && !showGridInEditMode)
-        {
-            ExitBuildMode();
-        }
+    
 
-    }
-
-
-
-    void Update()
-    {
-
-    }
 
     public void EnterBuildMode()
     {

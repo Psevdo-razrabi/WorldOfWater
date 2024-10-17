@@ -1,23 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
+using DG.Tweening;
 
 public class BuildPlatform : MonoBehaviour
 {
+    [Header("Raycast to place new platform set")]
     [SerializeField] float rayDistance;
-    [SerializeField] GameObject plotPrefab;
-    [SerializeField] GameObject platformPreview;
-    [SerializeField] GameObject platformsHolder;
-    [SerializeField] LayerMask layerMask;
-    [SerializeField] float yOffset;
-    [SerializeField] BuildingGrid buildingGrid;
+    [SerializeField] LayerMask layerMaskForRaycast;
 
+    [Header("Platform preview set")]
+    [SerializeField] GameObject platformPreview;
+    [SerializeField] Color colorCanPlace, colorCantPlace;
+    [Header("Creating new platform set")]
+    [SerializeField] GameObject plotPrefab;
+    [SerializeField] GameObject platformsHolder;
+    [SerializeField] float yOffset;
+    [Header("Dependent variables")]
+    [SerializeField] BuildingGrid buildingGrid;
     [SerializeField] List<GameObject> platforms = new List<GameObject>();
-    [SerializeField] bool snapToPlatform;
+    
+    [Tooltip("НЕ МЕНЯТЬ!")]
     [SerializeField] bool isBuilding;
+    [Tooltip("НЕ МЕНЯТЬ!")]
     [SerializeField] bool isBuildingPlatform;
     DetectSimilarObjectsInCollider detectSimilarObjectsInCollider;
+    Material platformPreview_Mat;
 
     void Awake()
     {
@@ -25,6 +33,9 @@ public class BuildPlatform : MonoBehaviour
         buildingGrid.OnBuildModeChange += ChangeBuildMode;
 
         detectSimilarObjectsInCollider = platformPreview.GetComponent<DetectSimilarObjectsInCollider>();
+
+        platformPreview_Mat = platformPreview.GetComponent<MeshRenderer>().material;
+        platformPreview_Mat.color = colorCanPlace;
     }
     void Update()
     {
@@ -39,6 +50,12 @@ public class BuildPlatform : MonoBehaviour
             if(!isBuildingPlatform)
             {
                 platformPreview.SetActive(false);
+                detectSimilarObjectsInCollider.ClearList();
+            }
+            else
+            {
+                platformPreview.SetActive(true);
+
             }
         }
 
@@ -47,29 +64,29 @@ public class BuildPlatform : MonoBehaviour
     void Build()
     {
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayDistance, layerMask))
+        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayDistance, layerMaskForRaycast))
         {
-            platformPreview.SetActive(true);
+            platformPreview_Mat.color = colorCanPlace;
             platformPreview.transform.position = new Vector3(hit.point.x, hit.point.y + yOffset, hit.point.z);
 
 
-            // CreateGrid closestPlatformToCursor = FindClosestPlatformToCursor();
             CreateGrid closestPlatformToCursor = buildingGrid.FindClosestPlatform(gameObject);
             if(closestPlatformToCursor != null)
             {
                 SnapPlatform(closestPlatformToCursor);
             }
 
-            
+            if(detectSimilarObjectsInCollider.isDetected)
+            {
+                platformPreview_Mat.color = colorCantPlace;
+                return;
+            }
             if(Input.GetMouseButtonDown(0))
             {
-                if(detectSimilarObjectsInCollider.isDetected)
-                {
-                    Debug.Log("cant build here!");
-                    return;
-                }
+                
 
                 GameObject newPlot = Instantiate(plotPrefab, new Vector3(platformPreview.transform.position.x, platformPreview.transform.position.y, platformPreview.transform.position.z), Quaternion.identity);
+
                 newPlot.transform.parent = platformsHolder.transform;
                 
             }
@@ -118,6 +135,8 @@ public class BuildPlatform : MonoBehaviour
         if(!isBuilding)
         {
             platformPreview.SetActive(false);
+            detectSimilarObjectsInCollider.ClearList();
+            isBuildingPlatform = false;
         }
     }
 
