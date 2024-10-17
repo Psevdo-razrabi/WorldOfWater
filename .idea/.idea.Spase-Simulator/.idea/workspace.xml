@@ -26,17 +26,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fd2ae46-a785-4153-8fda-838c87ea9a5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/[Render Pipeline] Built-In.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Zenject-ReflectionBaking.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/OptionalExtras/Signals/Zenject-Signals.csproj.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Zenject/Source/Zenject.csproj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BarrelsSet/barrel.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BarrelsSet/barrel.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Desert/Materials/Desert Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Desert/Materials/Desert Ground.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Desert/Settings/Desert_FogSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Desert/Settings/Desert_FogSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVaseScene-Var-OutlineSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Fruit Vase/FruitVaseScene-Var-OutlineSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Room/Room-FogSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Room/Room-FogSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Valley/Valley-Materials/Rock02.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Valley/Valley-Materials/Rock02.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Water] Ocean Islands/Ocean Islands Scene - Materials/WaterScene_WaterfallBottom.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Water] Ocean Islands/Ocean Islands Scene - Materials/WaterScene_WaterfallBottom.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,8 +90,13 @@
       <option name="presentableId" value="Default" />
       <updated>1728935401622</updated>
       <workItem from="1728935408474" duration="101000" />
+      <workItem from="1729090388454" duration="1000" />
+      <workItem from="1729091307086" duration="601000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
@@ -104,6 +110,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />

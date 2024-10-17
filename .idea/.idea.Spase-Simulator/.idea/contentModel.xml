@@ -8,7 +8,6 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="___www.unityassetcollection.com___.txt" t="Include" />
         <e p="FlatKit" t="Include">
           <e p="[Render Pipeline] URP" t="Include">
             <e p="EditorAttributes" t="Include">
@@ -193,6 +192,42 @@
               <e p="Terrain.shader" t="Include" />
               <e p="TerrainLitAdd_DR.shader" t="Include" />
             </e>
+          </e>
+          <e p="Utils" t="Include">
+            <e p="FlatKit.Utils.Editor.asmdef" t="Include" />
+            <e p="MeshSmoother.cs" t="Include" />
+            <e p="Readme" t="Include">
+              <e p="Editor" t="Include">
+                <e p="FlatKitReadme.cs" t="Include" />
+                <e p="NetworkManager.cs" t="Include" />
+                <e p="ReadmeEditor.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="OmniShade" t="Include">
+          <e p="readme.txt" t="Include" />
+          <e p="Samples" t="Include">
+            <e p="MatCap Textures" t="Include">
+              <e p="How to create MatCaps.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="OmniShadeGUI.cs" t="Include" />
+              <e p="OmniShadeMenu.cs" t="Include" />
+              <e p="OmniShadePreprocess.cs" t="Include" />
+            </e>
+            <e p="OmniShade.cs" t="Include" />
+            <e p="OmniShadeAnimateTexture.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="OmniShade Triplanar URP.shader" t="Include" />
+            <e p="OmniShade Triplanar.shader" t="Include" />
+            <e p="OmniShade URP.shader" t="Include" />
+            <e p="OmniShade.shader" t="Include" />
+            <e p="OmniShadeCore.cginc" t="Include" />
+            <e p="OmniShadeURP.cginc" t="Include" />
           </e>
         </e>
         <e p="Plugins" t="Include">
@@ -1074,8 +1109,21 @@
           </e>
         </e>
         <e p="StylizedWater2" t="Include">
+          <e p="_Demo" t="Include">
+            <e p="DynamicEffects" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="DemoController.cs" t="Include" />
+                <e p="sc.stylizedwater2.demo.dynamiceffects.asmref" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Editor" t="Include">
             <e p="AssetInfo.cs" t="Include" />
+            <e p="DynamicEffects" t="Include">
+              <e p="DynamicEffectInspector.cs" t="Include" />
+              <e p="MaterialUI.DynamicEffects.cs" t="Include" />
+              <e p="RenderFeatureEditor.cs" t="Include" />
+            </e>
             <e p="HelpWindow.cs" t="Include" />
             <e p="Inspectors" t="Include">
               <e p="AlignToWavesInspector.cs" t="Include" />
@@ -1101,6 +1149,12 @@
           <e p="Runtime" t="Include">
             <e p="AlignToWaves.cs" t="Include" />
             <e p="Buoyancy.cs" t="Include" />
+            <e p="DynamicEffects" t="Include">
+              <e p="DataRenderPass.cs" t="Include" />
+              <e p="DisplacementToNormalsPass.cs" t="Include" />
+              <e p="DynamicEffect.cs" t="Include" />
+              <e p="WaterDynamicEffectsRenderFeature.cs" t="Include" />
+            </e>
             <e p="PipelineUtilities.cs" t="Include" />
             <e p="Rendering" t="Include">
               <e p="DisplacementPrePass.cs" t="Include" />
@@ -1131,6 +1185,13 @@
             <e p="WaveParameters.cs" t="Include" />
           </e>
           <e p="Shaders" t="Include">
+            <e p="DynamicEffects" t="Include">
+              <e p="Common.hlsl" t="Include" />
+              <e p="DisplacementToNormals.shader" t="Include" />
+              <e p="Dynamic Effect.shader" t="Include" />
+              <e p="DynamicEffects.hlsl" t="Include" />
+              <e p="Effect.hlsl" t="Include" />
+            </e>
             <e p="Libraries" t="Include">
               <e p="Caustics.hlsl" t="Include" />
               <e p="Common.hlsl" t="Include" />
@@ -1197,6 +1258,7 @@
         </e>
       </e>
       <e p="ExternAttributes.Editor.csproj" t="IncludeRecursive" />
+      <e p="FlatKit.Utils.Editor.csproj" t="IncludeRecursive" />
       <e p="Library" t="Include">
         <e p="PackageCache" t="Include">
           <e p="com.unity.render-pipelines.universal@16.0.5" t="Include">
