@@ -8,7 +8,7 @@ public class BuildingGrid : MonoBehaviour
     [SerializeField] bool changeBuildMode;
     [SerializeField] bool isBuildMode;
     [SerializeField] GameObject platformsHolder;
-    [SerializeField] float maxBuildDistance;
+    [SerializeField] public float maxBuildDistance;
     [SerializeField] float moveThresholdToUpdateBuildingPlatform;
     [SerializeField] public List<GameObject> platforms = new List<GameObject>();
 
@@ -24,6 +24,8 @@ public class BuildingGrid : MonoBehaviour
         {
             platforms.Add(platformsHolder.transform.GetChild(i).gameObject);
         }
+        OnPlatformsCountUpdate?.Invoke();
+
 
     }
 
@@ -70,7 +72,7 @@ public class BuildingGrid : MonoBehaviour
     void Build()
     {
         UpdatePlatformCount();
-        newPlatform = FindClosestPlatform();
+        newPlatform = FindClosestPlatform(gameObject);
         if(newPlatform != currentPlatform)
         {
             if(currentPlatform != null)
@@ -143,13 +145,13 @@ public class BuildingGrid : MonoBehaviour
         list.RemoveAll(x => x == null);
     }
 
-    public CreateGrid FindClosestPlatform()
+    public CreateGrid FindClosestPlatform(GameObject origin)
     {
         CreateGrid closestPlatform = null;
         float minimalDistance = maxBuildDistance;
         for(int i = 0; i < platforms.Count; i++)
         {
-            float distance = Vector3.Distance(transform.position, platforms[i].transform.position);
+            float distance = Vector3.Distance(origin.transform.position, platforms[i].transform.position);
             if(distance < minimalDistance)
             {
                 minimalDistance = distance;

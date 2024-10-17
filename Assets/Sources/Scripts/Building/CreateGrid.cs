@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,7 +17,7 @@ public class CreateGrid : MonoBehaviour
     [SerializeField] bool isBuildMode;
     
     
-    float sizeOfObject;
+    [NonSerialized] public float sizeOfObject;
     List<GridPiece> gridPieces = new List<GridPiece>();
     void Awake()
     {
