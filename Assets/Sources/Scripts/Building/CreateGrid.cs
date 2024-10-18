@@ -163,7 +163,7 @@ public class CreateGrid : MonoBehaviour
 
     }
 
-    GridPiece GetClosestPoint(Vector3 pos)
+    public GridPiece GetClosestPoint(Vector3 pos)
     {
         float lowestDistance = float.MaxValue;
         int pointNum = 0;
@@ -181,11 +181,12 @@ public class CreateGrid : MonoBehaviour
 
 }
 
-class GridPiece
+public class GridPiece
 {
     public Vector3 center = Vector3.zero;
     public float size = .1f;
     public GameObject gridPoint;
+    public bool isEmpty = true;
 
     public GridPiece(Vector3 center, float size)
     {
