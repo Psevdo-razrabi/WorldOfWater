@@ -8,5 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sources/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/NGO_Minimal_Setup/NGO_Setup.unity
+    guid: 3d1363dfdc3614845879b565f1735742
+  - enabled: 1
+    path: Assets/DA_Minimal_Setup/DA_Setup.unity
+    guid: da9c6214d560f324f805784ec52c9ca3
+  - enabled: 1
+    path: Assets/Game/Scenes/Netcode.unity
+    guid: cb1dd313cb9a63d4cbc22c5eec881fcd
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
