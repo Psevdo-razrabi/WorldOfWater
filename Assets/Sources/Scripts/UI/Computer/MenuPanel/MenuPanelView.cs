@@ -1,3 +1,4 @@
+using R3;
 using UnityEngine;
 
 namespace Game.MVVM.Computer
@@ -19,6 +20,13 @@ namespace Game.MVVM.Computer
             _viewModel = viewModelFactory.Create<MenuPanelViewModel>();
 
             _viewModel.Init(_contractsButton, _mapButton, _shopButton, _consoleButton);
+
+            _viewModel.SubscribeUpdateView(UpdateView);
+        }
+
+        private void UpdateView()
+        {
+            Debug.Log("Update");
         }
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
 
 namespace Game.MVVM
@@ -17,11 +16,12 @@ namespace Game.MVVM
 
             _viewModel.Init(_button);
 
-            _viewModel.Binder.ViewTriggered.Subscribe(UpdateView).AddTo(_viewModel.Binder.Disposable);
+            _viewModel.SubscribeUpdateView(UpdateView);
         }
 
         private void UpdateView()
         {
+            Debug.Log("View");
         }
 
         private void OnDestroy()

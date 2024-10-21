@@ -1,4 +1,5 @@
 ﻿using Game.Services;
+using R3;
 using Zenject;
 
 namespace Game.MVVM
@@ -17,7 +18,8 @@ namespace Game.MVVM
 
         private void OnClicked()
         {
-            Binder.ViewTriggered.Execute();
+            //Binder.ViewTriggered.Execute();
+            Binder.TriggerView();
         }
     }
 }
