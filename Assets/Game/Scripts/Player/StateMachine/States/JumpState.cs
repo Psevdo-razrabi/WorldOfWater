@@ -1,8 +1,8 @@
-namespace Game.Player
+﻿namespace Game.Player
 {
-    public class WalkState : State
+    public class JumpState : State
     {
-        public WalkState(PlayerStateMachine stateMachine) : base(stateMachine)
+        public JumpState(PlayerStateMachine stateMachine) : base(stateMachine)
         {
         }
 
@@ -13,7 +13,6 @@ namespace Game.Player
 
         public override void Tick()
         {
-
         }
 
         public override void Exit()

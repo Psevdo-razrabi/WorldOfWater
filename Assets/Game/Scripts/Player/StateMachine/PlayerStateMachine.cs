@@ -9,9 +9,15 @@ namespace Game.Player
         private List<State> _states;
         private State _currentState;
 
-        public PlayerStateMachine(List<State> states)
+        public PlayerStateMachine()
         {
-            _states = states;
+            _states = new()
+            {
+                new IdleState(this),
+                new WalkState(this),
+                new JumpState(this)
+            };
+
             _currentState = _states[0];
             _currentState.Enter();
         }
