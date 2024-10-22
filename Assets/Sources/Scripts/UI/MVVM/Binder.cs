@@ -10,7 +10,7 @@ namespace Game.MVVM
         public ReactiveCommand ViewTriggered { get; } = new();
         public CompositeDisposable Disposable { get; } = new();
 
-        public void CreateButtonEvent<T>(IBindable bindable, Action action) where T : BinderEvent
+        public void CreateButtonTrigger<T>(IBindable bindable, Action action) where T : PointerHandler
         {
             if (_bindings.TryGetValue(typeof(T), out var bindings))
             {
@@ -24,7 +24,15 @@ namespace Game.MVVM
             bindable.Bind(this);
         }
 
-        public void TriggerButtonEvent<T>(IBindable bindable) where T : BinderEvent
+        public void CreateButtonTriggers<T>(List<Binding> bindings) where T : PointerHandler
+        {
+            foreach (var binding in bindings)
+            {
+                CreateButtonTrigger<T>(binding.Bindable, binding.Action);
+            }
+        }
+
+        public void TriggerButtonEvent<T>(IBindable bindable) where T : PointerHandler
         {
             if (_bindings.TryGetValue(typeof(T), out var bindings))
             {

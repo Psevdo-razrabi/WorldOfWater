@@ -14,7 +14,7 @@ namespace Game.MVVM
 
         void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
         {
-            _binder?.TriggerButtonEvent<ClickBinderEvent>(this);
+            _binder?.TriggerButtonEvent<Click>(this);
         }
     }
 }

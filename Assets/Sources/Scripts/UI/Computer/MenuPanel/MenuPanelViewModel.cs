@@ -15,10 +15,13 @@ namespace Game.MVVM.Computer
 
         public void Init(IBindable contractsButton, IBindable mapButton, IBindable shopButton, IBindable consoleButton)
         {
-            Binder.CreateButtonEvent<ClickBinderEvent>(contractsButton, OnClickedContractsButton);
-            Binder.CreateButtonEvent<ClickBinderEvent>(mapButton, OnClickedMapButton);
-            Binder.CreateButtonEvent<ClickBinderEvent>(shopButton, OnClickedShopButton);
-            Binder.CreateButtonEvent<ClickBinderEvent>(consoleButton, OnClickedConsoleButton);
+            Binder.CreateButtonTriggers<Click>(new()
+            {
+                new(contractsButton, OnClickedContractsButton),
+                new(mapButton, OnClickedMapButton),
+                new(shopButton, OnClickedShopButton),
+                new(consoleButton, OnClickedConsoleButton)
+            });
         }
 
         private void OnClickedContractsButton()

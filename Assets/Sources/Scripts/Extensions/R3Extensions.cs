@@ -2,10 +2,11 @@
 using System;
 
 public static class R3Extensions
-{ 
+{
     public static IDisposable Subscribe(this ReactiveCommand command, Action action)
     {
-        return command.Subscribe(action);
+        Action<Unit> actionWithUnit = _ => action();
+        return command.Subscribe(actionWithUnit);
     }
 
     public static void Execute(this ReactiveCommand command)

@@ -2,9 +2,10 @@
 {
     public class MapView : View
     {
-        public override void Init(ViewModelFactory viewModelFactory)
+        public override string Id => ViewIds.MAP;
+
+        public override void Init()
         {
-            Id = ViewIds.MAP;
         }
     }
 }

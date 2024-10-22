@@ -15,7 +15,7 @@ namespace Game.Services
             {
                 await UniTask.WaitUntil(() => view.Id != string.Empty);
 
-                view.gameObject.SetActive(view.IsActivedOnStart);
+                view.gameObject.SetActive(view.IsAlwaysActivated);
                 _views.Add(view.Id, view);
             }
 
@@ -35,7 +35,7 @@ namespace Game.Services
         {
             if (_views.TryGetValue(_currentViewId, out var view))
             {
-                view.gameObject.SetActive(view.IsActivedOnStart);
+                view.gameObject.SetActive(view.IsAlwaysActivated);
             }
         }
     }

@@ -3,20 +3,17 @@ using UnityEngine;
 
 namespace Game.MVVM
 {
-    public class DisplayContainerView : View
+    public class DisplayContainerView : View<DisplayContainerViewModel>
     {
         [SerializeField] private Button _button;
 
-        private DisplayContainerViewModel _viewModel;
         private List<Binder> _binders = new();
 
-        public override void Init(ViewModelFactory viewModelFactory)
+        public override void Init()
         {
-            _viewModel = viewModelFactory.Create<DisplayContainerViewModel>();
+            ViewModel.Init(_button);
 
-            _viewModel.Init(_button);
-
-            _viewModel.SubscribeUpdateView(UpdateView);
+            ViewModel.SubscribeUpdateView(UpdateView);
         }
 
         private void UpdateView()
@@ -30,8 +27,10 @@ namespace Game.MVVM
             {
                 binder.Dispose();
             }
-            _viewModel.Binder.Dispose();
+            ViewModel.Binder.Dispose();
             _binders.Clear();
         }
+
+        public override string Id => string.Empty;
     }
 }

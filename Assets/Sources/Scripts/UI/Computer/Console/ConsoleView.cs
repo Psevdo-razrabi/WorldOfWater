@@ -2,9 +2,10 @@
 {
     public class ConsoleView : View
     {
-        public override void Init(ViewModelFactory viewModelFactory)
+        public override string Id => ViewIds.CONSOLE;
+
+        public override void Init()
         {
-            Id = ViewIds.CONSOLE;
         }
     }
 }

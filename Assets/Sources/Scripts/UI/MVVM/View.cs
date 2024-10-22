@@ -2,16 +2,23 @@
 using UnityEngine;
 using Zenject;
 
-public abstract class View : MonoBehaviour
+public abstract class View<T> : View where T : ViewModel, new()
 {
-    public string Id { get; set; }
-    public bool IsActivedOnStart { get; set; }
+    protected T ViewModel; 
+    protected Binder Binder;
 
     [Inject]
     private void Construct(ViewModelFactory viewModelFactory)
     {
-        Init(viewModelFactory);
+        ViewModel = viewModelFactory.Create<T>();
+        Binder = ViewModel.Binder;
+        Init();
     }
+}
 
-    public abstract void Init(ViewModelFactory viewModelFactory);
+public abstract class View : MonoBehaviour
+{
+    public virtual bool IsAlwaysActivated { get; }
+    public abstract string Id { get; }
+    public abstract void Init();
 }
