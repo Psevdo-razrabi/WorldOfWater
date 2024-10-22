@@ -25,10 +25,7 @@ public class BuildNewObject : MonoBehaviour
     private SelectedObjectToBuild previousObjectToBuild;
 
 
-    enum SelectedObjectToBuild
-    {
-        Destroy, Platform, Wall, Building
-    }
+    private enum SelectedObjectToBuild { Destroy, Platform, Wall, Building }
 
 
 
@@ -59,15 +56,13 @@ public class BuildNewObject : MonoBehaviour
         {
             InputController();
             closestPlatformToPlayer = platformsController.FindClosestPlatform(gameObject.transform.position, maxDistanceFromPlatformToPlayer);
-            if(selectedObjectToBuild == SelectedObjectToBuild.Building)
+            if(selectedObjectToBuild == SelectedObjectToBuild.Building || selectedObjectToBuild == SelectedObjectToBuild.Platform)
             {
                 RaycastHit hit;
                 if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayDistance, layerMaskForRaycast))
                 {
                     closestPlatformToCursor = platformsController.FindClosestPlatform(hit.point, maxDistanceFromPlatformToPlayer);
                 }
-
-                
             }
 
             if(selectedObjectToBuild != previousObjectToBuild)
@@ -105,7 +100,7 @@ public class BuildNewObject : MonoBehaviour
     {
         if(selectedObjectToBuild == SelectedObjectToBuild.Platform)
         {
-            buildNewPlatform.Build(closestPlatformToPlayer);
+            buildNewPlatform.Build(closestPlatformToPlayer, closestPlatformToCursor);
         }
 
         if(selectedObjectToBuild == SelectedObjectToBuild.Wall)
@@ -142,9 +137,6 @@ public class BuildNewObject : MonoBehaviour
             buildNewBuilding.CancelBuild();
         }
     }
-
-    
-
 
 }
 

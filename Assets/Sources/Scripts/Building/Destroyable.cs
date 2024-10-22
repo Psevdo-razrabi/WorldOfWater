@@ -5,9 +5,10 @@ using DG.Tweening;
 
 public class Destroyable : MonoBehaviour
 {
-    public GridPiece attachedGridPiece;
+    public List<GridPiece> attachedGridPiece = new List<GridPiece>();
     public float animationSpeed;
     bool isDestroying;
+    public ObjectContainer objectContainer;
 
 
     public void Destroy()
@@ -16,7 +17,10 @@ public class Destroyable : MonoBehaviour
         isDestroying = true;
         if(attachedGridPiece != null)
         {
-            attachedGridPiece.isEmpty = true;
+            foreach(GridPiece piece in attachedGridPiece)
+            {
+                piece.isEmpty = true;
+            }
         }
         AnimateDestroy(gameObject);
     }

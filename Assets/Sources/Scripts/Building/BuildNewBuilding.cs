@@ -83,6 +83,8 @@ public class BuildNewBuilding : MonoBehaviour
                 {
                     GameObject newBuilding = Instantiate(buildingsPrefab[selectedBuildingObject], currentBuildingPreview.transform.position, currentBuildingPreview.transform.rotation);
                     newBuilding.transform.SetParent(closestPlatformToPlayer.transform);
+                    closestPlatformToPlayer.GetComponent<ObjectContainer>().AddObject(newBuilding);
+                    newBuilding.GetComponent<Destroyable>().objectContainer = closestPlatformToPlayer.GetComponent<ObjectContainer>();
                     if(isAnimate)
                     {
                         AnimateSpawn(newBuilding);

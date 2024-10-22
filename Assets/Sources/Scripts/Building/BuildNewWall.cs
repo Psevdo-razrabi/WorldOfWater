@@ -103,19 +103,35 @@ public class BuildNewWall : MonoBehaviour
             {
                 currentWallPreview.transform.position = closestGridPiece.center;
                 currentWallPreview.GetComponent<DetectSimilarObjectsInCollider>().ClearList();
-                Debug.Log("update");
             }
             RotateSelectedWallWithMouse(currentWallPreview.transform);
 
-            if(closestGridPiece.isEmpty && !currentWallPreview.GetComponent<DetectSimilarObjectsInCollider>().isDetected)
+            if(closestGridPiece.isEmpty && !currentWallPreview.GetComponent<DetectSimilarObjectsInCollider>().isDetected && CanBuildMultiCellBuilding())
             {
                 currentWallPreview.GetComponent<PreviewObject>().CanBuild();
                 if(Input.GetMouseButtonDown(0))
                 {
                     GameObject newWall = Instantiate(wallsPrefab[selectedWallObject], currentWallPreview.transform.position, currentWallPreview.transform.rotation);
+                    Destroyable destroyable = newWall.GetComponent<Destroyable>();
                     newWall.transform.SetParent(closestPlatformToCursor.transform);
-                    newWall.GetComponent<Destroyable>().attachedGridPiece = closestGridPiece;
-                    closestGridPiece.isEmpty = false;
+
+                    GetGridPoints getGridPoints = currentWallPreview.GetComponent<GetGridPoints>();
+                    if(getGridPoints)
+                    {
+                        destroyable.attachedGridPiece.Clear();
+                        foreach(GridPiece gridPiece in getGridPoints.points)
+                        {
+                            gridPiece.isEmpty = false;
+                            destroyable.attachedGridPiece.Add(gridPiece);
+                        }
+                    }
+                    else
+                    {
+                        destroyable.attachedGridPiece.Add(closestGridPiece);
+                        closestGridPiece.isEmpty = false;
+                    }
+                    closestPlatformToCursor.GetComponent<ObjectContainer>().AddObject(newWall);
+                    destroyable.objectContainer = closestPlatformToCursor.GetComponent<ObjectContainer>();
                     if(isAnimate)
                     {
                         AnimateSpawn(newWall);
@@ -132,6 +148,19 @@ public class BuildNewWall : MonoBehaviour
         else
         {
             currentWallPreview.SetActive(false);
+        }
+    }
+
+    bool CanBuildMultiCellBuilding()
+    {
+        GetGridPoints getGridPoints = currentWallPreview.GetComponent<GetGridPoints>();
+        if(getGridPoints != null)
+        {
+            return getGridPoints.canBuild;
+        }
+        else
+        {
+            return true;
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuildNewPlatform : MonoBehaviour
@@ -18,6 +19,7 @@ public class BuildNewPlatform : MonoBehaviour
     [SerializeField] Color colorCanPlace, colorCantPlace;
     DetectSimilarObjectsInCollider detectSimilarObjectsInCollider;
     Material platformPreview_Mat;
+
     
     void Start()
     {
@@ -30,7 +32,7 @@ public class BuildNewPlatform : MonoBehaviour
         platformPreview_Mat = platformPreview.GetComponent<MeshRenderer>().material;
     }
 
-    public void Build(CreateGrid closestPlatformToPlayer)
+    public void Build(CreateGrid closestPlatformToPlayer, CreateGrid closestPlatformToCursor)
     {
 
         platformPreview.SetActive(true);
@@ -41,12 +43,13 @@ public class BuildNewPlatform : MonoBehaviour
             platformPreview_Mat.color = colorCanPlace;
             platformPreview.transform.position = new Vector3(hit.point.x, hit.point.y + yOffset, hit.point.z);
 
+
             if(closestPlatformToPlayer != null)
             {
-                SnapPlatform(closestPlatformToPlayer);
+                SnapPlatform(closestPlatformToPlayer, closestPlatformToCursor);
             }
 
-            if(detectSimilarObjectsInCollider.isDetected)
+            if(detectSimilarObjectsInCollider.isDetected || (transform.position.y > 1f && !closestPlatformToCursor.CanBuildSecondFloor()))
             {
                 platformPreview_Mat.color = colorCantPlace;
                 return;
@@ -54,7 +57,10 @@ public class BuildNewPlatform : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 GameObject newPlot = Instantiate(plotPrefab, new Vector3(platformPreview.transform.position.x, platformPreview.transform.position.y, platformPreview.transform.position.z), Quaternion.identity);
-
+                if(transform.position.y > 1f)
+                {
+                    newPlot.GetComponent<CreateGrid>().wallsHoldingSecondFloor = closestPlatformToCursor.SetPointsHoldingSecondFloor(true);
+                }
                 newPlot.transform.parent = platformsHolder.transform;
             }
         }
@@ -71,7 +77,7 @@ public class BuildNewPlatform : MonoBehaviour
 
 
 
-    void SnapPlatform(CreateGrid platform)
+    void SnapPlatform(CreateGrid platformToPlayer, CreateGrid platformToCursor)
     {
         Vector3 newPlatformPos = Vector3.zero;
         Vector3 camDirection = Camera.main.transform.forward;
@@ -82,25 +88,37 @@ public class BuildNewPlatform : MonoBehaviour
         {
             if (camDirection.x > 0)
             {
-                newPlatformPos.x = platform.sizeOfObject; // Move to the right
+                newPlatformPos.x = platformToPlayer.sizeOfObject; // Move to the right
             }
             else if (camDirection.x < 0)
             {
-                newPlatformPos.x = -platform.sizeOfObject; // Move to the left
+                newPlatformPos.x = -platformToPlayer.sizeOfObject; // Move to the left
             }
         }
         else {
             if (camDirection.z > 0)
             {
-                newPlatformPos.z = platform.sizeOfObject; // Move forward
+                newPlatformPos.z = platformToPlayer.sizeOfObject; // Move forward
             }
             else if (camDirection.z < 0)
             {
-                newPlatformPos.z = -platform.sizeOfObject; // Move backward
+                newPlatformPos.z = -platformToPlayer.sizeOfObject; // Move backward
             }
         }
 
-        platformPreview.transform.position = new Vector3(platform.transform.position.x + newPlatformPos.x, platform.transform.position.y, platform.transform.position.z + newPlatformPos.z);
+
+        if(transform.position.y > 1f)
+        {
+            if(platformToCursor.haveNextFloor)
+            {
+                newPlatformPos = platformToCursor.pointSecondFloor;
+                platformPreview.transform.position = newPlatformPos;
+            }
+        }
+        else
+        {
+            platformPreview.transform.position = new Vector3(platformToPlayer.transform.position.x + newPlatformPos.x, platformToPlayer.transform.position.y, platformToPlayer.transform.position.z + newPlatformPos.z);
+        }
     }
 
 }

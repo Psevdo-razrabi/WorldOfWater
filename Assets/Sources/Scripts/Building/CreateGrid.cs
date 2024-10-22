@@ -19,6 +19,12 @@ public class CreateGrid : MonoBehaviour
     [SerializeField] float animationSpeed;
     [SerializeField] float animationYOffset;
     [SerializeField] AnimationType animationType;
+
+    [SerializeField] float offsetForSecondFloor;
+    public Vector3 pointSecondFloor;
+    public bool haveNextFloor;
+    public CreateGrid firsFloorPlot;
+    public GridPiece[] wallsHoldingSecondFloor = new GridPiece[4];
     
     enum AnimationType
     {
@@ -37,6 +43,35 @@ public class CreateGrid : MonoBehaviour
         HideMaterial();
         
     }
+
+    public bool CanBuildSecondFloor()
+    {
+        bool can = true;
+
+        if(gridPieces[0].isEmpty || gridPieces[2].isEmpty || gridPieces[6].isEmpty || gridPieces[8].isEmpty)
+        {
+            can = false;
+        }
+
+
+        return can;
+    }
+
+    public GridPiece[] SetPointsHoldingSecondFloor(bool isHolding)
+    {
+        wallsHoldingSecondFloor[0] = gridPieces[0];
+        wallsHoldingSecondFloor[1] = gridPieces[2];
+        wallsHoldingSecondFloor[2] = gridPieces[6];
+        wallsHoldingSecondFloor[3] = gridPieces[8];
+
+        foreach(GridPiece piece in wallsHoldingSecondFloor)
+        {
+            piece.isHoldingSecondFloor = isHolding;
+        }
+
+        return wallsHoldingSecondFloor;
+
+    }   
     
     void GenerateRaftPieces()
     {
@@ -99,6 +134,11 @@ public class CreateGrid : MonoBehaviour
 
                 gridPieces.Add(newGridPiece);
             }
+        }
+        if(gridPieces[4].center.y + offsetForSecondFloor < 3.5f)
+        {
+            haveNextFloor = true;
+            pointSecondFloor = new Vector3(gridPieces[4].center.x, gridPieces[4].center.y + offsetForSecondFloor, gridPieces[4].center.z);
         }
 
         
@@ -181,12 +221,15 @@ public class CreateGrid : MonoBehaviour
 
 }
 
+[Serializable]
 public class GridPiece
 {
     public Vector3 center = Vector3.zero;
     public float size = .1f;
     public GameObject gridPoint;
     public bool isEmpty = true;
+    public bool isFullWall = false;
+    public bool isHoldingSecondFloor;
 
     public GridPiece(Vector3 center, float size)
     {
@@ -199,6 +242,7 @@ public class GridPiece
     {
         gridPoint.transform.position = center;
         gridPoint.gameObject.SetActive(false);
+        gridPoint.AddComponent<GridPointData>().connectedGridPiece = this;
     }
 
     public void HidePoint()
