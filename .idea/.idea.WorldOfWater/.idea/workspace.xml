@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="411a3569-5de7-446e-b796-5c165eb14d2c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft 1.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft 1.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_BaseColor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_BaseColor.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Height.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Height.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Metallic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Metallic.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Normal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Normal.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Roughness.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Graphics/Raft/Raft_low_DefaultMaterial_Roughness.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scenes/SampleScene.unity" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2nw3SYEHOJCu866KOTyhfB5y3uv" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="411a3569-5de7-446e-b796-5c165eb14d2c" name="Changes" comment="" />
+      <created>1729870312583</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1729870312583</updated>
+      <workItem from="1729870316568" duration="6000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityProjectDiscoverer">
+    <option name="unityProject" value="true" />
+    <option name="unityProjectFolder" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
