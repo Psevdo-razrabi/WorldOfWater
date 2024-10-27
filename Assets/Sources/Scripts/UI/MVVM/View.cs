@@ -1,24 +1,33 @@
 ﻿using Game.MVVM;
+using R3;
+using System;
 using UnityEngine;
-using Zenject;
+using VContainer;
 
-public abstract class View<T> : View where T : ViewModel, new()
+namespace Game.MVVM
 {
-    protected T ViewModel; 
-    protected Binder Binder;
-
-    [Inject]
-    private void Construct(ViewModelFactory viewModelFactory)
+    public abstract class View<T> : View where T : ViewModel, new()
     {
-        ViewModel = viewModelFactory.Create<T>();
-        Binder = ViewModel.Binder;
-        Init();
-    }
-}
+        protected T ViewModel; 
+        protected Binder Binder;
 
-public abstract class View : MonoBehaviour
-{
-    public virtual bool IsAlwaysActivated { get; }
-    public abstract string Id { get; }
-    public abstract void Init();
+        [Inject]
+        private void Construct(ViewModelFactory viewModelFactory)
+        {
+            ViewModel = viewModelFactory.Create<T>();
+            Binder = ViewModel.Binder;
+        }
+
+        protected void SubscribeUpdateView(Action action)
+        {
+            Binder.ViewTriggered.Subscribe(action).AddTo(Binder.Disposable);
+        }
+    }
+
+    public abstract class View : MonoBehaviour
+    {
+        public virtual bool IsAlwaysActivated { get; }
+        public abstract ViewId Id { get; }
+        public abstract void Init();
+    }
 }

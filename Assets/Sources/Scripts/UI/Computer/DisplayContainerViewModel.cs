@@ -1,6 +1,6 @@
 ﻿using Game.Services;
 using R3;
-using Zenject;
+using VContainer;
 
 namespace Game.MVVM
 {

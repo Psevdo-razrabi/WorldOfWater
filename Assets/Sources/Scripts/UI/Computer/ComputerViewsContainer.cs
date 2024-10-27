@@ -1,7 +1,7 @@
 ﻿using Game.Services;
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
+using VContainer;
 
 namespace Game.MVVM
 {
@@ -12,7 +12,6 @@ namespace Game.MVVM
         [Inject]
         private void Construct(ViewsService viewsService)
         {
-            viewsService.Create(_views);
         }
     }
 }

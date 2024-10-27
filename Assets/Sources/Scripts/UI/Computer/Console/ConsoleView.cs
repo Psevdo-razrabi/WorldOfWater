@@ -2,7 +2,7 @@
 {
     public class ConsoleView : View
     {
-        public override string Id => ViewIds.CONSOLE;
+        public override ViewId Id => ViewId.Console;
 
         public override void Init()
         {

@@ -2,7 +2,7 @@ using System;
 
 namespace Game.MVVM
 {
-    public struct Binding
+    public class Binding
     {
         public IBindable Bindable { get; }
         public Action Action { get; }

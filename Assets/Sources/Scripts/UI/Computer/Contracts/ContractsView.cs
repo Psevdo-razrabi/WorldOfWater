@@ -2,7 +2,7 @@
 {
     public class ContractsView : View
     {
-        public override string Id => ViewIds.CONTRACTS;
+        public override ViewId Id => ViewId.Contracts;
 
         public override void Init()
         {

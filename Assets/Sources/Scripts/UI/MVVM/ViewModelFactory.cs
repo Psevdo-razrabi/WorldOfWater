@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
-using Zenject;
+using VContainer;
 
 namespace Game.MVVM
 {
     public class ViewModelFactory
     {
-        private readonly DiContainer _container;
+        private readonly IObjectResolver _container;
         private readonly Dictionary<Type, ViewModel> _viewModels = new();
 
-        public ViewModelFactory(DiContainer container)
+        public ViewModelFactory(IObjectResolver container)
         {
             _container = container;
         }

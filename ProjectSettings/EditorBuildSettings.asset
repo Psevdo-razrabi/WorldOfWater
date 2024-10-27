@@ -17,5 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/Netcode.unity
     guid: cb1dd313cb9a63d4cbc22c5eec881fcd
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: da0d6d2a5084ea643a4f6a6e185c301c,
+      type: 2}
   m_UseUCBPForAssetBundles: 0

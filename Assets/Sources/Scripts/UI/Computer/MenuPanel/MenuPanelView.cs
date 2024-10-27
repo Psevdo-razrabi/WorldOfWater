@@ -9,7 +9,7 @@ namespace Game.MVVM.Computer
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _consoleButton;
 
-        public override string Id => ViewIds.MENU_PANEL;
+        public override ViewId Id => ViewId.MenuPanel;
 
         public override bool IsAlwaysActivated => true;
 
@@ -17,7 +17,7 @@ namespace Game.MVVM.Computer
         {
             ViewModel.Init(_contractsButton, _mapButton, _shopButton, _consoleButton);
 
-            ViewModel.SubscribeUpdateView(UpdateView);
+            SubscribeUpdateView(UpdateView);
         }
 
         private void UpdateView()

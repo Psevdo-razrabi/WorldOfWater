@@ -2,7 +2,7 @@
 {
     public class ShopView : View
     {
-        public override string Id => ViewIds.SHOP;
+        public override ViewId Id => ViewId.Shop;
 
         public override void Init()
         {

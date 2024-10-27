@@ -13,7 +13,7 @@ namespace Game.MVVM
         {
             ViewModel.Init(_button);
 
-            ViewModel.SubscribeUpdateView(UpdateView);
+            SubscribeUpdateView(UpdateView);
         }
 
         private void UpdateView()
@@ -31,6 +31,6 @@ namespace Game.MVVM
             _binders.Clear();
         }
 
-        public override string Id => string.Empty;
+        public override ViewId Id => ViewId.Display;
     }
 }
