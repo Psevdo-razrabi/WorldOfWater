@@ -29,3 +29,17 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_SubObjectType: 
       m_EditorAssetChanged: 1
+  - <Id>k__BackingField: 9
+    <Prefab>k__BackingField:
+      m_AssetGUID: 8caa7474bed5de44088370be8d26f39d
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - <Id>k__BackingField: 10
+    <Prefab>k__BackingField:
+      m_AssetGUID: c480f49f6570a2a4db397218b58a5ab2
+      m_SubObjectName: 
+      m_SubObjectGUID: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 1

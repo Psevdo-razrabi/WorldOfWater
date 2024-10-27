@@ -22,12 +22,18 @@ namespace Game.MVVM
         {
             Binder.ViewTriggered.Subscribe(action).AddTo(Binder.Disposable);
         }
+
+        public override void Disable()
+        {
+            Binder.Dispose();
+        }
     }
 
     public abstract class View : MonoBehaviour
     {
         public virtual bool IsAlwaysActivated { get; }
         public abstract ViewId Id { get; }
-        public abstract void Init();
+        public abstract void Initialize();
+        public virtual void Disable() {}
     }
 }

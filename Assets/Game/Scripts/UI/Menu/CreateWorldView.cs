@@ -13,12 +13,14 @@ namespace Game.MVVM.Menu
 
         public override ViewId Id => ViewId.CreateWorld;
 
-        public override void Init()
+        public override void Initialize()
         {
             ViewModel.Init(_createButton);
             SubscribeUpdateView(UpdateView);
 
             _worldNameInputField.onValueChanged.AddListener(n => ViewModel.WorldName = n);
+            _worldNameInputField.text = "Empty";
+            ViewModel.WorldName = _worldNameInputField.text;
         }
 
         private void UpdateView()

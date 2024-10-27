@@ -9,7 +9,7 @@ namespace Game.MVVM
 
         private List<Binder> _binders = new();
 
-        public override void Init()
+        public override void Initialize()
         {
             ViewModel.Init(_button);
 

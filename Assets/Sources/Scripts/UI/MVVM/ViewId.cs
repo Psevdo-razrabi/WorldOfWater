@@ -12,5 +12,7 @@ namespace Game.MVVM
         MainMenu,
         WorldSetup,
         CreateWorld,
+        JoinWorld,
+        Lobby
     }
 }

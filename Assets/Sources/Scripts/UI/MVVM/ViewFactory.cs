@@ -1,9 +1,11 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using VContainer;
 using VContainer.Unity;
+using Object = UnityEngine.Object;
 
 namespace Game.MVVM
 {
@@ -29,13 +31,12 @@ namespace Game.MVVM
         {
             if (_views.TryGetValue(viewId, out var view))
             {
-                return view;
+                Debug.LogException(new Exception("View created again!"));
             }
 
             var newView = await _viewsConfig.LoadView(viewId, _parent);
             _container.Inject(newView);
             _views.Add(viewId, newView);
-            newView.Init();
             return newView;
         }
     }

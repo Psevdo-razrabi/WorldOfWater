@@ -4,7 +4,7 @@
     {
         public override ViewId Id => ViewId.Map;
 
-        public override void Init()
+        public override void Initialize()
         {
         }
     }

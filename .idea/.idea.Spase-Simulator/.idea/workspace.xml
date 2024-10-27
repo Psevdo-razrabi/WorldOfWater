@@ -29,41 +29,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fd2ae46-a785-4153-8fda-838c87ea9a5d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/AuthenticationsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/AuthenticationsService.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/riderModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Renderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Button.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Button.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Configs/ViewsConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Configs/ViewsConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/CreateWorldView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/CreateWorldView.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/MainMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/MainMenu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/GameLifetimeScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/GameLifetimeScope.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scenes/Spaceship.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scenes/Spaceship.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Installeres.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Installeres/BaseBindings.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Installeres/BaseBindings.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Installeres/Installer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Installeres/Installer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/SessionSetup/WorldSetupView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/SessionSetup/WorldSetupView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/ViewsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/ViewsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/ComputerViewsContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/ComputerViewsContainer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Console/ConsoleView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Console/ConsoleView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Contracts/ContractsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Contracts/ContractsView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/DisplayContainerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/DisplayContainerView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/DisplayContainerViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/DisplayContainerViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Map/MapView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Map/MapView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/MenuPanel/MenuPanelView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/MenuPanel/MenuPanelView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/MenuPanel/MenuPanelViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/MenuPanel/MenuPanelViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Shop/ShopView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Shop/ShopView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/Binding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/Binding.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/View.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/View.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewIds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewIds.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewModelFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewModelFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewId.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewId.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +64,24 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.widgets/Runtime/Core/Base/CoreData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.widgets/Runtime/Core/Base/WidgetServiceInitialization.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.widgets/Runtime/Core/Settings/MultiplayerWidgetsSettings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.widgets/Runtime/Session/Session/SessionManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.widgets/Runtime/Session/Widgets/Base/EnterSessionBase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.multiplayer.widgets/Runtime/Session/Widgets/CreateSession.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.core/Runtime/Core/RequestFailedException.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/Models/Lobby.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/CreateLobbyOptions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/LobbyService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/LobbyUpdates/LobbyEventCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/LobbyUpdates/LobbyEventConnectionState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/WrappedLobbyService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer/Runtime/Internal/ReflectionInjector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Summonlands/summonlands/Summonlands/Assets/_Game/Sources/Runtime/Battleground/Factories/ViewFactoryHub.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/321eb2db7c6d43ea8fc39b54eaca345246ae00/e2/d2f67c1e/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/66/98eafd1b/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1349e8da9c0471283f06e515075baad91400/91/d5a6a338/CompositeDisposable.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -91,21 +95,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor & Play.executor": "Debug",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "origin/Ilya",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Attach to Unity Editor.Attach to Unity Editor &amp; Play.executor&quot;: &quot;Debug&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;origin/Ilya&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Unity.exe" />
@@ -123,20 +127,20 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7112">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="25820">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="7112" />
+      <option name="pid" value="25820" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="7112">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="7112" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -156,7 +160,10 @@
       <workItem from="1729090388454" duration="1000" />
       <workItem from="1729091307086" duration="601000" />
       <workItem from="1730024784579" duration="2364000" />
-      <workItem from="1730027964194" duration="8481000" />
+      <workItem from="1730027964194" duration="22495000" />
+      <workItem from="1730059514478" duration="1066000" />
+      <workItem from="1730060615588" duration="1184000" />
+      <workItem from="1730061936654" duration="5305000" />
     </task>
     <servers />
   </component>

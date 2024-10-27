@@ -26,6 +26,8 @@ namespace Game.DI
         private void RegisterServices(IContainerBuilder builder)
         {
             builder.Register<ViewsService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+            builder.Register<LobbiesService>(Lifetime.Singleton);
+            builder.Register<AuthenticationsService>(Lifetime.Singleton);
         }
 
         private void RegisterConfigs(IContainerBuilder builder)

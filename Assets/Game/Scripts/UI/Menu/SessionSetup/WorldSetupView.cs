@@ -11,7 +11,7 @@ namespace Game.MVVM.Menu
 
         public override ViewId Id => ViewId.WorldSetup;
 
-        public override void Init()
+        public override void Initialize()
         {
             ViewModel.Init(_createWorldButton, _loadWorldButton, _joinWorldButton);
         }

@@ -17,7 +17,7 @@ namespace Game.Services
         
         public void Initialize()
         {
-            Open(ViewId.CreateWorld);
+            Open(ViewId.MainMenu);
         }
 
         public async void Open(ViewId id)
@@ -25,12 +25,14 @@ namespace Game.Services
             if (_views.TryGetValue(id, out var view))
             {
                 view.gameObject.SetActive(true);
+                view.Initialize();
                 _viewsStack.Push(view);
             }
             else
             {
                 var newView = await _viewFactory.Create(id);
                 newView.gameObject.SetActive(true);
+                newView.Initialize();
                 _views.Add(id, newView);
                 _viewsStack.Push(newView);
             }
@@ -40,6 +42,7 @@ namespace Game.Services
         {
             if(_viewsStack.TryPop(out var view))
             {
+                view.Disable();
                 view.gameObject.SetActive(false);
             }
         }

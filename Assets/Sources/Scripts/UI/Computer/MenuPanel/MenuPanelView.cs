@@ -13,7 +13,7 @@ namespace Game.MVVM.Computer
 
         public override bool IsAlwaysActivated => true;
 
-        public override void Init()
+        public override void Initialize()
         {
             ViewModel.Init(_contractsButton, _mapButton, _shopButton, _consoleButton);
 

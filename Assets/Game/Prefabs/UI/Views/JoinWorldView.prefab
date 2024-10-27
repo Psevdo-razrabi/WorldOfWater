@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4209861656272804957}
   - component: {fileID: 2537276630945966898}
   - component: {fileID: 5020569064143095658}
-  - component: {fileID: 2596629821863398424}
+  - component: {fileID: 1221746879719073602}
   m_Layer: 5
-  m_Name: CreateWorldView
+  m_Name: JoinWorldView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,12 +32,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 30141784710602504}
-  - {fileID: 8017514939131833717}
+  - {fileID: 8839514004665032574}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -621.0656, y: -221.93823}
+  m_AnchoredPosition: {x: 621.07, y: -221.93823}
   m_SizeDelta: {x: -1242.1312, y: -443.8765}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2537276630945966898
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6462264, b: 0.6462264, a: 0.392}
+  m_Color: {r: 0.8113208, g: 0.68498504, b: 0.06505875, a: 0.46666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2596629821863398424
+--- !u!114 &1221746879719073602
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,13 +87,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6943301030706021917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db3a83cd1a020384bafa56857b315cd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6540ec4b0e53474586f20695f9c916b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _createButton: {fileID: 8702426300456522982}
-  _worldNameInputField: {fileID: 3223262650401763032}
-  _isOnlineToggle: {fileID: 0}
---- !u!1001 &2263804709713574771
+  _joinButton: {fileID: 8702426300456522982}
+  _codeInputField: {fileID: 4131199647769844947}
+--- !u!1001 &758023241215510904
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -105,11 +104,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InputField
-      objectReference: {fileID: 0}
-    - target: {fileID: 2252265396799440419, guid: e1c549a4b24207840875e33c34ffdaef,
-        type: 3}
-      propertyPath: m_text
-      value: Enter world...
       objectReference: {fileID: 0}
     - target: {fileID: 8082071512821159430, guid: e1c549a4b24207840875e33c34ffdaef,
         type: 3}
@@ -216,11 +210,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1c549a4b24207840875e33c34ffdaef, type: 3}
---- !u!114 &3223262650401763032 stripped
+--- !u!114 &4131199647769844947 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3734031846081451435, guid: e1c549a4b24207840875e33c34ffdaef,
     type: 3}
-  m_PrefabInstance: {fileID: 2263804709713574771}
+  m_PrefabInstance: {fileID: 758023241215510904}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -228,11 +222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &8017514939131833717 stripped
+--- !u!224 &8839514004665032574 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8082071512821159430, guid: e1c549a4b24207840875e33c34ffdaef,
     type: 3}
-  m_PrefabInstance: {fileID: 2263804709713574771}
+  m_PrefabInstance: {fileID: 758023241215510904}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3401676396370076394
 PrefabInstance:
@@ -245,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 2355281202194645708, guid: 49c44c6d4c0b0ce46b300e5fd2e09bb8,
         type: 3}
       propertyPath: m_text
-      value: Create world
+      value: Join world
       objectReference: {fileID: 0}
     - target: {fileID: 3413230868224441826, guid: 49c44c6d4c0b0ce46b300e5fd2e09bb8,
         type: 3}

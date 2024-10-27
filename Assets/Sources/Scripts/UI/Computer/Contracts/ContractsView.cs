@@ -4,7 +4,7 @@
     {
         public override ViewId Id => ViewId.Contracts;
 
-        public override void Init()
+        public override void Initialize()
         {
         }
     }

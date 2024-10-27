@@ -1,15 +1,21 @@
-﻿using Unity.Services.Lobbies.Models;
+﻿using System;
+using Unity.Services.Lobbies.Models;
 using Unity.Services.Lobbies;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using VContainer;
 using Game.Services;
+using Unity.Services.Authentication;
+using Unity.Services.Core;
 
 namespace Game.MVVM.Menu
 {
     public class CreateWorldViewModel : ViewModel
     {
         private ViewsService _viewsService;
+        private LobbiesService _lobbiesService;
 
         public string WorldName { get; set; }
 
@@ -19,41 +25,19 @@ namespace Game.MVVM.Menu
         }
 
         [Inject]
-        private void Construct(ViewsService viewsService)
+        private void Construct(ViewsService viewsService, LobbiesService lobbiesService)
         {
             _viewsService = viewsService;
+            _lobbiesService = lobbiesService;
         }
 
         private async void OnCreateClicked()
         {
-            /*string lobbyName = WorldName;
-            int maxPlayers = 8;
-            CreateLobbyOptions options = new CreateLobbyOptions();
-            options.IsPrivate = true;
-
-            options.Data = new Dictionary<string, DataObject>()
-            {
-                {
-                    "Test1", new DataObject(
-                        visibility: DataObject.VisibilityOptions.Public,
-                        value: "Test1")
-                },
-            };
-
-            options.Data = new Dictionary<string, DataObject>()
-            {
-                {
-                    "Test2", new DataObject(
-                        visibility: DataObject.VisibilityOptions.Public,
-                        value: "Test2",
-                        index: DataObject.IndexOptions.S1)
-                },
-            };
-
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, options);*/
+            await _lobbiesService.CreateLobby(WorldName);
 
             _viewsService.Close();
-            _viewsService.Open(ViewId.MainMenu);
+            _viewsService.Close();
+            _viewsService.Open(ViewId.Lobby);
         }
     }
 }
