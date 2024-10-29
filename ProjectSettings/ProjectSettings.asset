@@ -828,7 +828,7 @@ PlayerSettings:
     PS4: DOTWEEN
     PS5: DOTWEEN
     QNX: DOTWEEN
-    Standalone: DOTWEEN;POSEIDON;POSEIDON_URP
+    Standalone: DOTWEEN;POSEIDON;POSEIDON_URP;CREST_OCEAN
     WebGL: DOTWEEN
     Windows Store Apps: DOTWEEN
     XboxOne: DOTWEEN
