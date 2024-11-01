@@ -9,7 +9,7 @@ namespace Game.MVVM
 
         private List<Binder> _binders = new();
 
-        public override void Initialize()
+        public override void Open()
         {
             ViewModel.Init(_button);
 
@@ -30,7 +30,5 @@ namespace Game.MVVM
             ViewModel.Binder.Dispose();
             _binders.Clear();
         }
-
-        public override ViewId Id => ViewId.Display;
     }
 }

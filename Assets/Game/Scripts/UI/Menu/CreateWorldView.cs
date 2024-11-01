@@ -11,9 +11,7 @@ namespace Game.MVVM.Menu
         [SerializeField] private TMP_InputField _worldNameInputField;
         [SerializeField] private Toggle _isOnlineToggle;
 
-        public override ViewId Id => ViewId.CreateWorld;
-
-        public override void Initialize()
+        public override void Open()
         {
             ViewModel.Init(_createButton);
             SubscribeUpdateView(UpdateView);

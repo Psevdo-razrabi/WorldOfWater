@@ -1,6 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 using Game.MVVM;
+using Game.MVVM.Menu;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
@@ -102,8 +103,8 @@ namespace Game.Services
         private void OnKickedFromLobby()
         {
             _viewsService.Close();
-            _viewsService.Open(ViewId.CreateWorld);
-            _viewsService.Open(ViewId.JoinWorld);
+            _viewsService.Open<CreateWorldView>();
+            _viewsService.Open<JoinWorldView>();
             Debug.Log("Lobby closed!");
         }
     }

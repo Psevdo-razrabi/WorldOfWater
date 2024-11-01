@@ -29,19 +29,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fd2ae46-a785-4153-8fda-838c87ea9a5d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/AuthenticationsService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/AuthenticationsService.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Configs/ViewsConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Configs/ViewsConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/CreateWorldView.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/CreateWorldView.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/MainMenu.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/UI/Views/MainMenu.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/EntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/EntryPoint.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/GameLifetimeScope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/GameLifetimeScope.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/MainMenuViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/SessionSetup/WorldSetupView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/SessionSetup/WorldSetupView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/LobbiesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/LobbiesService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/ViewsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/Services/ViewsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Console/ConsoleView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Console/ConsoleView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Contracts/ContractsView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Contracts/ContractsView.cs" afterDir="false" />
@@ -51,9 +52,12 @@
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Shop/ShopView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/Shop/ShopView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/View.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/View.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewId.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewId.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewId.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewId.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewIds.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewIds.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewsConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/MVVM/ViewsConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +81,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/LobbyUpdates/LobbyEventCallbacks.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/LobbyUpdates/LobbyEventConnectionState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/WrappedLobbyService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer/Runtime/Annotations/IInitializable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer/Runtime/Internal/ReflectionInjector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Summonlands/summonlands/Summonlands/Assets/_Game/Sources/Runtime/Battleground/Factories/ViewFactoryHub.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/321eb2db7c6d43ea8fc39b54eaca345246ae00/e2/d2f67c1e/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
@@ -127,10 +132,10 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="25820">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="25820" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -164,6 +169,9 @@
       <workItem from="1730059514478" duration="1066000" />
       <workItem from="1730060615588" duration="1184000" />
       <workItem from="1730061936654" duration="5305000" />
+      <workItem from="1730137939292" duration="12000" />
+      <workItem from="1730405768842" duration="802000" />
+      <workItem from="1730481332688" duration="3832000" />
     </task>
     <servers />
   </component>

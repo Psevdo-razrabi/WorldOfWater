@@ -37,7 +37,7 @@ namespace Game.MVVM.Menu
 
             _viewsService.Close();
             _viewsService.Close();
-            _viewsService.Open(ViewId.Lobby);
+            _viewsService.Open<LobbyView>();
         }
     }
 }

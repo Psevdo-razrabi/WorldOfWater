@@ -20,12 +20,12 @@ namespace Game.DI
         private void RegisterFactories(IContainerBuilder builder)
         {
             builder.Register<ViewModelFactory>(Lifetime.Singleton);
-            builder.Register<ViewFactory>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+            builder.Register<ViewFactory>(Lifetime.Singleton);
         }
 
         private void RegisterServices(IContainerBuilder builder)
         {
-            builder.Register<ViewsService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
+            builder.Register<ViewsService>(Lifetime.Singleton);
             builder.Register<LobbiesService>(Lifetime.Singleton);
             builder.Register<AuthenticationsService>(Lifetime.Singleton);
         }

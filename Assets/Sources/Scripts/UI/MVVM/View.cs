@@ -23,7 +23,7 @@ namespace Game.MVVM
             Binder.ViewTriggered.Subscribe(action).AddTo(Binder.Disposable);
         }
 
-        public override void Disable()
+        public override void Close()
         {
             Binder.Dispose();
         }
@@ -31,9 +31,7 @@ namespace Game.MVVM
 
     public abstract class View : MonoBehaviour
     {
-        public virtual bool IsAlwaysActivated { get; }
-        public abstract ViewId Id { get; }
-        public abstract void Initialize();
-        public virtual void Disable() {}
+        public abstract void Open();
+        public virtual void Close() {}
     }
 }

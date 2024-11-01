@@ -2,9 +2,8 @@
 {
     public class MapView : View
     {
-        public override ViewId Id => ViewId.Map;
 
-        public override void Initialize()
+        public override void Open()
         {
         }
     }

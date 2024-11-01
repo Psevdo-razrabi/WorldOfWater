@@ -1,23 +1,22 @@
-﻿using Game.MVVM;
-using Game.Services;
-using System.Collections.Generic;
+﻿using Game.Services;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace Game.DI
 {
     public class EntryPoint : MonoBehaviour
     {
-        public void Start()
+        private ViewsService _viewsService;
+        
+        private void Awake()
         {
+            _viewsService.Initialize();
         }
 
-        /*[Inject]
-        private async void Inject(IViewFactory viewFactory)
+        [Inject]
+        private void Construct(ViewsService viewsService)
         {
-            var view = await viewFactory.Create(ViewId.CreateWorld);
-            view.Init();
-        }*/
+            _viewsService = viewsService;
+        }
     }
 }

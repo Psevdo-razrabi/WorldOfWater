@@ -9,11 +9,7 @@ namespace Game.MVVM.Computer
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _consoleButton;
 
-        public override ViewId Id => ViewId.MenuPanel;
-
-        public override bool IsAlwaysActivated => true;
-
-        public override void Initialize()
+        public override void Open()
         {
             ViewModel.Init(_contractsButton, _mapButton, _shopButton, _consoleButton);
 

@@ -2,9 +2,8 @@
 {
     public class ConsoleView : View
     {
-        public override ViewId Id => ViewId.Console;
 
-        public override void Initialize()
+        public override void Open()
         {
         }
     }

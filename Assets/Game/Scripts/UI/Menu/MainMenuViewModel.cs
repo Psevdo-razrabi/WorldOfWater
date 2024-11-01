@@ -36,8 +36,8 @@ namespace Game.MVVM.Menu
             await _authenticationsService.SignInAnonymously();
             
             _viewsService.Close();
-            _viewsService.Open(ViewId.CreateWorld);
-            _viewsService.Open(ViewId.JoinWorld);
+            _viewsService.Open<CreateWorldView>();
+            _viewsService.Open<JoinWorldView>();
         }
     }
 }

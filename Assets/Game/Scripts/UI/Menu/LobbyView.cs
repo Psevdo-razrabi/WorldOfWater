@@ -8,8 +8,7 @@ namespace Game.MVVM.Menu
         [SerializeField] private Button _leaveButton;
         [SerializeField] private TMP_InputField _codeField;
         
-        public override ViewId Id => ViewId.Lobby;
-        public override void Initialize()
+        public override void Open()
         {
             ViewModel.Init(_leaveButton);
 

@@ -8,8 +8,7 @@ namespace Game.MVVM.Menu
         [SerializeField] private Button _joinButton;
         [SerializeField] private TMP_InputField _codeInputField;
         
-        public override ViewId Id => ViewId.JoinWorld;
-        public override void Initialize()
+        public override void Open()
         {
             ViewModel.Init(_joinButton);
 

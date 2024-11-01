@@ -8,10 +8,7 @@ namespace Game.MVVM.Menu
         [SerializeField] private Button _createWorldButton;
         [SerializeField] private Button _loadWorldButton;
         [SerializeField] private Button _joinWorldButton;
-
-        public override ViewId Id => ViewId.WorldSetup;
-
-        public override void Initialize()
+        public override void Open()
         {
             ViewModel.Init(_createWorldButton, _loadWorldButton, _joinWorldButton);
         }

@@ -1,13 +1,14 @@
-﻿using Game.MVVM;
+﻿using System;
+using Game.MVVM;
 using System.Collections.Generic;
-using VContainer.Unity;
+using Game.MVVM.Menu;
 
 namespace Game.Services
 {
-    public class ViewsService : IInitializable
+    public class ViewsService
     {
         private readonly ViewFactory _viewFactory;
-        private readonly Dictionary<ViewId, View> _views = new();
+        private readonly Dictionary<Type, View> _views = new();
         private readonly Stack<View> _viewsStack = new();
 
         public ViewsService(ViewFactory viewFactory)
@@ -17,32 +18,33 @@ namespace Game.Services
         
         public void Initialize()
         {
-            Open(ViewId.MainMenu);
+            _viewFactory.Initialize();
+            Open<MainMenuView>();
         }
 
-        public async void Open(ViewId id)
+        public async void Open<T>() where T : View
         {
-            if (_views.TryGetValue(id, out var view))
+            if (_views.TryGetValue(typeof(T), out var view))
             {
                 view.gameObject.SetActive(true);
-                view.Initialize();
+                view.Open();
                 _viewsStack.Push(view);
             }
             else
             {
-                var newView = await _viewFactory.Create(id);
+                var newView = _viewFactory.Create<T>();
                 newView.gameObject.SetActive(true);
-                newView.Initialize();
-                _views.Add(id, newView);
+                newView.Open();
+                _views.Add(typeof(T), newView);
                 _viewsStack.Push(newView);
             }
         }
 
         public void Close()
         {
-            if(_viewsStack.TryPop(out var view))
+            if (_viewsStack.TryPop(out var view))
             {
-                view.Disable();
+                view.Close();
                 view.gameObject.SetActive(false);
             }
         }

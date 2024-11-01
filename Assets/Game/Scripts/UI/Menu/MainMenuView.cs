@@ -8,9 +8,8 @@ namespace Game.MVVM.Menu
         [SerializeField] private Button _singleplayerButton;
         [SerializeField] private Button _multiplayerButton;
 
-        public override ViewId Id => ViewId.MainMenu;
 
-        public override void Initialize()
+        public override void Open()
         {
             ViewModel.Init(_singleplayerButton, _multiplayerButton);
         }

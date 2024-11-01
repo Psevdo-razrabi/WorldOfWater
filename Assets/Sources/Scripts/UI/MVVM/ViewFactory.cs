@@ -1,19 +1,13 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
+﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using VContainer;
-using VContainer.Unity;
-using Object = UnityEngine.Object;
 
 namespace Game.MVVM
 {
-    public class ViewFactory : IInitializable
+    public class ViewFactory
     {
         private readonly IObjectResolver _container;
         private readonly ViewsConfig _viewsConfig;
-        private readonly Dictionary<ViewId, View> _views = new();
         private Transform _parent;
 
         public ViewFactory(IObjectResolver container, ViewsConfig viewsConfig)
@@ -27,17 +21,12 @@ namespace Game.MVVM
             _parent = Object.Instantiate(_viewsConfig.Canvas, null).transform;
         }
 
-        public async UniTask<View> Create(ViewId viewId)
+        public View Create<T>() where T : View
         {
-            if (_views.TryGetValue(viewId, out var view))
-            {
-                Debug.LogException(new Exception("View created again!"));
-            }
-
-            var newView = await _viewsConfig.LoadView(viewId, _parent);
-            _container.Inject(newView);
-            _views.Add(viewId, newView);
-            return newView;
+            var prefab = _viewsConfig.Views.First(v => v is T);
+            var view = Object.Instantiate(prefab, _parent);
+            _container.Inject(view);
+            return view;
         }
     }
 }
