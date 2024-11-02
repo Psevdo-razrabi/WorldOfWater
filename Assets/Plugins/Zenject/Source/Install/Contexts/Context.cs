@@ -239,7 +239,7 @@ namespace Zenject
             // instead but that doesn't find inactive gameobjects
             // TODO: Consider changing this
             // Maybe ZenjectBinding could add itself to a registry class on Awake/OnEnable
-            // then we could avoid calling the slow Resources.FindObjectsOfTypeAll here
+            // then we could avoid calling the slow ResourcesSync.FindObjectsOfTypeAll here
             foreach (var binding in Resources.FindObjectsOfTypeAll<ZenjectBinding>())
             {
                 if (binding == null)

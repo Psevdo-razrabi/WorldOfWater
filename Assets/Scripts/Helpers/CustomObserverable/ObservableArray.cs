@@ -31,6 +31,11 @@ namespace Helpers
             OnNext();
         }
 
+        public void Update()
+        {
+            OnNext();
+        }
+
         public bool TryAdd(T element)
         {
             if (HasFreeSpase() == false)

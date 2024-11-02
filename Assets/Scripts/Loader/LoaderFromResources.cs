@@ -2,30 +2,24 @@
 using UniRx;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using UniTask = Cysharp.Threading.Tasks.UniTask;
 
 namespace Loader
 {
-    public class LoaderFromResources : IDisposable
+    public class LoaderFromResources
     {
-        private CompositeDisposable _compositeDisposable = new();
-        
-        public void LoadResources<T>(string path, Action<Object> action = null) where T : Object
+        public async UniTask LoadResources(string path, Type type, Action<Object> action = null)
         {
-            Resources.LoadAsync<T>(path).AsAsyncOperationObservable().Subscribe(resources => OperationResources(resources, action)).AddTo(_compositeDisposable);
+            var resources = Resources.LoadAsync(path, type);
+            await resources;
+            OperationResources(resources, action);
         }
-
+        
         private void OperationResources(ResourceRequest resources, Action<Object> action = null)
         {
-            if (resources.asset != null)
-            {
-                action?.Invoke(resources.asset);
-            }
-        }
-
-        public void Dispose()
-        {
-            _compositeDisposable?.Clear();
-            _compositeDisposable?.Dispose();
+            if (resources.asset == null) throw new Exception();
+            
+            action?.Invoke(resources.asset);
         }
     }
 }

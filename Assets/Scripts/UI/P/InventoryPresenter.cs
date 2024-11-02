@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Helpers;
 using R3;
 using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Inventory
@@ -10,24 +12,46 @@ namespace Inventory
     {
         private readonly InventoryView _inventoryView;
         private readonly InventoryModel _inventoryModel;
+        private readonly InventoryDescription _inventoryDescription;
         private readonly int _capacity;
         private CompositeDisposable _compositeDisposable = new();
+        private List<ViewSlot> _slots = new();
+        private readonly StorageView[] _storageViews;
 
-        public InventoryPresenter(InventoryView inventoryView, InventoryModel inventoryModel, int capacity)
+        public InventoryPresenter(InventoryView inventoryView, InventoryModel inventoryModel, InventoryDescription inventoryDescription, int capacity)
         {
             Preconditions.CheckNotNull(inventoryView, "View Is Null");
             Preconditions.CheckNotNull(inventoryModel, "Model Is Null");
-            
+
             _inventoryView = inventoryView;
             _inventoryModel = inventoryModel;
+            _inventoryDescription = inventoryDescription;
             _capacity = capacity;
+            _storageViews = new StorageView[] { _inventoryView, _inventoryDescription };
         }
 
         public async void Initialize()
         {
             _inventoryView.OnDrop += HandleSlot;
             _inventoryView.OnCopy += CopySlot;
-            _inventoryView.OnEventTriggerAdd += AddEventTrigger;
+            
+            _inventoryDescription.OnGetItem += GetItemInventory;
+            _inventoryDescription.SetMeshes += SetMeshes;
+            _inventoryDescription.SetTexts += SetTexts;
+
+            foreach (var view in _storageViews)
+            {
+                view.OnEventTriggerAdd += AddEventTrigger;
+                view.OnGetViewSlots += GetViewSlots;
+            }
+
+            _inventoryView.Slots
+                .Subscribe(slot =>
+                {
+                    _slots.Add(slot);
+                    _inventoryModel.Update();
+                })
+                .AddTo(_compositeDisposable);
             
             _inventoryModel.OnModelChange
                 .Subscribe(_ => HandleModelChange())
@@ -38,7 +62,20 @@ namespace Inventory
                 .AddTo(_compositeDisposable);
             
             await _inventoryView.InitializeView(_inventoryModel.DataView);
+            await _inventoryDescription.InitializeView(_inventoryModel.DataView);
         }
+
+        private void SetMeshes(Material material, Mesh mesh)
+        {
+            _inventoryModel.SetMeshes.Invoke(material, mesh);
+        }
+
+        private void SetTexts(string description, string header)
+        {
+            _inventoryModel.SetTexts.Invoke(description, header);
+        }
+
+        private List<ViewSlot> GetViewSlots() => _slots;
 
         private void HandleModelChange()
         {
@@ -47,13 +84,13 @@ namespace Inventory
                 var item = _inventoryModel.Get(i);
                 if (item == null || item.Id.Equals(GuidItem.IsEmpty()))
                 {
-                    _inventoryView.Slots[i].Clear();
+                    _slots[i].Clear();
                 }
                 else
                 {
-                    _inventoryView.Slots[i].SetGuid(item.Id);
-                    _inventoryView.Slots[i].SetImage(item.ItemDescription.Sprite);
-                    _inventoryView.Slots[i].SetStackLabel(item.Quantity.ToString());
+                    _slots[i].SetGuid(item.Id);
+                    _slots[i].SetImage(item.ItemDescription.Sprite);
+                    _slots[i].SetStackLabel(item.Quantity.ToString());
                 }
             }
         }
@@ -105,9 +142,18 @@ namespace Inventory
         {
             _inventoryView.OnDrop -= HandleSlot;
             _inventoryView.OnCopy -= CopySlot;
-            _inventoryView.OnEventTriggerAdd -= AddEventTrigger;
+            _inventoryDescription.OnGetItem -= GetItemInventory;
+            _inventoryDescription.SetTexts -= SetTexts;
+            
+            foreach (var view in _storageViews)
+            {
+                view.OnEventTriggerAdd -= AddEventTrigger;
+                view.OnGetViewSlots -= GetViewSlots;
+            }
             _compositeDisposable.Clear();
             _compositeDisposable.Dispose();
         }
+
+        private Item GetItemInventory(int index) => _inventoryModel.Get(index);
     }
 }

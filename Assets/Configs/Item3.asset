@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <NameItem>k__BackingField: FGDFGDG
   <MaxStack>k__BackingField: 3
-  <Sprite>k__BackingField: {fileID: 21300000, guid: eec19781926cd2248b7c9abfde8db555, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: eec19781926cd2248b7c9abfde8db555,
+    type: 3}
   <Description>k__BackingField: FFFF
+  <Mesh>k__BackingField: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  <Material>k__BackingField: {fileID: 2100000, guid: 59524951f3441924695a50c59ca31a7b,
+    type: 2}

@@ -6,14 +6,19 @@ namespace Helpers
 {
     public class BuildInventory
     {
-        private InventoryView _inventoryView;
+        private readonly InventoryView _inventoryView;
         private IEnumerable<ItemDescription> _items;
         private int _capacity;
+        private UiAnimation _uiAnimation;
+        private readonly InventoryDescription _inventoryDescription;
+        private readonly InventoryItemAnimator _inventoryItemAnimator;
 
-        public BuildInventory(InventoryView inventoryView)
+        public BuildInventory(InventoryView inventoryView, InventoryDescription description, InventoryItemAnimator inventoryItemAnimator)
         {
             Preconditions.CheckNotNull(inventoryView, "View is null");
             _inventoryView = inventoryView;
+            _inventoryDescription = description;
+            _inventoryItemAnimator = inventoryItemAnimator;
         }
         
         public BuildInventory WithStartingItem(IEnumerable<ItemDescription> items)
@@ -28,12 +33,18 @@ namespace Helpers
             return this;
         }
 
+        public BuildInventory WithAnimation(UiAnimation animation)
+        {
+            _uiAnimation = animation;
+            return this;
+        }
+
         public InventoryStorage Build()
         {
             InventoryModel model = _items != null
-                ? new InventoryModel(_items, _capacity)
-                : new InventoryModel(Array.Empty<ItemDescription>(), _capacity);
-            InventoryPresenter inventoryPresenter = new InventoryPresenter(_inventoryView, model, _capacity);
+                ? new InventoryModel(_items, _capacity, _uiAnimation, _inventoryItemAnimator)
+                : new InventoryModel(Array.Empty<ItemDescription>(), _capacity, _uiAnimation, _inventoryItemAnimator);
+            InventoryPresenter inventoryPresenter = new InventoryPresenter(_inventoryView, model, _inventoryDescription, _capacity);
             return new InventoryStorage(_inventoryView, model, inventoryPresenter);
         }
     }

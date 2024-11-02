@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using State;
 
 namespace StateMachine
 {
@@ -8,10 +9,11 @@ namespace StateMachine
         private Dictionary<Type, IState> _states = null;
         public IState currentStates { get; private set; }
         public bool isUpdate { get; private set; }
+        public IReadOnlyDictionary<Type, IState> States => _states;
 
-        public StateMachine(params IState[] states)
+        public StateMachine(List<IState> states)
         {
-            _states = new Dictionary<Type, IState>(states.Length);
+            _states = new Dictionary<Type, IState>(states.Count);
             foreach (var state in states)
             {
                 _states.Add(state.GetType(), state);

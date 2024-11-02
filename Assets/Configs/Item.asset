@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <NameItem>k__BackingField: Sword
   <MaxStack>k__BackingField: 2
-  <Sprite>k__BackingField: {fileID: 21300000, guid: ffb02d288a83f3d4f9ec608f2dc6c1bb, type: 3}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: ffb02d288a83f3d4f9ec608f2dc6c1bb,
+    type: 3}
   <Description>k__BackingField: A small sword
+  <Mesh>k__BackingField: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  <Material>k__BackingField: {fileID: 2100000, guid: d288c187255d3134ba60c892dbecb6c7,
+    type: 2}

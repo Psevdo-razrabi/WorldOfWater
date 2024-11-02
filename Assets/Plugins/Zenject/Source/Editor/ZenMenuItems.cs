@@ -61,14 +61,14 @@ namespace Zenject.Internal
         [MenuItem("Edit/Zenject/Create Project Context")]
         public static void CreateProjectContextInDefaultLocation()
         {
-            var fullDirPath = Path.Combine(Application.dataPath, "Resources");
+            var fullDirPath = Path.Combine(Application.dataPath, "ResourcesSync");
 
             if (!Directory.Exists(fullDirPath))
             {
                 Directory.CreateDirectory(fullDirPath);
             }
 
-            CreateProjectContextInternal("Assets/Resources");
+            CreateProjectContextInternal("Assets/ResourcesSync");
         }
 
         [MenuItem("Assets/Create/Zenject/Default Scene Contract Config", false, 80)]
@@ -76,10 +76,10 @@ namespace Zenject.Internal
         {
             var folderPath = ZenUnityEditorUtil.GetCurrentDirectoryAssetPathFromSelection();
 
-            if (!folderPath.EndsWith("/Resources"))
+            if (!folderPath.EndsWith("/ResourcesSync"))
             {
                 EditorUtility.DisplayDialog("Error",
-                    "ZenjectDefaultSceneContractConfig objects must be placed directly underneath a folder named 'Resources'.  Please try again.", "Ok");
+                    "ZenjectDefaultSceneContractConfig objects must be placed directly underneath a folder named 'ResourcesSync'.  Please try again.", "Ok");
                 return;
             }
 
@@ -175,10 +175,10 @@ namespace Zenject.Internal
 
             var parentFolderName = Path.GetFileName(absoluteDir);
 
-            if (parentFolderName != "Resources")
+            if (parentFolderName != "ResourcesSync")
             {
                 EditorUtility.DisplayDialog("Error",
-                    "'{0}.prefab' must be placed inside a directory named 'Resources'.  Please try again by right clicking within the Project pane in a valid Resources folder."
+                    "'{0}.prefab' must be placed inside a directory named 'ResourcesSync'.  Please try again by right clicking within the Project pane in a valid ResourcesSync folder."
                     .Fmt(ProjectContext.ProjectContextResourcePath), "Ok");
                 return;
             }

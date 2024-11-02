@@ -1,6 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
+using Loader;
+using R3;
+using Sync;
+using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,26 +12,40 @@ namespace Inventory
 {
     public class InventoryView : StorageView
     {
+        [field: SerializeField] protected RectTransform listSlots;
+        private ViewSlot _prefabSlots;
+        [field: SerializeField] protected GridLayoutGroup grid;
+        private ViewSlot _ghostIcon;
+        [field: SerializeField] protected Canvas canvas;
+        [field: SerializeField] protected LoaderResources _loaderResources;
         private RectTransform _rectTransform;
+        private List<ViewSlot> _slots;
+        private bool _isLoad = false;
+
+        private void Awake()
+        {
+            ResourceManager.Instance.OnAllLoaded.Subscribe((load) => _isLoad = load).AddTo(this);
+        }
+
         public override async UniTask InitializeView(DataView dataView)
         {
+            await UniTask.WaitUntil(() => _isLoad);
+            LoadAssets();
             await InitializeSlots(dataView);
             await UniTask.Yield();
         }
         
+        public void OnActiveGrid(bool isActive)
+        {
+            grid.enabled = isActive;
+        }
+        
         private async UniTask InitializeSlots(DataView dataView)
         {
-            Slots = new ViewSlot[dataView.Capacity];
-            
             ClearSlots();
-            for (int i = 0; i < Slots.Length; i++)
-            {
-                InitSlot(i);
-                InvokeEventTriggerAdd(EventTriggerType.BeginDrag, (eventData) => OnBeginDrag((PointerEventData)eventData), Slots[i]);
-                InvokeEventTriggerAdd(EventTriggerType.Drag, (eventData) => OnDrag((PointerEventData)eventData), Slots[i]);
-                InvokeEventTriggerAdd(EventTriggerType.EndDrag, (eventData) => OnEndDrag((PointerEventData)eventData), Slots[i]);
-            }
-            
+            InitSlots(dataView.Capacity).Forget();
+            _slots = InvokeGetViewSlots();
+            AddEvents(dataView.Capacity);
             InitGhostIcon();
             
             LayoutRebuilder.ForceRebuildLayoutImmediate(listSlots);
@@ -49,9 +66,9 @@ namespace Inventory
         private void OnBeginDrag(PointerEventData handler)
         {
             if (!handler.pointerClick.TryGetComponent(out ViewSlot slot)) return;
-            InvokeCopy(slot, GhostIcon);
+            InvokeCopy(slot, _ghostIcon);
             slot.Clear();
-            GhostIcon.gameObject.SetActive(true);
+            _ghostIcon.gameObject.SetActive(true);
             _rectTransform.anchoredPosition = slot.GetComponent<RectTransform>().anchoredPosition;
         }
 
@@ -62,27 +79,14 @@ namespace Inventory
 
         private void OnEndDrag(PointerEventData handler)
         {
-            GhostIcon.gameObject.SetActive(false);
+            _ghostIcon.gameObject.SetActive(false);
             
-            ViewSlot closestSlot = FindClosestSlot(handler.position);
+            ViewSlot closestSlot = FindClosestSlot(handler.position, _slots, canvas);
             
             if (closestSlot != null)
-                InvokeDrop(GhostIcon, closestSlot);
+                InvokeDrop(_ghostIcon, closestSlot);
             else
-                InvokeCopy(GhostIcon, Slots[GhostIcon.Index]);
-        }
-
-        private ViewSlot FindClosestSlot(Vector2 position)
-        {
-            foreach (var slot in Slots)
-            {
-                if (RectTransformUtility.RectangleContainsScreenPoint(slot.GetComponent<RectTransform>(), position, canvas.worldCamera))
-                {
-                    return slot;
-                }
-            }
-
-            return null;
+                InvokeCopy(_ghostIcon, _slots[_ghostIcon.Index]);
         }
         
         private async UniTask ReloadGrid()
@@ -93,16 +97,52 @@ namespace Inventory
 
         private void InitSlot(int index)
         {
-            var slot = Instantiate(prefabSlots, listSlots);
-            Slots[index] = slot;    
-            Slots[index].SetIndex(index);
+            var slot = Instantiate(_prefabSlots, listSlots);
+            _isSlots.OnNext(slot);
+            slot.SetIndex(index);
         }
 
         private void InitGhostIcon()
         {
-            GhostIcon = Instantiate(GhostIcon, listSlots);
-            _rectTransform = GhostIcon.GetComponent<RectTransform>();
-            GhostIcon.gameObject.SetActive(false);
+            _ghostIcon = Instantiate(_ghostIcon, listSlots);
+            _rectTransform = _ghostIcon.GetComponent<RectTransform>();
+            _ghostIcon.gameObject.SetActive(false);
+        }
+        
+        private void AssignEventTriggers(ViewSlot slot)
+        {
+            InvokeEventTriggerAdd(EventTriggerType.BeginDrag, (eventData) => OnBeginDrag((PointerEventData)eventData), slot);
+            InvokeEventTriggerAdd(EventTriggerType.Drag, (eventData) => OnDrag((PointerEventData)eventData), slot);
+            InvokeEventTriggerAdd(EventTriggerType.EndDrag, (eventData) => OnEndDrag((PointerEventData)eventData), slot);
+        }
+
+        private async UniTaskVoid InitSlots(int capacity)
+        {
+            for (int i = 0; i < capacity; i++)
+            {
+                InitSlot(i);
+            }
+            
+            await UniTask.Yield();
+        }
+
+        private void AddEvents(int capacity)
+        {
+            for (int i = 0; i < capacity; i++)
+            {
+                AssignEventTriggers(_slots[i]);
+            }
+        }
+
+        private void LoadAssets()
+        {
+            _prefabSlots = ResourceManager.Instance
+                .GetResources<GameObject>(ResourceManager.Instance.GetOrRegisterKey(ResourcesName.Slot))
+                .GetComponent<ViewSlot>();
+            
+            _ghostIcon = ResourceManager.Instance
+                .GetResources<GameObject>(ResourceManager.Instance.GetOrRegisterKey(ResourcesName.Icon))
+                .GetComponent<ViewSlot>();
         }
     }
 }

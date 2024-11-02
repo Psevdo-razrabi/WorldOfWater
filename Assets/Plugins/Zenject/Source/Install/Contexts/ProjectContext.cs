@@ -150,7 +150,7 @@ namespace Zenject
                     _instance = gameObjectInstance.GetComponent<ProjectContext>();
 
                     Assert.IsNotNull(_instance,
-                        "Could not find ProjectContext component on prefab 'Resources/{0}.prefab'", ProjectContextResourcePath);
+                        "Could not find ProjectContext component on prefab 'ResourcesSync/{0}.prefab'", ProjectContextResourcePath);
                 }
             }
 
