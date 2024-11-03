@@ -103,10 +103,10 @@ namespace StylizedWater2
 
         private void OnDisable()
         {
-            maskPass.Dispose();
+            /*maskPass.Dispose();
             shadingPass.Dispose();
             distortionSpherePass.Dispose();
-            postProcessingPass.Dispose();
+            postProcessingPass.Dispose();*/
         }
         
         private bool cameraIntersecting;

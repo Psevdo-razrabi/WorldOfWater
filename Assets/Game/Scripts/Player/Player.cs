@@ -1,9 +1,10 @@
+using Unity.Netcode;
 using UnityEngine;
 using VContainer;
 
 namespace Game.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : NetworkBehaviour
     {
         [Header("Components")]
         [SerializeField] private Rigidbody _rigidbody;

@@ -9,6 +9,7 @@ using VContainer;
 using Game.Services;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
+using UnityEngine.SceneManagement;
 
 namespace Game.MVVM.Menu
 {
@@ -16,6 +17,7 @@ namespace Game.MVVM.Menu
     {
         private ViewsService _viewsService;
         private LobbiesService _lobbiesService;
+        private ScenesService _scenesService;
 
         public string WorldName { get; set; }
 
@@ -25,19 +27,24 @@ namespace Game.MVVM.Menu
         }
 
         [Inject]
-        private void Construct(ViewsService viewsService, LobbiesService lobbiesService)
+        private void Construct(ViewsService viewsService, LobbiesService lobbiesService,
+            ScenesService scenesService)
         {
             _viewsService = viewsService;
             _lobbiesService = lobbiesService;
+            _scenesService = scenesService;
         }
 
         private async void OnCreateClicked()
         {
             await _lobbiesService.CreateLobby(WorldName);
 
+            /*_viewsService.Close();
             _viewsService.Close();
-            _viewsService.Close();
-            _viewsService.Open<LobbyView>();
+            _viewsService.Open<LobbyView>();*/
+            //SceneManager.LoadScene("Game");
+            
+            _scenesService.LoadScene();
         }
     }
 }

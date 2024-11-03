@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using Game.MVVM;
 using Game.MVVM.Menu;
+using Unity.Netcode;
 using Unity.Services.Authentication;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
@@ -26,15 +27,27 @@ namespace Game.Services
             try
             {
                 int maxPlayers = 8;
-                CreateLobbyOptions options = new CreateLobbyOptions();
-                options.IsPrivate = true;
+                CreateLobbyOptions options = new()
+                {
+                    IsPrivate = true
+                };
 
                 _lobby = await LobbyService.Instance.CreateLobbyAsync(worldName, maxPlayers, options);
                 LobbyCode = _lobby.LobbyCode;
 
                 await SubscribeToLobbyEvents(_lobby);
+
+                if(NetworkManager.Singleton.StartHost())
+                {
+                    Debug.Log($"Host started!");
+                }
+                else
+                {
+                    Debug.Log($"Host failed!");
+                }
                 
                 Debug.Log($"Lobby created: {_lobby.Name}");
+                Debug.Log(_lobby.Players.Count);
             }
             catch (Exception e)
             {
@@ -70,6 +83,16 @@ namespace Game.Services
                 _lobby = await LobbyService.Instance.JoinLobbyByCodeAsync(code);
                 await SubscribeToLobbyEvents(_lobby);
                 Debug.Log($"Joined lobby: {_lobby.Name}");
+                
+                if(NetworkManager.Singleton.StartClient())
+                {
+                    Debug.Log($"Client started!");
+                }
+                else
+                {
+                    Debug.Log($"Client failed!");
+                }
+                
                 return true;
             }
             catch (LobbyServiceException e)

@@ -4,7 +4,7 @@ using VContainer;
 
 namespace Game.DI
 {
-    public class EntryPoint : MonoBehaviour
+    public class MainMenuEntryPoint : MonoBehaviour
     {
         private ViewsService _viewsService;
         

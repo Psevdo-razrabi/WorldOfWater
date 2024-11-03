@@ -6,7 +6,7 @@ using VContainer.Unity;
 
 namespace Game.DI
 {
-    public class GameLifetimeScope : LifetimeScope
+    public class BootstrapLifetimeScope : LifetimeScope
     {
         [SerializeField] private ViewsConfig _viewsConfig;
 
@@ -17,6 +17,11 @@ namespace Game.DI
             RegisterServices(builder);
         }
 
+        private void RegisterConfigs(IContainerBuilder builder)
+        {
+            builder.RegisterInstance(_viewsConfig);
+        }
+        
         private void RegisterFactories(IContainerBuilder builder)
         {
             builder.Register<ViewModelFactory>(Lifetime.Singleton);
@@ -28,11 +33,7 @@ namespace Game.DI
             builder.Register<ViewsService>(Lifetime.Singleton);
             builder.Register<LobbiesService>(Lifetime.Singleton);
             builder.Register<AuthenticationsService>(Lifetime.Singleton);
-        }
-
-        private void RegisterConfigs(IContainerBuilder builder)
-        {
-            builder.RegisterInstance(_viewsConfig);
+            builder.Register<ScenesService>(Lifetime.Singleton);
         }
     }
 }

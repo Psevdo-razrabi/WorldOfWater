@@ -14,15 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/DA_Minimal_Setup/DA_Setup.unity
     guid: da9c6214d560f324f805784ec52c9ca3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Game/Scenes/Netcode.unity
     guid: cb1dd313cb9a63d4cbc22c5eec881fcd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Samples/Netcode for GameObjects/2.0.0/Bootstrap/Scenes/Bootstrap.unity
     guid: 7a6e122bd2b01425989087a299b6bb93
   - enabled: 1
-    path: Assets/Game/Scenes/Menu.unity
+    path: Assets/Game/Scenes/MainMenu.unity
     guid: 501cf49f1f8f81248adbb8809a35ef22
+  - enabled: 1
+    path: Assets/Game/Scenes/Gameplay.unity
+    guid: 93beb313595501a40b34ef99fb09b989
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: da0d6d2a5084ea643a4f6a6e185c301c,
       type: 2}
