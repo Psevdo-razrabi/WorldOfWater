@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cca7768aaaea4b0081f14e7f9d4b5ad, type: 3}
   m_Name: FlatKitOutline
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings: {fileID: 11400000, guid: ff3dfd77429d64938a26bd54c27dacd8, type: 2}
 --- !u!114 &-1344586528338988631
 MonoBehaviour:
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952211dd0b8f432ca3e01150850775e5, type: 3}
   m_Name: StylizedWater2UnderwaterRenderFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   resources: {fileID: 11400000, guid: 4eff212383c9f5945ae947b357c76582, type: 2}
   settings:
     allowBlur: 1
