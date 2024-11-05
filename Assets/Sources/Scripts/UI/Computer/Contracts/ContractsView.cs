@@ -2,9 +2,8 @@
 {
     public class ContractsView : View
     {
-        public override void Init(ViewModelFactory viewModelFactory)
+        public override void Open()
         {
-            Id = ViewIds.CONTRACTS;
         }
     }
 }

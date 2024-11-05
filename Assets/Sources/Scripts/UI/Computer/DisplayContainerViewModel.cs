@@ -1,5 +1,6 @@
 ﻿using Game.Services;
-using Zenject;
+using R3;
+using VContainer;
 
 namespace Game.MVVM
 {
@@ -12,12 +13,13 @@ namespace Game.MVVM
 
         public void Init(IBindable button)
         {
-            Binder.CreateButtonEvent<ClickBinderEvent>(button, OnClicked);
+            Binder.CreateButtonTrigger<Click>(button, OnClicked);
         }
 
         private void OnClicked()
         {
-            Binder.ViewTriggered.Execute();
+            //Binder.ViewTriggered.Execute();
+            Binder.TriggerView();
         }
     }
 }

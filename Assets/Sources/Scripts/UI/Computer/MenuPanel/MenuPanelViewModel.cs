@@ -1,5 +1,5 @@
 ﻿using Game.Services;
-using Zenject;
+using VContainer;
 
 namespace Game.MVVM.Computer
 {
@@ -15,34 +15,38 @@ namespace Game.MVVM.Computer
 
         public void Init(IBindable contractsButton, IBindable mapButton, IBindable shopButton, IBindable consoleButton)
         {
-            Binder.CreateButtonEvent<ClickBinderEvent>(contractsButton, OnClickedContractsButton);
-            Binder.CreateButtonEvent<ClickBinderEvent>(mapButton, OnClickedMapButton);
-            Binder.CreateButtonEvent<ClickBinderEvent>(shopButton, OnClickedShopButton);
-            Binder.CreateButtonEvent<ClickBinderEvent>(consoleButton, OnClickedConsoleButton);
+            Binder.CreateButtonTriggers<Click>(new()
+            {
+                new(contractsButton, OnClickedContractsButton),
+                new(mapButton, OnClickedMapButton),
+                new(shopButton, OnClickedShopButton),
+                new(consoleButton, OnClickedConsoleButton)
+            });
         }
 
         private void OnClickedContractsButton()
         {
-            _viewsService.Close();
-            _viewsService.Open(ViewIds.CONTRACTS);
+            Binder.TriggerView();
+/*            _viewsService.Close();
+            _viewsService.Open(ViewIds.CONTRACTS);*/
         }
 
         private void OnClickedMapButton()
         {
             _viewsService.Close();
-            _viewsService.Open(ViewIds.MAP);
+            //_viewsService.Open(ViewIds.MAP);
         }
 
         private void OnClickedShopButton()
         {
             _viewsService.Close();
-            _viewsService.Open(ViewIds.SHOP);
+            //_viewsService.Open(ViewIds.SHOP);
         }
 
         private void OnClickedConsoleButton()
         {
             _viewsService.Close();
-            _viewsService.Open(ViewIds.CONSOLE);
+            //_viewsService.Open(ViewIds.CONSOLE);
         }
     }
 }

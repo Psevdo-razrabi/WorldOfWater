@@ -1,27 +1,24 @@
 using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
 
 namespace Game.MVVM
 {
-    public class DisplayContainerView : View
+    public class DisplayContainerView : View<DisplayContainerViewModel>
     {
         [SerializeField] private Button _button;
 
-        private DisplayContainerViewModel _viewModel;
         private List<Binder> _binders = new();
 
-        public override void Init(ViewModelFactory viewModelFactory)
+        public override void Open()
         {
-            _viewModel = viewModelFactory.Create<DisplayContainerViewModel>();
+            ViewModel.Init(_button);
 
-            _viewModel.Init(_button);
-
-            _viewModel.Binder.ViewTriggered.Subscribe(UpdateView).AddTo(_viewModel.Binder.Disposable);
+            SubscribeUpdateView(UpdateView);
         }
 
         private void UpdateView()
         {
+            Debug.Log("View");
         }
 
         private void OnDestroy()
@@ -30,7 +27,7 @@ namespace Game.MVVM
             {
                 binder.Dispose();
             }
-            _viewModel.Binder.Dispose();
+            ViewModel.Binder.Dispose();
             _binders.Clear();
         }
     }

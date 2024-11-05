@@ -2,23 +2,23 @@ using UnityEngine;
 
 namespace Game.MVVM.Computer
 {
-    public class MenuPanelView : View
+    public class MenuPanelView : View<MenuPanelViewModel>
     {
         [SerializeField] private Button _contractsButton;
         [SerializeField] private Button _mapButton;
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _consoleButton;
 
-        private MenuPanelViewModel _viewModel;
-
-        public override void Init(ViewModelFactory viewModelFactory)
+        public override void Open()
         {
-            Id = ViewIds.MENU_PANEL;
-            IsActivedOnStart = true;
+            ViewModel.Init(_contractsButton, _mapButton, _shopButton, _consoleButton);
 
-            _viewModel = viewModelFactory.Create<MenuPanelViewModel>();
+            SubscribeUpdateView(UpdateView);
+        }
 
-            _viewModel.Init(_contractsButton, _mapButton, _shopButton, _consoleButton);
+        private void UpdateView()
+        {
+            Debug.Log("Update");
         }
     }
 }

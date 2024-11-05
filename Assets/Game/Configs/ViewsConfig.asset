@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34be608f8d8aae046b6e59b6ee9dfff1, type: 3}
+  m_Name: ViewsConfig
+  m_EditorClassIdentifier: 
+  <Canvas>k__BackingField: {fileID: 1964186118391305318, guid: 6c4c9a5f002ab87429366fb7d3e74119,
+    type: 3}
+  <Views>k__BackingField:
+  - {fileID: 4377869414193469342, guid: 656deb588b78f97478ea0690c96c856a, type: 3}
+  - {fileID: 2596629821863398424, guid: 78d9e487ac8dd254d9b7d547b265af8a, type: 3}
+  - {fileID: 1221746879719073602, guid: 8caa7474bed5de44088370be8d26f39d, type: 3}
+  - {fileID: 3648608289391075599, guid: c480f49f6570a2a4db397218b58a5ab2, type: 3}
