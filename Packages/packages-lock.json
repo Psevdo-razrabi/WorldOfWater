@@ -14,6 +14,12 @@
       "dependencies": {},
       "hash": "6baeccf6c544c155497164327cca72f28163a578"
     },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.0",
       "depth": 0,
@@ -190,6 +196,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "jp.hadashikick.vcontainer": {
+      "version": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.6.3",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "afaeff82040994f7836afa9f5116eb52a4e54f69"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

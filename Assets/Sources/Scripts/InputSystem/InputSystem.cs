@@ -44,6 +44,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WaterBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""110754e1-77b4-4884-a50a-2166265aef54"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -68,6 +77,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""HookBack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75065339-341f-4305-bf03-6b68b8006ca5"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WaterBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -78,6 +98,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_HookThrow = m_Game.FindAction("HookThrow", throwIfNotFound: true);
         m_Game_HookBack = m_Game.FindAction("HookBack", throwIfNotFound: true);
+        m_Game_WaterBack = m_Game.FindAction("WaterBack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,12 +162,14 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
     private readonly InputAction m_Game_HookThrow;
     private readonly InputAction m_Game_HookBack;
+    private readonly InputAction m_Game_WaterBack;
     public struct GameActions
     {
         private @InputSystem m_Wrapper;
         public GameActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @HookThrow => m_Wrapper.m_Game_HookThrow;
         public InputAction @HookBack => m_Wrapper.m_Game_HookBack;
+        public InputAction @WaterBack => m_Wrapper.m_Game_WaterBack;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -162,6 +185,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @HookBack.started += instance.OnHookBack;
             @HookBack.performed += instance.OnHookBack;
             @HookBack.canceled += instance.OnHookBack;
+            @WaterBack.started += instance.OnWaterBack;
+            @WaterBack.performed += instance.OnWaterBack;
+            @WaterBack.canceled += instance.OnWaterBack;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -172,6 +198,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @HookBack.started -= instance.OnHookBack;
             @HookBack.performed -= instance.OnHookBack;
             @HookBack.canceled -= instance.OnHookBack;
+            @WaterBack.started -= instance.OnWaterBack;
+            @WaterBack.performed -= instance.OnWaterBack;
+            @WaterBack.canceled -= instance.OnWaterBack;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -193,5 +222,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     {
         void OnHookThrow(InputAction.CallbackContext context);
         void OnHookBack(InputAction.CallbackContext context);
+        void OnWaterBack(InputAction.CallbackContext context);
     }
 }

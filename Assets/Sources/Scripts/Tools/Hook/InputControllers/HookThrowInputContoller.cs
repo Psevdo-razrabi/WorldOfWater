@@ -1,34 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Sources.Scripts.Hook.InputControllers;
+using Sources.Scripts.UI.ThrowToolsUI;
 using UnityEngine.InputSystem;
 using Zenject;
 
-public class HookInputContoller : MonoBehaviour
+public class HookThrowInputContoller : IInputController
 {
     private InputSystem _inputSystem;
-    private Hook _hook;
+    private ThrowHook _hook;
+    private ThrowToolsPresenter _hookPresenter;
     
     [Inject]
-    private void Construct(Hook hook)
+    public HookThrowInputContoller(InputSystem inputSystem, ThrowHook hook, ThrowToolsPresenter hookPresenter)
     {
+        _inputSystem = inputSystem;
         _hook = hook;
+        _hookPresenter = hookPresenter;
     }
 
-    private void Awake()
-    {
-        _inputSystem = new InputSystem();
-        _inputSystem.Enable();
-    }
-
-    private void OnEnable()
+    public void Enable()
     {
         SubscribeThrowHook();
         SubscribeHookBack();
     }
-    
-    private void OnDisable()
+
+    public void Disable()
     {
         UnSubscribeThrowHook();
         UnSubscribeHookBack();
@@ -36,7 +31,7 @@ public class HookInputContoller : MonoBehaviour
     
     private void SubscribeHookBack() => _inputSystem.Game.HookBack.performed += OnHookBackPerfomed;
     private void UnSubscribeHookBack() => _inputSystem.Game.HookBack.performed -= OnHookBackPerfomed;
-
+    
     private void SubscribeThrowHook()
     {
         _inputSystem.Game.HookThrow.performed += OnThrowHookPerfomed;
@@ -51,17 +46,17 @@ public class HookInputContoller : MonoBehaviour
     
     private void OnThrowHookPerfomed(InputAction.CallbackContext obj)
     {
-        _hook.HookThrowPerfermed();
+        _hookPresenter.ThrowPerfermed();
     }
     
     private void OnThrowHookCanceled(InputAction.CallbackContext obj)
     {
-        _hook.HookThrowCanceled();
+        _hookPresenter.ThrowCanceled();
     }
     
     private void OnHookBackPerfomed(InputAction.CallbackContext obj)
     {
-        _hook.HookBackPerfermed();
+        _hook.HookBackPerformed();
     }
 }
  
