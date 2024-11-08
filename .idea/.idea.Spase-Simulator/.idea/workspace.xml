@@ -30,45 +30,29 @@
   <component name="ChangeListManager">
     <list default="true" id="4fd2ae46-a785-4153-8fda-838c87ea9a5d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DefaultNetworkPrefabs.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Fog Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Fog Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example Renderer.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example URP Asset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example URP Asset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Desert/Settings/Desert_FogSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Desert/Settings/Desert_FogSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Room/Room-FogSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Room/Room-FogSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-FogSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/[Demo] Wanderer/Wanderer-FogSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/---MAINMENU---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/---MAINMENU---.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Resources/NetworkManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Resources/NetworkManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Bootstrap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Bootstrap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/---GAMEPLAY---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/---GAMEPLAY---.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/BootstrapEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/BootstrapEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/GameplayEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/GameplayEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/MainMenuEntryPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Installer/MainMenuEntryPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Services/AuthenticationsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Services/AuthenticationsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Services/LobbiesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Services/LobbiesService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Services/ScenesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Services/ScenesService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Services/ViewsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Services/ViewsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/CreateWorldViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Polaris - Low Poly Ecosystem/Poseidon - Low Poly Water System/Runtime/Shaders/CGIncludes/PPostProcessingDefines.cs.cginc" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Polaris - Low Poly Ecosystem/Poseidon - Low Poly Water System/Runtime/Shaders/CGIncludes/PPostProcessingDefines.cs.cginc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Balanced.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StylizedWater2/Shaders/Libraries/Vertex.hlsl" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StylizedWater2/Shaders/Libraries/Vertex.hlsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/BurstAotSettings_StandaloneWindows.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/CommonBurstAotSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Particle based).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Particle based).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Trail based).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Trail based).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Ripple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Ripple.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Wave.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Wave.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Directional Ripples.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Directional Ripples.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Foam Trail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Foam Trail.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Impact Ripple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Impact Ripple.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Raindrops.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Raindrops.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Stationary.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Stationary.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Trail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Trail.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Whirlpool.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Whirlpool.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Wind Gust.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Wind Gust.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Waterfall Impact Ripples.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Waterfall Impact Ripples.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/StylizedWater3_Ocean.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/StylizedWater3_Ocean.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Falling boxes.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Falling boxes.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Random Spheres.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Random Spheres.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +70,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/AsyncOperations/AsyncOperationStatus.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/ResourceProviders/ISceneProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/Util/MonoBehaviourCallbackHooks.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Settings/EditorPlayerSettingHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/Core/NetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/SceneManagement/ISceneManagerHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/SceneManagement/NetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -97,6 +82,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/SDK/IRelayService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/SDK/RelayService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer/Runtime/Container.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/VP/mppmfd86daf9/Assets/Game/Scripts/Installer/GameplayEntryPoint.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../Summonlands/summonlands/Summonlands/Assets/_Game/Sources/Runtime/Battleground/Factories/ViewFactoryHub.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1d58f45f40ac406c9037065c4e196bb390a00/bb/815ec475/SceneEventProgressStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f8babe234e540299e4f7387cdc20cd89b6200/0f/a796d985/SceneAsset.cs" root0="FORCE_HIGHLIGHTING" />

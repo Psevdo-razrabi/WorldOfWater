@@ -40,7 +40,7 @@ namespace Game.Services
             var endpoint = allocation.ServerEndpoints.First(c => c.ConnectionType == "dtls");
 
             NetworkManager.Singleton.GetComponent<UnityTransport>().
-                SetHostRelayData(endpoint.Host, (ushort)endpoint.Port, allocation.AllocationId.ToByteArray(),
+                SetHostRelayData(endpoint.Host, (ushort)endpoint.Port, allocation.AllocationIdBytes,
                     allocation.Key, allocation.ConnectionData, true);
 
             NetworkManager.Singleton.StartHost();
@@ -48,21 +48,13 @@ namespace Game.Services
             Connected.Execute();
         }
 
-        private void ConnectionApproval(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
-        {
-            response.Approved = true;
-            response.CreatePlayerObject = true;
-            response.Pending = false; 
-        }
-
         public async UniTask JoinLobby(string joinCode)
         {
-            NetworkManager.Singleton.NetworkConfig.ConnectionApproval = true;
             var allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
             var endpoint = allocation.ServerEndpoints.First(c => c.ConnectionType == "dtls");
 
             NetworkManager.Singleton.GetComponent<UnityTransport>().
-                SetClientRelayData(endpoint.Host, (ushort)endpoint.Port, allocation.AllocationId.ToByteArray(),
+                SetClientRelayData(endpoint.Host, (ushort)endpoint.Port, allocation.AllocationIdBytes,
                     allocation.Key, allocation.ConnectionData, allocation.HostConnectionData, true);
 
             NetworkManager.Singleton.StartClient();
@@ -75,7 +67,12 @@ namespace Game.Services
             NetworkManager.Singleton.Shutdown();
         }
         
-        
+        private void ConnectionApproval(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
+        {
+            response.Approved = true;
+            response.CreatePlayerObject = true;
+            response.Pending = false; 
+        }
 
         /*public async UniTask CreateLobby(string worldName = "NewWorld")
         {

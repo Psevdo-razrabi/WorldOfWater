@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3030312904324215915}
   - component: {fileID: 599358259484988530}
   m_Layer: 0
-  m_Name: SceneLifetimeScope
+  m_Name: LifetimeScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 027ae6a3442c4f5ba807ef2e1cd3c41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lifetimeScope: {fileID: 599358259484988530}
 --- !u!1 &6725195210716764428
 GameObject:
   m_ObjectHideFlags: 0
