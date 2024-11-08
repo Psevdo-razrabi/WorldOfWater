@@ -283,7 +283,7 @@ Material:
     - _LightTransmissionThresholdOffset: 0.25
     - _Metallic: 0
     - _NormalMapIntensity: 1
-    - _OcclusionMapIntensity: 0.063
+    - _OcclusionMapIntensity: 0.157
     - _OcclusionStrength: 1
     - _OptionsTab: 1
     - _Outline: 1
@@ -291,7 +291,7 @@ Material:
     - _OutlineFadeMax: 2
     - _OutlineFadeMin: 0.25
     - _OutlineNoise: 0
-    - _OutlineSize: 1
+    - _OutlineSize: 20
     - _OutlineTab: 1
     - _Parallax: 0
     - _QueueOffset: 0
@@ -305,7 +305,7 @@ Material:
     - _Roughness: 0.5
     - _Saturation: 1
     - _SketchMapScale: 1
-    - _Smoothness: 0.258
+    - _Smoothness: 0.362
     - _SmoothnessTextureChannel: 0
     - _Specular: 1
     - _SpecularHighlights: 1
@@ -344,7 +344,7 @@ Material:
     - _GoochDarkColor: {r: 0, g: 0, b: 0, a: 1}
     - _IridescenceColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _LightTransmissionColor: {r: 1, g: 0.65, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.31132078, g: 0.23936456, b: 0.23936456, a: 1}
     - _RimBrightColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     - _RimDarkColor: {r: 0, g: 0, b: 0, a: 1}
