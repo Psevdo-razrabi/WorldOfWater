@@ -1,3 +1,4 @@
+using R3;
 using TMPro;
 using UnityEngine;
 
@@ -12,7 +13,12 @@ namespace Game.MVVM.Menu
         {
             ViewModel.Init(_leaveButton);
 
-            _codeField.text = ViewModel.Code;
+            Binder.ViewTriggered.Subscribe(UpdateView).AddTo(Binder.Disposable);
+        }
+
+        private void UpdateView()
+        {
+            _codeField.text = ViewModel.JoinCode;
         }
     }
 }

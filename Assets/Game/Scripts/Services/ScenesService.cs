@@ -1,34 +1,36 @@
 using Cysharp.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
 namespace Game.Services
 {
     public class ScenesService
     {
-        public ScenesService()
+        private AsyncOperationHandle<SceneInstance> _previousScene;
+
+        public void LoadSceneNetwork(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
         {
+            var status = NetworkManager.Singleton.SceneManager.LoadScene(sceneName, loadSceneMode);
+            if (status != SceneEventProgressStatus.Started)
+            {
+                Debug.LogWarning($"Failed to load {sceneName} " +
+                                 $"with a {nameof(SceneEventProgressStatus)}: {status}");
+            }
+        }
+        
+        public async UniTask LoadSceneAsync(string scenePath, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
+        {
+            var scene = Addressables.LoadSceneAsync(scenePath, loadSceneMode);
+            await UniTask.WaitUntil(() => scene.IsDone);
         }
 
-        public async void LoadScene()
+        public async UniTask  LoadScene(string sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single)
         {
-            await UniTask.WaitUntil(() => NetworkManager.Singleton.SceneManager != null);
-            
-            var sceneByName = "Gameplay";
-            if (!string.IsNullOrEmpty(sceneByName))
-            {
-                var status = NetworkManager.Singleton.SceneManager.LoadScene(sceneByName, LoadSceneMode.Additive);
-                if (status != SceneEventProgressStatus.Started)
-                {
-                    Debug.LogWarning($"Failed to load {sceneByName} " +
-                                     $"with a {nameof(SceneEventProgressStatus)}: {status}");
-                }
-                else
-                {
-                    Debug.Log("game loaded");
-                }
-            }
+            await SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
         }
     }
 }

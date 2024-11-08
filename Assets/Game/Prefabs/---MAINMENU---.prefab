@@ -47,8 +47,7 @@ MonoBehaviour:
   parentReference:
     TypeName: Game.DI.BootstrapLifetimeScope
   autoRun: 1
-  autoInjectGameObjects:
-  - {fileID: 3801956213742915901}
+  autoInjectGameObjects: []
 --- !u!1 &3652507989720216721
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf710b686bc70849843f56670c27a97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lifetimeScope: {fileID: 3001209175840842566}
 --- !u!1 &6725195210716764428
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using Game.Services;
+﻿using Game.MVVM.Menu;
+using Game.Services;
 using UnityEngine;
 using VContainer;
 
@@ -6,17 +7,13 @@ namespace Game.DI
 {
     public class MainMenuEntryPoint : MonoBehaviour
     {
-        private ViewsService _viewsService;
+        [SerializeField] private MainMenuLifetimeScope _lifetimeScope;
         
         private void Awake()
         {
-            _viewsService.Initialize();
-        }
-
-        [Inject]
-        private void Construct(ViewsService viewsService)
-        {
-            _viewsService = viewsService;
+            var viewsService = _lifetimeScope.Container.Resolve<ViewsService>();
+            viewsService.Initialize();
+            viewsService.Open<MainMenuView>();
         }
     }
 }

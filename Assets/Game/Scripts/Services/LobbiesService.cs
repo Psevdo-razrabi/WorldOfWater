@@ -1,11 +1,17 @@
 using System;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using Game.MVVM;
 using Game.MVVM.Menu;
+using R3;
 using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 using Unity.Services.Authentication;
+using Unity.Services.Core;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using Unity.Services.Relay;
+using Unity.Services.Relay.Models;
 using UnityEngine;
 using VContainer.Unity;
 
@@ -14,15 +20,64 @@ namespace Game.Services
     public class LobbiesService
     {
         private ViewsService _viewsService;
-        public string LobbyCode { get; private set; }
-        private Lobby _lobby;
+
+        public string JoinCode { get; private set; }
+
+        public ReactiveCommand Connected { get; } = new();
         
         public LobbiesService(ViewsService viewsService)
         {
             _viewsService = viewsService;
         }
 
-        public async UniTask CreateLobby(string worldName = "NewWorld")
+        public async UniTask CreateLobby()
+        {
+            NetworkManager.Singleton.NetworkConfig.ConnectionApproval = true;
+            NetworkManager.Singleton.ConnectionApprovalCallback = ConnectionApproval;
+            var allocation = await RelayService.Instance.CreateAllocationAsync(4);
+            JoinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+
+            var endpoint = allocation.ServerEndpoints.First(c => c.ConnectionType == "dtls");
+
+            NetworkManager.Singleton.GetComponent<UnityTransport>().
+                SetHostRelayData(endpoint.Host, (ushort)endpoint.Port, allocation.AllocationId.ToByteArray(),
+                    allocation.Key, allocation.ConnectionData, true);
+
+            NetworkManager.Singleton.StartHost();
+            
+            Connected.Execute();
+        }
+
+        private void ConnectionApproval(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
+        {
+            response.Approved = true;
+            response.CreatePlayerObject = true;
+            response.Pending = false; 
+        }
+
+        public async UniTask JoinLobby(string joinCode)
+        {
+            NetworkManager.Singleton.NetworkConfig.ConnectionApproval = true;
+            var allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+            var endpoint = allocation.ServerEndpoints.First(c => c.ConnectionType == "dtls");
+
+            NetworkManager.Singleton.GetComponent<UnityTransport>().
+                SetClientRelayData(endpoint.Host, (ushort)endpoint.Port, allocation.AllocationId.ToByteArray(),
+                    allocation.Key, allocation.ConnectionData, allocation.HostConnectionData, true);
+
+            NetworkManager.Singleton.StartClient();
+            
+            Connected.Execute();
+        }
+
+        public async UniTask LeaveLobby()
+        {
+            NetworkManager.Singleton.Shutdown();
+        }
+        
+        
+
+        /*public async UniTask CreateLobby(string worldName = "NewWorld")
         {
             try
             {
@@ -37,6 +92,8 @@ namespace Game.Services
 
                 await SubscribeToLobbyEvents(_lobby);
 
+                //NetworkManager.Singleton;
+                //NetworkManager.Singleton.GetComponent<UnityTransport>().SetConnectionData(NetworkManager.Singleton.GetComponent<UnityTransport>().);
                 if(NetworkManager.Singleton.StartHost())
                 {
                     Debug.Log($"Host started!");
@@ -112,10 +169,12 @@ namespace Game.Services
                 {
                     await LobbyService.Instance.DeleteLobbyAsync(_lobby.Id);
                     Debug.Log($"Lobby deleted {_lobby.Id}");
+                    NetworkManager.Singleton.Shutdown();
                     return;
                 }
                 await LobbyService.Instance.RemovePlayerAsync(_lobby.Id, playerId);
                 Debug.Log($"Lobby leaved {_lobby.Id}");
+                NetworkManager.Singleton.Shutdown();
             }
             catch (LobbyServiceException e)
             {
@@ -129,6 +188,6 @@ namespace Game.Services
             _viewsService.Open<CreateWorldView>();
             _viewsService.Open<JoinWorldView>();
             Debug.Log("Lobby closed!");
-        }
+        }*/
     }
 }

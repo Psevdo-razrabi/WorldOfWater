@@ -25,10 +25,12 @@ namespace Game.Services
         {
             try
             {
-                await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                Debug.Log("Sign in anonymously succeeded!");
-                Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}"); 
-
+                if (!AuthenticationService.Instance.IsAuthorized)
+                {
+                    await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                    Debug.Log("Sign in anonymously succeeded!");
+                    Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}"); 
+                }
             }
             catch (AuthenticationException ex)
             {

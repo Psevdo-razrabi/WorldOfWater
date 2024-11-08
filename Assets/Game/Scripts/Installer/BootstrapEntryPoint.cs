@@ -1,8 +1,7 @@
 using Game.Services;
+using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using VContainer;
-using VContainer.Unity;
 
 namespace Game.DI
 {
@@ -10,12 +9,15 @@ namespace Game.DI
     {
         [SerializeField] private BootstrapLifetimeScope _lifetimeScope;
         
-        private void Awake()
+        private async void Awake()
         {
             DontDestroyOnLoad(_lifetimeScope);
-            SceneManager.LoadScene("MainMenu");
-            
-            Instantiate(Resources.Load("NetworkManager"), null);
+            var scenesService = _lifetimeScope.Container.Resolve<ScenesService>();
+            //scenesService.LoadSceneAsync(SceneType.MainMenu);
+            await scenesService.LoadScene(SceneType.MainMenu);
+
+            var networkManager = Resources.LoadAsync("NetworkManager");
+            Instantiate(networkManager.asset, null);
         }
     }
 }

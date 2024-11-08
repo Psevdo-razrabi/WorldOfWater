@@ -4,6 +4,7 @@ using Unity.Services.Lobbies;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Game.DI;
 using UnityEngine;
 using VContainer;
 using Game.Services;
@@ -37,14 +38,8 @@ namespace Game.MVVM.Menu
 
         private async void OnCreateClicked()
         {
-            await _lobbiesService.CreateLobby(WorldName);
-
-            /*_viewsService.Close();
-            _viewsService.Close();
-            _viewsService.Open<LobbyView>();*/
-            //SceneManager.LoadScene("Game");
-            
-            _scenesService.LoadScene();
+            await _scenesService.LoadScene(SceneType.Gameplay);
+            await _lobbiesService.CreateLobby();
         }
     }
 }

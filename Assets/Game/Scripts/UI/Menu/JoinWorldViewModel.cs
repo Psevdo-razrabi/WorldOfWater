@@ -1,4 +1,6 @@
+using Game.DI;
 using Game.Services;
+using UnityEngine.SceneManagement;
 using VContainer;
 
 namespace Game.MVVM.Menu
@@ -27,14 +29,8 @@ namespace Game.MVVM.Menu
 
         private async void OnJoined()
         {
-            if (await _lobbiesService.TryJoinLobby(Code))
-            {
-                /*_viewsService.Close();
-                _viewsService.Close();
-                _viewsService.Open<LobbyView>();*/
-                
-                _scenesService.LoadScene();
-            }
+            await _scenesService.LoadScene(SceneType.Gameplay);
+            await _lobbiesService.JoinLobby(Code);
         }
     }
 }

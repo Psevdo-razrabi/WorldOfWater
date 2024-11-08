@@ -142,10 +142,12 @@ Varyings LitPassVertex(Attributes input)
 	output.dynamicLightmapUV = input.dynamicLightmapUV.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
 	#endif
 	
+	#if UNITY_EDITOR
 	#if UNITY_VERSION >= 202320 //Note: actually available from 2023.1.7+ (URP 15.0.8)
 	OUTPUT_SH4(positionWS, output.normalWS.xyz, GetWorldSpaceNormalizeViewDir(positionWS), output.vertexSH);
 	#else
 	OUTPUT_SH(output.normalWS.xyz, output.vertexSH);
+	#endif
 	#endif
 
 #if defined(REQUIRES_VERTEX_SHADOW_COORD_INTERPOLATOR)
