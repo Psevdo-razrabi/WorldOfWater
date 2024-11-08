@@ -29,7 +29,6 @@ namespace Sync
             await _loaderResources.LoadAssetFromResources(path, typeof(GameObject), (obj) => ResourceManager.Instance.SaveResources(key, obj));
             await UniTask.Yield();
         }
-        
 
         public async UniTask LoadFromAddressables()
         {

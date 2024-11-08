@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using StateMachine;
+using StateMachine.Data;
 
-public class StateMachineInject : MonoBehaviour
+public class StateMachineInject : BaseBindings
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void InstallBindings()
     {
-        
+        BindStateMachine();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void BindStateMachine()
     {
-        
+        BindNewInstance<PlayerStateMachine>();
+        BindNewInstance<StateMachineData>();
     }
 }

@@ -38,11 +38,18 @@ namespace SceneManagment
             _slider.value = Mathf.Lerp(currentFillAmount, _targetProgress, Time.deltaTime * dynamicFillSpeed);
         }
 
-        public async UniTask LoadScene(TypeScene typeScene)
+        private void ChangeParameters()
         {
+            _group.alpha = 1f;
             _slider.value = _minSlider;
             _targetProgress = 1f;
-            
+            _group.interactable = true;
+            _group.blocksRaycasts = true;
+        }
+
+        public async UniTask LoadScene(TypeScene typeScene)
+        {
+            ChangeParameters();
             LoadingProgress loadingProgress = new LoadingProgress();
             loadingProgress.Progressed += value => _targetProgress = Mathf.Max(value, _targetProgress);
             _isLoading = true;
@@ -56,8 +63,12 @@ namespace SceneManagment
                 .SetUpdate(UpdateType.Late, true)
                 .OnComplete(() => loadSceneDelegate.Invoke(type));
         }
-        
-        public void FadeOut() =>
+
+        public void FadeOut()
+        {
+            _group.interactable = false;
+            _group.blocksRaycasts = false;
             DOTween.To(() => _group.alpha, x => _group.alpha = x, 0, _fadeDuration).SetUpdate(UpdateType.Late, true);
+        }
     }
 }

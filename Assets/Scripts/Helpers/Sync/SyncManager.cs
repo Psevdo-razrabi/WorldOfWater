@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Loader;
 using SceneManagment;
 using Sync;
+using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -14,13 +15,10 @@ namespace Helpers.Sync
         private Dictionary<TypeSync, Action> _loadActions;
         private SceneLoader _sceneLoader;
 
-        private void OnEnable()
-        {
-            ProjectActions.OnTypeLoad += AllReadyLoad;
-        }
-
         private void Start()
         {
+            ProjectActions.OnTypeLoad.Subscribe(AllReadyLoad).AddTo(this);
+            
             _loadActions = new Dictionary<TypeSync, Action>
             {
                 { TypeSync.Config, () => _syncManager.ConfigLoad = true },
@@ -52,11 +50,6 @@ namespace Helpers.Sync
                 _syncManager.StartLoad = true;
                 await _sceneLoader.LoadScene(TypeScene.MenuScene);
             }
-        }
-
-        private void OnDestroy()
-        {
-            ProjectActions.OnTypeLoad -= AllReadyLoad;
         }
     }
 }

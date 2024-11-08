@@ -50,7 +50,7 @@ namespace Sync
     
             return key;
         }
-
+        
         public T GetResources<T>(ResourcesKey key)
         {
             if (_resources.TryGetValue(key, out var resource))
@@ -59,6 +59,12 @@ namespace Sync
             }
 
             throw new KeyNotFoundException();
+        }
+        
+        public T GetResources<T, K>(string name) where T : class
+        {
+            var key = GetOrRegisterKey(name);
+            return GetResources<K>(key) as T;
         }
 
         public void RegisterLoader(TypeSync key, ILoader value)
@@ -82,7 +88,7 @@ namespace Sync
 
             foreach (var type in _loaders.Keys)
             {
-                ProjectActions.OnTypeLoad.Invoke(type);
+                ProjectActions.OnTypeLoad.OnNext(type);
             }
         }
 

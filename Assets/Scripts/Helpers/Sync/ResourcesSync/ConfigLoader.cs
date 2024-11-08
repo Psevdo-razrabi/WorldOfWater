@@ -19,7 +19,7 @@ namespace Sync
             _loaderResources = loaderResources;
         }
         
-        public void SetProperties(string path, string key)
+        public void SetProperties(string key, string path)
         {
             _list.Add(() => LoadFromResources(path, key));
         }          

@@ -1,5 +1,4 @@
-﻿using System;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Loader;
 using UnityEngine;
 using Zenject;
@@ -32,6 +31,8 @@ namespace Sync
             ResourceManager.Instance.RegisterLoader(TypeSync.Prefab, _prefabLoader);
             _prefabLoader.SetProperties(ResourcesName.Slot, "Slot");
             _prefabLoader.SetProperties(ResourcesName.Icon, "GhostIcon");
+            _configLoader.SetProperties(ResourcesName.PlayerHelpers, "PlayerHelpers");
+            _configLoader.SetProperties(ResourcesName.PlayerController, "Controller");
 
             await UniTask.WaitForSeconds(0.5f);
             ResourceManager.Instance.MergeProperties();

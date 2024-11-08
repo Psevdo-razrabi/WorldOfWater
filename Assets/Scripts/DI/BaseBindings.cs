@@ -13,4 +13,11 @@ public abstract class BaseBindings : MonoInstaller
             .FromInstance(instance)
             .AsSingle()
             .NonLazy();
+
+    protected void BindNewInstanceWithArgument<TK, T>(T argument) =>
+        Container
+            .BindInterfacesAndSelfTo<TK>()
+            .AsSingle()
+            .WithArguments(argument)
+            .NonLazy();
 }

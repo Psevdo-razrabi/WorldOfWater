@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Data;
 using State;
+using StateMachine.Data;
 using Zenject;
 
 namespace StateMachine
@@ -10,12 +12,16 @@ namespace StateMachine
     {
         private List<IState> _states;
         private StateMachine _stateMachine;
+        private StateMachineData _stateMachineData;
         private readonly List<IDisposable> _disposables = new();
 
         public void AddDispose(IDisposable disposable)
         {
             _disposables.Add(disposable);
         }
+
+        public PlayerData GetData() => _stateMachineData.Data;
+        public StateMachineData GetStateMachineData() => _stateMachineData;
 
         public void TrySwapState<T>() where T : IState
         {
@@ -46,6 +52,7 @@ namespace StateMachine
             };
             
             _stateMachine = new StateMachine(_states);
+            _stateMachine.SwitchStates<PlayerIdle>();
         }
 
         public void Dispose()
@@ -54,6 +61,12 @@ namespace StateMachine
             {
                 dispose.Dispose();
             }
+        }
+
+        [Inject]
+        private void Construct(StateMachineData stateMachineData)
+        {
+            _stateMachineData = stateMachineData;
         }
     }
 }

@@ -1,0 +1,56 @@
+﻿using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+namespace Input
+{
+    public class PlayerInputReader : PlayerInput.IPlayerActions, IInputReader
+    {
+        public event Action<Vector3> Move = delegate { };
+        public event Action Jump = delegate { };
+        public event Action TakeItem = delegate { };
+        
+        public Vector3 Direction
+        {
+            get
+            {
+                var direction = _playerInput.Player.Move.ReadValue<Vector2>();
+                return new Vector3(direction.x, 0f, direction.y);
+            }
+        }
+        
+        private PlayerInput _playerInput;
+        private InputObserver _inputObserver;
+        
+        public void EnablePlayerAction()
+        {
+            if (_playerInput == null)
+            {
+                _playerInput = new PlayerInput();
+                _inputObserver = new InputObserver(_playerInput);
+                _playerInput.Player.SetCallbacks(this);
+            }
+            _playerInput.Enable();
+        }
+        
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            Move?.Invoke(Direction);
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            Jump?.Invoke();
+        }
+
+        public void OnTakeItem(InputAction.CallbackContext context)
+        {
+            TakeItem?.Invoke();
+        }
+
+        public void OnOpenInventory(InputAction.CallbackContext context)
+        {
+            
+        }
+    }
+}

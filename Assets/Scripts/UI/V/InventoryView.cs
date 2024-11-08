@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Loader;
-using R3;
 using Sync;
-using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -17,19 +14,11 @@ namespace Inventory
         [field: SerializeField] protected GridLayoutGroup grid;
         private ViewSlot _ghostIcon;
         [field: SerializeField] protected Canvas canvas;
-        [field: SerializeField] protected LoaderResources _loaderResources;
         private RectTransform _rectTransform;
         private List<ViewSlot> _slots;
-        private bool _isLoad = false;
-
-        private void Awake()
-        {
-            ResourceManager.Instance.OnAllLoaded.Subscribe((load) => _isLoad = load).AddTo(this);
-        }
 
         public override async UniTask InitializeView(DataView dataView)
         {
-            await UniTask.WaitUntil(() => _isLoad);
             LoadAssets();
             await InitializeSlots(dataView);
             await UniTask.Yield();

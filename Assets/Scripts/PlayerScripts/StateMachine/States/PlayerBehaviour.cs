@@ -1,19 +1,25 @@
 ﻿using System;
+using Data;
 using Helpers;
 using StateMachine;
+using StateMachine.Data;
 
 namespace State
 {
     public abstract class PlayerBehaviour : IState
     {
         public PlayerStateMachine StateMachine { get; private set; }
+        public PlayerData Player { get; private set; }
+        public StateMachineData StateMachineData { get; private set; }
 
         protected PlayerBehaviour(PlayerStateMachine playerStateMachine)
         {
             Preconditions.CheckNotNull(playerStateMachine);
             StateMachine = playerStateMachine;
+            Player = StateMachine.GetData();
+            StateMachineData = StateMachine.GetStateMachineData();
+            Player.PlayerInputReader.EnablePlayerAction();
         }
-
         
         public virtual void OnEnter() {}
 
