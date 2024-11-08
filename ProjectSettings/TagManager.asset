@@ -19,8 +19,8 @@ TagManager:
   - Building
   - Wall
   - GridPoint
-  - 
-  - 
+  - VectorUI
+  - Door
   - 
   - 
   - 
@@ -42,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VectorUI
+    uniqueID: 2578047679
     locked: 0
   m_RenderingLayers:
   - Default

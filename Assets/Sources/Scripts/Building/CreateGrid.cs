@@ -25,6 +25,7 @@ public class CreateGrid : MonoBehaviour
     public bool haveNextFloor;
     public CreateGrid firsFloorPlot;
     public GridPiece[] wallsHoldingSecondFloor = new GridPiece[4];
+    public bool canDestroy;
     
     enum AnimationType
     {
@@ -34,7 +35,7 @@ public class CreateGrid : MonoBehaviour
 
 
     [NonSerialized] public float sizeOfObject;
-    List<GridPiece> gridPieces = new List<GridPiece>();
+    [NonSerialized] public List<GridPiece> gridPieces = new List<GridPiece>();
     List<GameObject> plotPieces = new List<GameObject>();
     void Awake()
     {
@@ -154,16 +155,27 @@ public class CreateGrid : MonoBehaviour
                 Vector3 initScale = plotPieces[pointer].transform.localScale;
                 plotPieces[pointer].transform.localScale = Vector3.zero;
                 plotPieces[pointer].transform.DOScale(initScale, speed / 2).SetEase(Ease.OutBack);
-                plotPieces[pointer].transform.DOMove(new Vector3(gridPieces[pointer].center.x, gridPieces[pointer].center.y + yOffsetForPlot, gridPieces[pointer].center.z), speed, false).SetEase(Ease.OutBack);
+                plotPieces[pointer].transform.DOMove(new Vector3(gridPieces[pointer].center.x, gridPieces[pointer].center.y + yOffsetForPlot, gridPieces[pointer].center.z), speed, false).SetEase(Ease.OutBack).OnComplete(() => SetDestroy(pointer, gridPieces.Count));
                 AnimateSpawn(pointer + 1, animationSpeed * (pointer + 1));
             }
             else if(animationType == AnimationType.StepByStep)
             {
-                plotPieces[pointer].transform.DOMove(new Vector3(gridPieces[pointer].center.x, gridPieces[pointer].center.y + yOffsetForPlot, gridPieces[pointer].center.z), speed, false).OnComplete(() => AnimateSpawn(pointer + 1, speed)).SetEase(Ease.OutBack);
+                plotPieces[pointer].transform.DOMove(new Vector3(gridPieces[pointer].center.x, gridPieces[pointer].center.y + yOffsetForPlot, gridPieces[pointer].center.z), speed, false).
+                OnComplete(() => AnimateSpawn(pointer + 1, speed)).
+                SetEase(Ease.OutBack);
             }
+        }
 
+    }
+
+    private void SetDestroy(int index, int maxIndex)
+    {
+        if(index == maxIndex - 1)
+        {
+            canDestroy = true;
         }
     }
+
 
     void ClearPoints()
     {

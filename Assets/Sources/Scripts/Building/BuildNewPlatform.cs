@@ -1,124 +1,127 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class BuildNewPlatform : MonoBehaviour
+public class BuildNewPlatform : Build, IBuild
 {
-    [Header("Raycast to place new platform set")]
-    [SerializeField] float rayDistance;
-    [SerializeField] LayerMask layerMaskForRaycast;
     [Header("Creating new platform set")]
-    [SerializeField] GameObject plotPrefab;
-    [SerializeField] GameObject platformsHolder;
-    [SerializeField] PlatformsController platformsController;
-    [SerializeField] float yOffset;
+    [SerializeField] private GameObject plotPrefab;
+    [SerializeField] private GameObject platformsHolder;
+    [SerializeField] private PlatformsController platformsController;
+    [SerializeField] private float yOffset;
 
     [Header("Platform preview set")]
-    [SerializeField] GameObject platformPreview;
-    [SerializeField] Color colorCanPlace, colorCantPlace;
-    DetectSimilarObjectsInCollider detectSimilarObjectsInCollider;
-    Material platformPreview_Mat;
+    [SerializeField] private GameObject platformPreview;
+    [SerializeField] private Color colorCanPlace, colorCantPlace;
 
-    
-    void Start()
+    private DetectSimilarObjectsInCollider detectSimilarObjectsInCollider;
+    private Material platformPreviewMaterial;
+    private Vector3 lastPosition;
+
+    private void Start()
     {
-        GetDataFromPreviewObj();
+        InitializePreviewData();
     }
 
-    void GetDataFromPreviewObj()
+    private void InitializePreviewData()
     {
         detectSimilarObjectsInCollider = platformPreview.GetComponent<DetectSimilarObjectsInCollider>();
-        platformPreview_Mat = platformPreview.GetComponent<MeshRenderer>().material;
+        platformPreviewMaterial = platformPreview.GetComponent<MeshRenderer>().material;
     }
 
-    public void Build(CreateGrid closestPlatformToPlayer, CreateGrid closestPlatformToCursor)
+    public void Build(BuildParams buildParams)
     {
+        CreateGrid closestPlatformToPlayer = buildParams.ClosestPlatformToPlayer;
+        CreateGrid closestPlatformToCursor = buildParams.ClosestPlatformToCursor;
 
-        platformPreview.SetActive(true);
-
-        RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayDistance, layerMaskForRaycast))
+        if (TryGetRaycastHit(out RaycastHit hit))
         {
-            platformPreview_Mat.color = colorCanPlace;
-            platformPreview.transform.position = new Vector3(hit.point.x, hit.point.y + yOffset, hit.point.z);
-
-
-            if(closestPlatformToPlayer != null)
-            {
-                SnapPlatform(closestPlatformToPlayer, closestPlatformToCursor);
-            }
-
-            if(detectSimilarObjectsInCollider.isDetected || (transform.position.y > 1f && !closestPlatformToCursor.CanBuildSecondFloor()))
-            {
-                platformPreview_Mat.color = colorCantPlace;
-                return;
-            }
-            if(Input.GetMouseButtonDown(0))
-            {
-                GameObject newPlot = Instantiate(plotPrefab, new Vector3(platformPreview.transform.position.x, platformPreview.transform.position.y, platformPreview.transform.position.z), Quaternion.identity);
-                if(transform.position.y > 1f)
-                {
-                    newPlot.GetComponent<CreateGrid>().wallsHoldingSecondFloor = closestPlatformToCursor.SetPointsHoldingSecondFloor(true);
-                }
-                newPlot.transform.parent = platformsHolder.transform;
-            }
+            UpdatePlatformPreview(hit);
+            HandlePlatformPlacement(closestPlatformToPlayer, closestPlatformToCursor);
         }
 
         platformsController.UpdatePlatformCount();
     }
 
-    public void CancelBuild()
+    private void UpdatePlatformPreview(RaycastHit hit)
     {
-        platformPreview.SetActive(false);
-        detectSimilarObjectsInCollider.ClearList();
+        platformPreviewMaterial.color = colorCanPlace;
+        platformPreview.SetActive(true);
+        platformPreview.transform.position = new Vector3(hit.point.x, hit.point.y + yOffset, hit.point.z);
     }
 
-
-
-
-    void SnapPlatform(CreateGrid platformToPlayer, CreateGrid platformToCursor)
+    private void HandlePlatformPlacement(CreateGrid closestPlatformToPlayer, CreateGrid closestPlatformToCursor)
     {
-        Vector3 newPlatformPos = Vector3.zero;
+        if (closestPlatformToPlayer != null)
+        {
+            SnapPlatform(closestPlatformToPlayer, closestPlatformToCursor);
+        }
+
+        if (IsPlacementInvalid(closestPlatformToCursor))
+        {
+            platformPreviewMaterial.color = colorCantPlace;
+            Crosshair.Instance.SetState(Crosshair.State.CantInteract);
+            return;
+        }
+
+        Crosshair.Instance.SetState(Crosshair.State.CanInteract);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlaceNewPlatform(closestPlatformToCursor);
+        }
+    }
+
+    private bool IsPlacementInvalid(CreateGrid closestPlatformToCursor)
+    {
+        return detectSimilarObjectsInCollider.isDetected || 
+               (transform.position.y > 1f && !closestPlatformToCursor.CanBuildSecondFloor());
+    }
+
+    private void PlaceNewPlatform(CreateGrid closestPlatformToCursor)
+    {
+        GameObject newPlot = Instantiate(plotPrefab, platformPreview.transform.position, Quaternion.identity);
+        
+        if (transform.position.y > 1f)
+        {
+            newPlot.GetComponent<CreateGrid>().wallsHoldingSecondFloor = closestPlatformToCursor.SetPointsHoldingSecondFloor(true);
+        }
+
+        newPlot.transform.parent = platformsHolder.transform;
+    }
+
+    private void SnapPlatform(CreateGrid platformToPlayer, CreateGrid platformToCursor)
+    {
+        Vector3 newPlatformPosition = CalculateSnapPosition(platformToPlayer, platformToCursor);
+        platformPreview.transform.position = newPlatformPosition;
+
+        if (lastPosition != newPlatformPosition)
+        {
+            detectSimilarObjectsInCollider.ClearList();
+            lastPosition = newPlatformPosition;
+        }
+    }
+
+    private Vector3 CalculateSnapPosition(CreateGrid platformToPlayer, CreateGrid platformToCursor)
+    {
         Vector3 camDirection = Camera.main.transform.forward;
         camDirection.y = 0;
         camDirection.Normalize();
 
+        Vector3 newPlatformPosition = Vector3.zero;
+
         if (Mathf.Abs(camDirection.x) > Mathf.Abs(camDirection.z))
         {
-            if (camDirection.x > 0)
-            {
-                newPlatformPos.x = platformToPlayer.sizeOfObject; // Move to the right
-            }
-            else if (camDirection.x < 0)
-            {
-                newPlatformPos.x = -platformToPlayer.sizeOfObject; // Move to the left
-            }
-        }
-        else {
-            if (camDirection.z > 0)
-            {
-                newPlatformPos.z = platformToPlayer.sizeOfObject; // Move forward
-            }
-            else if (camDirection.z < 0)
-            {
-                newPlatformPos.z = -platformToPlayer.sizeOfObject; // Move backward
-            }
-        }
-
-
-        if(transform.position.y > 1f)
-        {
-            if(platformToCursor.haveNextFloor)
-            {
-                newPlatformPos = platformToCursor.pointSecondFloor;
-                platformPreview.transform.position = newPlatformPos;
-            }
+            newPlatformPosition.x = camDirection.x > 0 ? platformToPlayer.sizeOfObject : -platformToPlayer.sizeOfObject;
         }
         else
         {
-            platformPreview.transform.position = new Vector3(platformToPlayer.transform.position.x + newPlatformPos.x, platformToPlayer.transform.position.y, platformToPlayer.transform.position.z + newPlatformPos.z);
+            newPlatformPosition.z = camDirection.z > 0 ? platformToPlayer.sizeOfObject : -platformToPlayer.sizeOfObject;
         }
-    }
 
+        if (transform.position.y > 1f && platformToCursor != null && platformToCursor.haveNextFloor)
+        {
+            return platformToCursor.pointSecondFloor;
+        }
+
+        return new Vector3(platformToPlayer.transform.position.x + newPlatformPosition.x, platformToPlayer.transform.position.y, platformToPlayer.transform.position.z + newPlatformPosition.z);
+    }
 }

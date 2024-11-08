@@ -22,12 +22,14 @@ public class Destroyable : MonoBehaviour
                 piece.isEmpty = true;
             }
         }
-        AnimateDestroy(gameObject);
+        AnimateDestroy();
     }
 
-    void AnimateDestroy(GameObject obj)
+    void AnimateDestroy()
     {
-        Vector3 newScale = obj.transform.localScale / 2;
-        obj.transform.DOScale(newScale, animationSpeed).OnComplete(() => Destroy(gameObject)).SetEase(Ease.InBack);
+        Vector3 newScale = gameObject.transform.localScale / 2;
+        if(gameObject == null) return;
+        gameObject.transform.DOScale(newScale, animationSpeed).OnComplete(() => Destroy(gameObject)).SetEase(Ease.InBack);
     }
+
 }

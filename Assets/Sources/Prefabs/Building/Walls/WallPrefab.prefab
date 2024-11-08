@@ -60,6 +60,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -96,6 +97,7 @@ GameObject:
   - component: {fileID: 6161985580965396108}
   - component: {fileID: 5838042091733174352}
   - component: {fileID: 3411767900678902481}
+  - component: {fileID: 7868526622190543491}
   m_Layer: 10
   m_Name: WallPrefab
   m_TagString: Untagged
@@ -131,7 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e80297bb778081d45a02c70a68298b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachedGridPiece: []
   animationSpeed: 0.5
+  objectContainer: {fileID: 0}
 --- !u!65 &3411767900678902481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -153,3 +157,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2, z: 0.25}
   m_Center: {x: 0, y: 1, z: 0.37}
+--- !u!114 &7868526622190543491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061507287271120298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508fa09da7a8c8b498e9a7f777fba000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveLOD: 0
+  Model_LOD1: {fileID: 0}
+  Model_LOD2: {fileID: 0}
+  Model_LOD3: {fileID: 0}
+  previewSprite: {fileID: 21300000, guid: 717e2a0e33caaad4a8abb405afde1bd9, type: 3}

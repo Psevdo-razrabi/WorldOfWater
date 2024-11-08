@@ -12,6 +12,8 @@ public class DetectSimilarObjectsInCollider : MonoBehaviour
     int collidingObjectsOnLayerCount;
     [SerializeField] List<GameObject> collidingObjects = new List<GameObject>();
 
+    public GameObject collidingObject;
+
     
 
     public bool OnFloorCheck()
@@ -54,41 +56,27 @@ public class DetectSimilarObjectsInCollider : MonoBehaviour
         return false;
     }
 
-    void OnTriggerEnter(Collider collision)
+    void OnTriggerStay(Collider collision)
     {
         if ((layerMask.value & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
         {
-            if(!collidingObjects.Contains(collision.gameObject))
-            {
-                collidingObjects.Add(collision.gameObject);
-                isDetected = true;
-                collidingObjectsOnLayerCount++;
-            }
+            isDetected = true;
+            collidingObject = collision.gameObject;
         }
     }
 
+
+
     void OnTriggerExit(Collider collision)
     {
-
-        if(collidingObjects.Contains(collision.gameObject))
+        if ((layerMask.value & 1 << collision.gameObject.layer) == 1 << collision.gameObject.layer)
         {
-            collidingObjects.Remove(collision.gameObject);
-            collidingObjectsOnLayerCount--;
-            if(collidingObjectsOnLayerCount == 0)
-            {
-                isDetected = false;
-            }
-        }
-        if (((1 << collision.gameObject.layer) & layerMask) != 0)
-        {
-            
+            ClearList();
         }
     }
 
     public void ClearList()
     {
-        collidingObjects.Clear();
-        collidingObjectsOnLayerCount = 0;
         isDetected = false;
     }
 }

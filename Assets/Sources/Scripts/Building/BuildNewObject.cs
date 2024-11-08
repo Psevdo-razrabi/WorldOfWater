@@ -1,142 +1,121 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildNewObject : MonoBehaviour
 {
-    [SerializeField] PlatformsController platformsController;
-    [SerializeField] BuildNewPlatform buildNewPlatform;
-    [SerializeField] BuildNewWall buildNewWall;
-    [SerializeField] BuildNewBuilding buildNewBuilding;
-    [SerializeField] DestroyObject destroyObject;
-    [SerializeField] SelectedObjectToBuild selectedObjectToBuild;
-    [SerializeField] bool isBuilding;
-    [SerializeField] float maxDistanceFromPlatformToPlayer;    
+    public PlatformsController platformsController;
+    public BuildNewPlatform buildNewPlatform;
+    public BuildNewWall buildNewWall;
+    public BuildNewBuilding buildNewBuilding;
+    public DestroyObject destroyObject;
+    
+    public IBuild currentBuild;
+    public Action OnBuildSet;
+    public SelectedObjectToBuild selectedObjectToBuild, selectedObjectToBuildPrev;
+    public bool isBuilding;
+    public float maxDistanceFromPlatformToPlayer;
 
     [Header("Raycast set")]
-    [SerializeField] float rayDistance;
-    [SerializeField] LayerMask layerMaskForRaycast;
+    public float rayDistance;
+    public LayerMask layerMaskForRaycast;
 
-    public CreateGrid closestPlatformToPlayer;
-    public CreateGrid closestPlatformToCursor;
+    private BuildParams buildParams;
 
-    private bool previousIsBuilding;
-    private SelectedObjectToBuild previousObjectToBuild;
+    public enum SelectedObjectToBuild { Platform, Wall, Building, Destroy }
 
+    private Dictionary<SelectedObjectToBuild, IBuild> builds;
 
-    private enum SelectedObjectToBuild { Destroy, Platform, Wall, Building }
-
-
-
-    void Start()
+    private void Start()
     {
-
+        InitializeBuildDictionary();
     }
 
-
+    private void InitializeBuildDictionary()
+    {
+        builds = new Dictionary<SelectedObjectToBuild, IBuild>
+        {
+            { SelectedObjectToBuild.Platform, buildNewPlatform },
+            { SelectedObjectToBuild.Wall, buildNewWall },
+            { SelectedObjectToBuild.Building, buildNewBuilding },
+            { SelectedObjectToBuild.Destroy, destroyObject }
+        };
+    }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.B))
+        if (isBuilding)
         {
-            isBuilding = !isBuilding;
-        }
-
-        if(previousIsBuilding != isBuilding)
-        {
-            if(previousIsBuilding)
-            {
-                CancelBuildOfLastSelectedObjectType();
-            }
-            previousIsBuilding = isBuilding;
-        }
-
-        if(isBuilding)
-        {
-            InputController();
-            closestPlatformToPlayer = platformsController.FindClosestPlatform(gameObject.transform.position, maxDistanceFromPlatformToPlayer);
-            if(selectedObjectToBuild == SelectedObjectToBuild.Building || selectedObjectToBuild == SelectedObjectToBuild.Platform)
-            {
-                RaycastHit hit;
-                if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayDistance, layerMaskForRaycast))
-                {
-                    closestPlatformToCursor = platformsController.FindClosestPlatform(hit.point, maxDistanceFromPlatformToPlayer);
-                }
-            }
-
-            if(selectedObjectToBuild != previousObjectToBuild)
-            {
-                CancelBuildOfLastSelectedObjectType();
-                previousObjectToBuild = selectedObjectToBuild;
-            }
-
             BuildSelectedObjectType();
         }
     }
 
-    void InputController()
+    public void EnterBuild()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        isBuilding = true;
+    }
+
+    public void ExitBuild()
+    {
+        CancelBuildSelectedObjectType();
+        isBuilding = false;
+    }
+
+    private void BuildSelectedObjectType()
+    {
+        if (TryGetCurrentBuild())
         {
-            selectedObjectToBuild = SelectedObjectToBuild.Platform;
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            selectedObjectToBuild = SelectedObjectToBuild.Wall;
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            selectedObjectToBuild = SelectedObjectToBuild.Building;
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            selectedObjectToBuild = SelectedObjectToBuild.Destroy;
+            InitBuildParams();
+            currentBuild.Build(buildParams);
         }
     }
 
-
-    void BuildSelectedObjectType()
+    private bool TryGetCurrentBuild()
     {
-        if(selectedObjectToBuild == SelectedObjectToBuild.Platform)
+        IBuild build;
+
+        if (builds.TryGetValue(selectedObjectToBuild, out build))
         {
-            buildNewPlatform.Build(closestPlatformToPlayer, closestPlatformToCursor);
+            currentBuild = build;
+
+            if (selectedObjectToBuildPrev != selectedObjectToBuild)
+            {
+                selectedObjectToBuildPrev = selectedObjectToBuild;
+                CancelBuildSelectedObjectType();
+                OnBuildSet?.Invoke();
+
+            }
+
+
+            return true;
         }
-
-        if(selectedObjectToBuild == SelectedObjectToBuild.Wall)
+        else
         {
-            buildNewWall.Build(platformsController.FindClosestPlatforms(transform.position, maxDistanceFromPlatformToPlayer));
-        }
-
-        if(selectedObjectToBuild == SelectedObjectToBuild.Building)
-        {
-            buildNewBuilding.Build(closestPlatformToCursor);
-        }
-
-        if(selectedObjectToBuild == SelectedObjectToBuild.Destroy)
-        {
-            destroyObject.Destroy();
-        }
-
-    }
-
-    void CancelBuildOfLastSelectedObjectType()
-    {
-        if(previousObjectToBuild == SelectedObjectToBuild.Platform)
-        {
-            buildNewPlatform.CancelBuild();
-        }
-
-        if(previousObjectToBuild == SelectedObjectToBuild.Wall)
-        {
-            buildNewWall.CancelBuild();
-        }
-
-        if(previousObjectToBuild == SelectedObjectToBuild.Building)
-        {
-            buildNewBuilding.CancelBuild();
+            Debug.LogWarning($"Can't find {selectedObjectToBuild} in {nameof(builds)} dictionary");
+            build = null;
+            return false;
         }
     }
 
+    private void InitBuildParams()
+    {
+        buildParams.ClosestPlatformsToPlayer = platformsController.FindClosestPlatforms(transform.position, maxDistanceFromPlatformToPlayer);
+        buildParams.ClosestPlatformToCursor = FindClosestPlatformToCursor();
+        buildParams.ClosestPlatformToPlayer = platformsController.FindClosestPlatform(transform.position, maxDistanceFromPlatformToPlayer);
+    }
+
+    private CreateGrid FindClosestPlatformToCursor()
+    {
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, rayDistance, layerMaskForRaycast))
+        {
+            return platformsController.FindClosestPlatform(hit.point, maxDistanceFromPlatformToPlayer);
+        }
+
+        return null;
+    }
+
+    private void CancelBuildSelectedObjectType()
+    {
+        currentBuild?.CancelBuild();
+    }
 }
-

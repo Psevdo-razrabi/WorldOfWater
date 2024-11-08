@@ -61,6 +61,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -168,6 +169,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -275,6 +277,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -382,6 +385,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -489,6 +493,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -596,6 +601,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -703,6 +709,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -764,6 +771,7 @@ GameObject:
   - component: {fileID: 1547167161895848727}
   - component: {fileID: 1057699124962798139}
   - component: {fileID: 4699433971358121066}
+  - component: {fileID: -5217146200671819239}
   m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
@@ -822,6 +830,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -894,6 +903,34 @@ MonoBehaviour:
   animationType: 0
   offsetForSecondFloor: 2.5
   pointSecondFloor: {x: 0, y: 0, z: 0}
+  haveNextFloor: 0
+  firsFloorPlot: {fileID: 0}
+  wallsHoldingSecondFloor:
+  - center: {x: 0, y: 0, z: 0}
+    size: 0
+    gridPoint: {fileID: 0}
+    isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
+  - center: {x: 0, y: 0, z: 0}
+    size: 0
+    gridPoint: {fileID: 0}
+    isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
+  - center: {x: 0, y: 0, z: 0}
+    size: 0
+    gridPoint: {fileID: 0}
+    isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
+  - center: {x: 0, y: 0, z: 0}
+    size: 0
+    gridPoint: {fileID: 0}
+    isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
+  canDestroy: 0
 --- !u!114 &1057699124962798139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,18 +948,26 @@ MonoBehaviour:
     size: 0
     gridPoint: {fileID: 0}
     isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
   - center: {x: 0, y: 0, z: 0}
     size: 0
     gridPoint: {fileID: 0}
     isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
   - center: {x: 0, y: 0, z: 0}
     size: 0
     gridPoint: {fileID: 0}
     isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
   - center: {x: 0, y: 0, z: 0}
     size: 0
     gridPoint: {fileID: 0}
     isEmpty: 0
+    isFullWall: 0
+    isHoldingSecondFloor: 0
   animationSpeed: 0.5
   objectContainer: {fileID: 0}
 --- !u!114 &4699433971358121066
@@ -938,6 +983,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects: []
+--- !u!114 &-5217146200671819239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8121644503736600975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508fa09da7a8c8b498e9a7f777fba000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  haveLOD: 1
+  Model_LOD1: {fileID: 2874622554574051187, guid: 887c15268dfb6a8428570617023bc7d4,
+    type: 3}
+  Model_LOD2: {fileID: 7061507287271120298, guid: 696e6973e378f434c8f49f36bfad9b97,
+    type: 3}
+  Model_LOD3: {fileID: 2419431401585631392, guid: 7f5c4d1ca56dbfa409a09af712b57dfa,
+    type: 3}
 --- !u!1 &8464806592709772164
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,6 +1063,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1106,6 +1171,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

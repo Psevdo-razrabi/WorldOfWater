@@ -719,6 +719,7 @@
     "m_OutputNode": {
         "m_Id": ""
     },
+    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "ceb6f564732d4a96b499f6c112a3b840"
@@ -2153,7 +2154,7 @@
     "m_Title": "Sample",
     "m_Position": {
         "x": -1219.0,
-        "y": -554.0000610351563
+        "y": -554.0
     }
 }
 
@@ -2523,8 +2524,8 @@
     "m_ObjectId": "a3c36f7714b44159848b01d26de9c408",
     "m_Title": "Sample",
     "m_Position": {
-        "x": 10.0,
-        "y": 10.0
+        "x": -1217.0,
+        "y": -246.0
     }
 }
 
@@ -2827,7 +2828,7 @@
     "m_ObjectId": "b750b43c483a42678084f120296cad30",
     "m_Title": "Sample",
     "m_Position": {
-        "x": -1218.9998779296875,
+        "x": -1219.0,
         "y": -1554.0
     }
 }
@@ -2934,10 +2935,10 @@
         "w": 1.0
     },
     "m_DefaultValue": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0,
+        "w": 1.0
     },
     "m_Labels": []
 }
@@ -3167,6 +3168,7 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_DisableTint": false,
     "m_AdditionalMotionVectorMode": 0,
     "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
@@ -3608,8 +3610,8 @@
     "m_ObjectId": "eb21f44bba1c468fadf3c74fe84bb217",
     "m_Title": "Sample",
     "m_Position": {
-        "x": -1220.9998779296875,
-        "y": -1212.2008056640625
+        "x": -1221.0,
+        "y": -1212.0
     }
 }
 

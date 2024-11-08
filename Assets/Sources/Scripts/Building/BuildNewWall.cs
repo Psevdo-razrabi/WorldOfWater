@@ -1,224 +1,223 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class BuildNewWall : MonoBehaviour
+public class BuildNewWall : Build, IBuild
 {
-    [Header("Walls preview set")]
-    [SerializeField] GameObject[] wallsPrefab;
-    [SerializeField] GameObject objectPool;
-    [SerializeField] Material newMaterial;
-    [SerializeField] Color colorCanBuild, colorCantBuild;
-    [SerializeField] LayerMask layerMaskForBaking, floorLayerForBaking;
+    private List<CreateGrid> closestPlatformsToPlayer = new List<CreateGrid>();
 
 
-    [Header("Raycast set")]
-    [SerializeField] float rayDistance;
-    [SerializeField] LayerMask layerMaskForRaycast;
-    [Header("Animation set")]
-    [SerializeField] bool isAnimate;
-    [SerializeField] float animationSpeed;
-
-
-
-    [SerializeField] List<GameObject> wallsPreview = new List<GameObject>();
-    int selectedWallObject;
-    List<CreateGrid> closestPlatformToPlayer = new List<CreateGrid>();
-
-    [SerializeField] GameObject currentWallPreview;
-
-    void Start()
+    private void Start()
     {
-        BakeWallsToPreview();
+        Bake(bakeParams);
     }
 
-    void BakeWallsToPreview()
+    public void Build(BuildParams buildParams)
     {
-        for(int i = 0; i < wallsPrefab.Length; i++)
+        UpdatePreviewPositionAndRotation();
+        List<CreateGrid> currentClosestPlatforms = buildParams.ClosestPlatformsToPlayer;
+
+        HandlePlatformExit(currentClosestPlatforms);
+        if (currentClosestPlatforms == null)
         {
-            GameObject newPreviewObject = Instantiate(wallsPrefab[i], Vector3.zero, Quaternion.identity);
-            newPreviewObject.SetActive(false);
-            newPreviewObject.transform.SetParent(objectPool.transform);
-            PreviewObject previewObject = newPreviewObject.AddComponent<PreviewObject>();
-            previewObject.newMaterial = newMaterial;
-            previewObject.colorCanBuild = colorCanBuild;
-            previewObject.colorCantBuild = colorCantBuild;
-            previewObject.BakePrefab();
-            Rigidbody rigidbody = newPreviewObject.AddComponent<Rigidbody>();
-            rigidbody.isKinematic = false;
-            rigidbody.useGravity = false;
-            rigidbody.freezeRotation = true;
-            BoxCollider[] boxColliders = previewObject.GetComponents<BoxCollider>();
-            foreach(BoxCollider boxCollider in boxColliders)
-            {
-                boxCollider.isTrigger = true;
-            }
-            DetectSimilarObjectsInCollider detectSimilarObjectsInCollider = newPreviewObject.AddComponent<DetectSimilarObjectsInCollider>();
-            detectSimilarObjectsInCollider.layerMask = layerMaskForBaking;
-            detectSimilarObjectsInCollider.floorLayer = floorLayerForBaking;
-            wallsPreview.Add(newPreviewObject);
+            HandleNoPlatforms();
+            return;
+        }
+
+        HandlePlatformEntry(currentClosestPlatforms);
+        UpdateCurrentPreview();
+
+        if (TryGetRaycastHit(out RaycastHit hit))
+        {
+            HandleRaycastHit(hit, currentClosestPlatforms);
+        }
+        else
+        {
+            HandleNoHit();
         }
     }
 
-    public void Build(List<CreateGrid> closestPlatformToPlayer)
+    private void HandlePlatformExit(List<CreateGrid> currentClosestPlatforms)
     {
-        if(this.closestPlatformToPlayer != null && this.closestPlatformToPlayer != closestPlatformToPlayer)
+        if(closestPlatformsToPlayer != null && closestPlatformsToPlayer != currentClosestPlatforms)
         {
-            foreach(CreateGrid platform in this.closestPlatformToPlayer)
+            foreach(CreateGrid platform in closestPlatformsToPlayer)
+            {
                 platform.ExitBuildMode();
+            }
         }
-        this.closestPlatformToPlayer = closestPlatformToPlayer;
-
-        foreach(CreateGrid platform in closestPlatformToPlayer)
-            platform.EnterBuildMode();
-
-        ScrollWallsWithMouseWheel();
-
-
-        if(currentWallPreview != null && currentWallPreview != wallsPrefab[selectedWallObject])
-            currentWallPreview.SetActive(false);
-        currentWallPreview = wallsPreview[selectedWallObject];
-        currentWallPreview.SetActive(true);
-
-        RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, rayDistance, layerMaskForRaycast))
-        {
-            float minDistance = float.MaxValue; 
-            GridPiece closestGridPiece = null;
-            CreateGrid closestPlatformToCursor = closestPlatformToPlayer[0];
-            foreach(CreateGrid platform in closestPlatformToPlayer)
-            {
-                float distance = Vector3.Distance(hit.point, platform.GetClosestPoint(hit.point).center);
-                if(distance < minDistance)
-                {
-                    minDistance = distance;
-                    closestGridPiece = platform.GetClosestPoint(hit.point);
-                    closestPlatformToCursor = platform;
-                }
-            }
-
-            if(currentWallPreview.transform.position != closestGridPiece.center)
-            {
-                currentWallPreview.transform.position = closestGridPiece.center;
-                currentWallPreview.GetComponent<DetectSimilarObjectsInCollider>().ClearList();
-            }
-            RotateSelectedWallWithMouse(currentWallPreview.transform);
-
-            if(closestGridPiece.isEmpty && !currentWallPreview.GetComponent<DetectSimilarObjectsInCollider>().isDetected && CanBuildMultiCellBuilding())
-            {
-                currentWallPreview.GetComponent<PreviewObject>().CanBuild();
-                if(Input.GetMouseButtonDown(0))
-                {
-                    GameObject newWall = Instantiate(wallsPrefab[selectedWallObject], currentWallPreview.transform.position, currentWallPreview.transform.rotation);
-                    Destroyable destroyable = newWall.GetComponent<Destroyable>();
-                    newWall.transform.SetParent(closestPlatformToCursor.transform);
-
-                    GetGridPoints getGridPoints = currentWallPreview.GetComponent<GetGridPoints>();
-                    if(getGridPoints)
-                    {
-                        destroyable.attachedGridPiece.Clear();
-                        foreach(GridPiece gridPiece in getGridPoints.points)
-                        {
-                            gridPiece.isEmpty = false;
-                            destroyable.attachedGridPiece.Add(gridPiece);
-                        }
-                    }
-                    else
-                    {
-                        destroyable.attachedGridPiece.Add(closestGridPiece);
-                        closestGridPiece.isEmpty = false;
-                    }
-                    closestPlatformToCursor.GetComponent<ObjectContainer>().AddObject(newWall);
-                    destroyable.objectContainer = closestPlatformToCursor.GetComponent<ObjectContainer>();
-                    if(isAnimate)
-                    {
-                        AnimateSpawn(newWall);
-                    }
-                }
-
-            }
-            else
-            {
-                currentWallPreview.GetComponent<PreviewObject>().CantBuild();
-            }
-
-        }
-        else
-        {
-            currentWallPreview.SetActive(false);
-        }
+        closestPlatformsToPlayer = currentClosestPlatforms;
     }
 
-    bool CanBuildMultiCellBuilding()
+    private void HandlePlatformEntry(List<CreateGrid> currentClosestPlatforms)
     {
-        GetGridPoints getGridPoints = currentWallPreview.GetComponent<GetGridPoints>();
-        if(getGridPoints != null)
+        foreach(CreateGrid platform in currentClosestPlatforms)
         {
-            return getGridPoints.canBuild;
-        }
-        else
-        {
-            return true;
+            platform.EnterBuildMode();
         }
     }
 
-    void AnimateSpawn(GameObject obj)
+    private void HandleNoPlatforms()
+    {
+        if(currentPreview != null)
+        {
+            currentPreview.SetActive(false);
+        }
+        Crosshair.Instance.SetState(Crosshair.State.CantInteract);
+    }
+
+    private void UpdateCurrentPreview()
+    {
+        if (currentPreview != null && currentPreview != bakeParams.prefabs[selectedObject])
+        {
+            currentPreview.SetActive(false);
+        }
+        currentPreview = previews[selectedObject];
+        currentPreview.SetActive(true);
+    }
+
+    
+
+    private void HandleRaycastHit(RaycastHit hit, List<CreateGrid> currentClosestPlatforms)
+    {
+        GridPiece closestGridPiece = GetClosestGridPiece(hit, currentClosestPlatforms);
+
+
+        if (currentPreview.transform.position != closestGridPiece.center)
+        {
+            currentPreview.transform.position = closestGridPiece.center;
+            currentPreview.GetComponent<DetectSimilarObjectsInCollider>().ClearList();
+        }
+
+        if (CanBuildAtPosition(closestGridPiece))
+        {
+            HandleCanBuild(closestGridPiece, currentClosestPlatforms);
+        }
+        else
+        {
+            HandleCantBuild();
+        }
+    }
+
+    private GridPiece GetClosestGridPiece(RaycastHit hit, List<CreateGrid> currentClosestPlatforms)
+    {
+        float minDistance = float.MaxValue;
+        GridPiece closestGridPiece = null;
+
+        foreach (CreateGrid platform in currentClosestPlatforms)
+        {
+            float distance = Vector3.Distance(hit.point, platform.GetClosestPoint(hit.point).center);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestGridPiece = platform.GetClosestPoint(hit.point);
+            }
+        }
+
+        return closestGridPiece;
+    }
+
+    private bool CanBuildAtPosition(GridPiece closestGridPiece)
+    {
+        return closestGridPiece.isEmpty && 
+               !currentPreview.GetComponent<DetectSimilarObjectsInCollider>().isDetected && 
+               CanBuildMultiCellBuilding();
+    }
+
+    private void HandleCanBuild(GridPiece closestGridPiece, List<CreateGrid> currentClosestPlatforms)
+    {
+        currentPreview.GetComponent<PreviewObject>().CanBuild();
+        Crosshair.Instance.SetState(Crosshair.State.CanInteract);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            InstantiateWall(closestGridPiece, currentClosestPlatforms);
+        }
+    }
+
+    private void InstantiateWall(GridPiece closestGridPiece, List<CreateGrid> currentClosestPlatforms)
+    {
+        GameObject newWall = Instantiate(bakeParams.prefabs[selectedObject], currentPreview.transform.position, currentPreview.transform.rotation);
+        Destroyable destroyable = newWall.GetComponent<Destroyable>();
+
+        GetGridPoints getGridPoints = currentPreview.GetComponent<GetGridPoints>();
+        if (getGridPoints)
+        {
+            destroyable.attachedGridPiece.Clear();
+            foreach (GridPiece gridPiece in getGridPoints.points)
+            {
+                gridPiece.isEmpty = false;
+                destroyable.attachedGridPiece.Add(gridPiece);
+            }
+        }
+        else
+        {
+            destroyable.attachedGridPiece.Add(closestGridPiece);
+            closestGridPiece.isEmpty = false;
+        }
+
+        CreateGrid closestPlatformToCursor = currentClosestPlatforms[0];
+        closestPlatformToCursor.GetComponent<ObjectContainer>().AddObject(newWall);
+        destroyable.objectContainer = closestPlatformToCursor.GetComponent<ObjectContainer>();
+        GridPointsAnimation.Instance.SetPlatformsAndStart(currentClosestPlatforms, closestGridPiece);
+
+        if (isAnimate)
+        {
+            AnimateSpawn(newWall);
+        }
+    }
+
+    private void HandleCantBuild()
+    {
+        currentPreview.GetComponent<PreviewObject>().CantBuild();
+        Crosshair.Instance.SetState(Crosshair.State.CantInteract);
+    }
+
+    private void HandleNoHit()
+    {
+        currentPreview.SetActive(false);
+        Crosshair.Instance.SetState(Crosshair.State.CantInteract);
+    }
+
+    private bool CanBuildMultiCellBuilding()
+    {
+        GetGridPoints getGridPoints = currentPreview.GetComponent<GetGridPoints>();
+        return getGridPoints == null || getGridPoints.canBuild;
+    }
+
+    private void AnimateSpawn(GameObject obj)
     {
         Vector3 initScale = obj.transform.localScale;
         obj.transform.localScale = initScale / 2;
         obj.transform.DOScale(initScale, animationSpeed).SetEase(Ease.OutBack);
     }
 
-
-    // temporary
-    void ScrollWallsWithMouseWheel()
+    public override void CancelBuild()
     {
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        if(!Input.GetKey(KeyCode.LeftControl)) return;
-        if(scrollInput > 0f)
+        if (closestPlatformsToPlayer != null)
         {
-            selectedWallObject++;
-        }
-        if(scrollInput < 0f)
-        {
-            selectedWallObject--;
+            if (currentPreview != null)
+            {
+                currentPreview.SetActive(false);
+                currentPreview.GetComponent<DetectSimilarObjectsInCollider>().ClearList();
+            }
+
+            foreach (CreateGrid platform in closestPlatformsToPlayer)
+            {
+                platform.ExitBuildMode();
+            }
+
+            selectedObject = 0;
         }
 
-        if(selectedWallObject < 0)
-        {
-            selectedWallObject = wallsPrefab.Length - 1;
-        }
-        else if(selectedWallObject > wallsPrefab.Length - 1)
-        {
-            selectedWallObject = 0;
-        }
+        Crosshair.Instance.SetState(Crosshair.State.Default);
     }
 
-
-    void RotateSelectedWallWithMouse(Transform rotateTransform)
+    public override void UpdatePreviewPositionAndRotation()
     {
-        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        if(Input.GetKey(KeyCode.LeftControl)) return;
-        if(scrollInput > 0f)
+        if(currentPreview != null)
         {
-            rotateTransform.rotation = Quaternion.Euler(0, rotateTransform.rotation.eulerAngles.y + 90, 0);
+            RotatePreviewWithMouse(currentPreview.transform);
         }
-        if(scrollInput < 0f)
-        {
-            rotateTransform.rotation = Quaternion.Euler(0, rotateTransform.rotation.eulerAngles.y - 90, 0);
-        }
-        if(scrollInput != 0)
-        {
-            currentWallPreview.GetComponent<DetectSimilarObjectsInCollider>().ClearList();
-        }
-    }
-    public void CancelBuild()
-    {
-        currentWallPreview.SetActive(false);
-        currentWallPreview.GetComponent<DetectSimilarObjectsInCollider>().ClearList();
-        foreach(CreateGrid platform in this.closestPlatformToPlayer)
-            platform.ExitBuildMode();
     }
 }
