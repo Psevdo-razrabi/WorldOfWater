@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Editor/ModifierUtility.cs.meta
 guid: e79fcbba9d695e540aca7087556cc6a1
 timeCreated: 1447713277
+========
+guid: ef184494de3501f4ca1c8d8839a36f11
+timeCreated: 1534021412
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/RealToon/RealToon Tools/CustomShadowResolution.cs.meta
 licenseType: Store
 MonoImporter:
   serializedVersion: 2

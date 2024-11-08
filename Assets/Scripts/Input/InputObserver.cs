@@ -1,9 +1,8 @@
 ﻿using System;
 using UniRx;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Input
+namespace NewInput
 {
 public class InputObserver
     {

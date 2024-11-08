@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Editor.meta
 guid: 466674f8b09521f419da6808d81cbb77
 folderAsset: yes
 timeCreated: 1447151234
+========
+guid: faeff1c229edd844db97efa9068e8296
+folderAsset: yes
+timeCreated: 1527924508
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/RealToon/RealToon Tools/FrameByFrameRendering.meta
 licenseType: Store
 DefaultImporter:
   userData: 

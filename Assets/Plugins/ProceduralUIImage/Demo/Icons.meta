@@ -1,9 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons.meta
 guid: ab629d94d0705984ab4964dd68ca8c26
 folderAsset: yes
 timeCreated: 1448405161
 licenseType: Store
+========
+guid: bf2b09552ecf8f04294975e07f8da67e
+folderAsset: yes
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/Starter Assets/TutorialInfo/Icons.meta
 DefaultImporter:
+  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

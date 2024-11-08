@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Input
+namespace NewInput
 {
     public class PlayerInputReader : PlayerInput.IPlayerActions, IInputReader
     {

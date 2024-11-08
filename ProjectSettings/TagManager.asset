@@ -3,22 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - GridPoint
+  - CinemachineTarget
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
   - Water
   - UI
   - UiItem
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Platform
+  - PreviewObject
+  - Player
+  - Building
+  - Wall
+  - GridPoint
+  - VectorUI
+  - Door
   - 
   - 
   - 
@@ -40,6 +42,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: VectorUI
+    uniqueID: 2578047679
     locked: 0
   m_RenderingLayers:
   - Default

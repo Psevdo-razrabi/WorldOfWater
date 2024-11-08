@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Game.unity.meta
 guid: e1b2acb9e1d7e2c4f9df0436064f9de5
+========
+guid: bfbee14cc489f774ab4c1bd3602b706e
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/Sources/Scenes/SampleSceneHominizm.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

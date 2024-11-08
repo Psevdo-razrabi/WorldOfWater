@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Input
+namespace NewInput
 {
     public interface IInputReader
     {

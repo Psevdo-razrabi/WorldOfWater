@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons/arrow_left.png.meta
 guid: ffb02d288a83f3d4f9ec608f2dc6c1bb
+========
+guid: bff03ed78834d1f479ec42b01dd5b05f
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/_MK/MKToon/Examples/Textures/FireSharp.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -24,8 +28,11 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons/arrow_left.png.meta
   vTOnly: 0
   ignoreMipmapLimit: 0
+========
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/_MK/MKToon/Examples/Textures/FireSharp.png.meta
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -34,6 +41,7 @@ TextureImporter:
   maxTextureSize: 256
   textureSettings:
     serializedVersion: 2
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons/arrow_left.png.meta
     filterMode: 1
     aniso: 16
     mipBias: 0
@@ -41,6 +49,15 @@ TextureImporter:
     wrapV: 1
     wrapW: 1
   nPOTScale: 0
+========
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 1
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/_MK/MKToon/Examples/Textures/FireSharp.png.meta
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
@@ -54,18 +71,24 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons/arrow_left.png.meta
   textureType: 8
+========
+  textureType: 0
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/_MK/MKToon/Examples/Textures/FireSharp.png.meta
   textureShape: 1
   singleChannelComponent: 0
-  flipbookRows: 1
-  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons/arrow_left.png.meta
   ignorePngGamma: 0
   applyGammaDecoding: 1
   swizzle: 50462976
   cookieLightType: 1
+========
+  applyGammaDecoding: 0
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/_MK/MKToon/Examples/Textures/FireSharp.png.meta
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -94,8 +117,25 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons/arrow_left.png.meta
     buildTarget: WebGL
     maxTextureSize: 256
+========
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/_MK/MKToon/Examples/Textures/FireSharp.png.meta
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -119,8 +159,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Demo/Icons/arrow_left.png.meta
     nameFileIdTable: {}
   mipmapLimitGroupName: 
+========
+  spritePackingTag: 
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/_MK/MKToon/Examples/Textures/FireSharp.png.meta
   pSDRemoveMatte: 0
   userData: 
   assetBundleName: 

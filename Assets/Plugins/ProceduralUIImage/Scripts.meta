@@ -1,9 +1,15 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Plugins/ProceduralUIImage/Scripts.meta
 guid: 5f008a1827e8fbd4fa10f759de61e812
 folderAsset: yes
 timeCreated: 1447713952
 licenseType: Store
+========
+guid: 441babf2b11823648b9c2513b95c445a
+folderAsset: yes
+>>>>>>>> f6679fd956dc7711f1106435a12085cec4af5b99:Assets/Scripts.meta
 DefaultImporter:
+  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -1,5 +1,5 @@
 ﻿using Helpers;
-using Input;
+using NewInput;
 using Sync;
 using UnityEngine;
 using Zenject;
