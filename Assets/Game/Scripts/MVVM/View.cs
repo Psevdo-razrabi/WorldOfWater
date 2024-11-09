@@ -1,5 +1,4 @@
-﻿using Game.MVVM;
-using R3;
+﻿using R3;
 using System;
 using UnityEngine;
 using VContainer;
@@ -12,7 +11,7 @@ namespace Game.MVVM
         protected Binder Binder;
 
         [Inject]
-        private void Construct(ViewModelFactory viewModelFactory)
+        public void Construct(ViewModelFactory viewModelFactory)
         {
             ViewModel = viewModelFactory.Create<T>();
             Binder = ViewModel.Binder;

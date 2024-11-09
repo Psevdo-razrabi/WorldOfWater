@@ -30,29 +30,13 @@
   <component name="ChangeListManager">
     <list default="true" id="4fd2ae46-a785-4153-8fda-838c87ea9a5d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example URP Asset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example URP Asset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/---GAMEPLAY---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/---GAMEPLAY---.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Services/LobbiesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Services/LobbiesService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Particle based).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Particle based).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Trail based).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Trail based).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Ripple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Ripple.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Wave.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Wave.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Directional Ripples.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Directional Ripples.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Foam Trail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Foam Trail.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Impact Ripple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Impact Ripple.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Raindrops.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Raindrops.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Stationary.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Stationary.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Trail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Trail.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Whirlpool.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Whirlpool.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Wind Gust.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Wind Gust.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Waterfall Impact Ripples.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Waterfall Impact Ripples.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/StylizedWater3_Ocean.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/StylizedWater3_Ocean.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Falling boxes.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Falling boxes.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Random Spheres.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Random Spheres.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/MVVM/View.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/MVVM/View.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/LobbyViewModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/URP-Performant.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/MenuPanel/MenuPanelViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sources/Scripts/UI/Computer/MenuPanel/MenuPanelViewModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ScriptableBuildPipeline.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ScriptableBuildPipeline.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +59,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/SceneManagement/ISceneManagerHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/SceneManagement/NetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/Transports/UTP/UnityTransport.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal/Editor/ShaderBuildPreprocessor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/ILobbyService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/Models/Allocation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/Models/JoinAllocation.cs" root0="SKIP_HIGHLIGHTING" />
@@ -94,6 +79,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/4d/db2e5316/Action`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/4e/29bf1000/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/66/98eafd1b/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/7b/925e5332/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/ad/131aff73/IProgress`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/1a/981d3320/Object.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/4d/ddf4a4e4/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -105,6 +91,9 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1349e8da9c0471283f06e515075baad91400/97/1bf59225/Disposable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7cc3521ec9c4bafa844ba0734eb58739a800/ff/b527397b/SceneEventProgressStatus.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -201,6 +190,7 @@
       <workItem from="1730623592051" duration="3340000" />
       <workItem from="1730833189025" duration="12191000" />
       <workItem from="1730994947238" duration="20927000" />
+      <workItem from="1731145312893" duration="9642000" />
     </task>
     <servers />
   </component>
@@ -227,37 +217,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldViewModel.cs</url>
-          <line>32</line>
-          <properties documentPath="C:\UnityProjects\Spase-Simulator\Assets\Game\Scripts\UI\Menu\JoinWorldViewModel.cs" containingFunctionPresentation="Method 'OnJoined'">
-            <startOffsets>
-              <option value="913" />
-            </startOffsets>
-            <endOffsets>
-              <option value="951" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldView.cs</url>
-          <line>16</line>
-          <properties documentPath="C:\UnityProjects\Spase-Simulator\Assets\Game\Scripts\UI\Menu\JoinWorldView.cs" containingFunctionPresentation="Method 'Open'">
-            <startOffsets>
-              <option value="476" />
-            </startOffsets>
-            <endOffsets>
-              <option value="514" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

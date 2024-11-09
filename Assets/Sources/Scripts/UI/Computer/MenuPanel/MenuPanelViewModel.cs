@@ -27,8 +27,8 @@ namespace Game.MVVM.Computer
         private void OnClickedContractsButton()
         {
             Binder.TriggerView();
-/*            _viewsService.Close();
-            _viewsService.Open(ViewIds.CONTRACTS);*/
+            _viewsService.Close();
+            _viewsService.Open<DisplayContainerView>();
         }
 
         private void OnClickedMapButton()
