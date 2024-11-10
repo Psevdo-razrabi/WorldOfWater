@@ -248,16 +248,18 @@ namespace StylizedWater3
             //Smooth transition to new normal of this frame, particularly reduces jittering on rigid bodies
             if (smoothing)
             {
-                m_targetNormal = Vector3.Lerp(prevNormal, normal, Time.smoothDeltaTime);
-                prevNormal = m_targetNormal;
-
                 m_targetHeight = Mathf.Lerp(prevHeight, height, Time.deltaTime);
                 prevHeight = m_targetHeight;
+                
+                m_targetNormal = Vector3.Lerp(prevNormal, normal, Time.smoothDeltaTime);
+                prevNormal = m_targetNormal;
             }
             else
             {
-                m_targetNormal = normal;
+                prevHeight = height;
+                
                 m_targetHeight = height;
+                m_targetNormal = normal;
             }
             
             var position = this.transform.position;

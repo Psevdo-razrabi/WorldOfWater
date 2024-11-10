@@ -64,9 +64,6 @@ namespace StylizedWater3
         private static readonly int _WaterHeightCoords = Shader.PropertyToID(CoordsName);
         public static readonly int _WaterHeightPrePassAvailable = Shader.PropertyToID("_WaterHeightPrePassAvailable");
 
-        private RenderTextureDescriptor renderTargetDescriptor;
-        private RTHandle renderTarget;
-
         private int resolution;
         private int m_resolution;
         
@@ -75,7 +72,7 @@ namespace StylizedWater3
         private RendererListParams rendererListParams;
         private RendererList rendererList;
 
-        public class RenderTargetDebugContext : DebugInspector.RenderTarget
+        public sealed class RenderTargetDebugContext : RenderTargetDebugger.RenderTarget
         {
             public RenderTargetDebugContext()
             {
@@ -120,13 +117,7 @@ namespace StylizedWater3
             var renderingData = frameContext.Get<UniversalRenderingData>();
             var cameraData = frameContext.Get<UniversalCameraData>();
             var lightData = frameContext.Get<UniversalLightData>();
-
-            if (resolution != m_resolution)
-            {
-                renderTargetDescriptor = new RenderTextureDescriptor(resolution, resolution, GraphicsFormat.R16G16_SFloat, 0);
-            }
-            m_resolution = resolution;
-
+            
             DrawingSettings drawingSettings = CreateDrawingSettings(m_ShaderTagIdList, renderingData, cameraData, lightData, SortingCriteria.RenderQueue | SortingCriteria.SortingLayer | SortingCriteria.CommonTransparent);
             drawingSettings.perObjectData = PerObjectData.None;
 
@@ -137,12 +128,21 @@ namespace StylizedWater3
             using(var builder = renderGraph.AddRasterRenderPass<PassData>("Water Height Pre-pass", out var passData))
             {
                 //Render target
+                RenderTextureDescriptor renderTargetDescriptor = new RenderTextureDescriptor(resolution, resolution, GraphicsFormat.R16G16_SFloat, 0);
                 passData.renderTarget = UniversalRenderer.CreateRenderGraphTexture(renderGraph, renderTargetDescriptor, BufferName, true, FilterMode.Bilinear, TextureWrapMode.Clamp);
                 //Store render target in RG, so it can be retrieved in other passes
                 FrameData frameData = frameContext.GetOrCreate<FrameData>();
                 frameData._WaterHeightBuffer = passData.renderTarget;
                 //Mark the texture as readable
                 //builder.UseTexture(passData.renderTarget, AccessFlags.ReadWrite);
+                
+                #if UNITY_EDITOR || DEVELOPMENT_BUILD
+                if (RenderTargetDebugger.InspectedProperty == _WaterHeightBuffer)
+                {
+                    StylizedWaterRenderFeature.DebugData debugData = frameContext.Get<StylizedWaterRenderFeature.DebugData>();
+                    debugData.currentHandle = passData.renderTarget;
+                }
+                #endif
                 
                 passData.rendererListHandle = renderGraph.CreateRendererList(rendererListParams);
 
@@ -203,8 +203,6 @@ namespace StylizedWater3
             Shader.SetGlobalVector(_WaterHeightCoords, Vector4.zero);
             Shader.SetGlobalInt(_WaterHeightPrePassAvailable, 0);
             Shader.DisableKeyword(ShaderParams.Keywords.WaterHeightPass);
-            
-            RTHandles.Release(renderTarget);
         }
         
 #pragma warning disable CS0672

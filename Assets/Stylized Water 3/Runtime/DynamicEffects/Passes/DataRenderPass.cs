@@ -25,12 +25,7 @@ namespace StylizedWater3.DynamicEffects
 
         private int resolution;
         private static int m_resolution;
-
-        private RenderTextureDescriptor renderTargetDescriptor;
-        private RTHandle renderTarget;
-        //Silly temporary measure for non-RenderGraph fallback
-        internal static RTHandle s_renderTarget;
-
+        
         private const string WaterDynamicEffectsBufferName = "_WaterDynamicEffectsBuffer";
         public static readonly int _WaterDynamicEffectsBufferID = Shader.PropertyToID(WaterDynamicEffectsBufferName);
         private const string WaterDynamicEffectsCoordsName = "_WaterDynamicEffectsCoords";
@@ -53,7 +48,7 @@ namespace StylizedWater3.DynamicEffects
 
         private StylizedWaterRenderFeature.DynamicEffectsSettings settings;
         
-        public class RenderTargetDebugContext : DebugInspector.RenderTarget
+        public class RenderTargetDebugContext : RenderTargetDebugger.RenderTarget
         {
             public RenderTargetDebugContext()
             {
@@ -94,24 +89,6 @@ namespace StylizedWater3.DynamicEffects
             public PlanarProjection planarProjection;
             public Vector4 rendererCoords;
         }
-
-        private bool RenderTargetNeedsReAlloc()
-        {
-            var state = false;
-
-            if (renderTargetDescriptor.width == 0)
-            {
-                return true;
-            }
-            
-            if (resolution != m_resolution)
-            {
-                m_resolution = resolution;
-                state = true;
-            }
-
-            return state;
-        }
         
         public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameContext)
         {
@@ -121,10 +98,7 @@ namespace StylizedWater3.DynamicEffects
             
             using (var builder = renderGraph.AddRasterRenderPass<PassData>(profilerTag, out var passData))
             {
-                if (RenderTargetNeedsReAlloc())
-                {
-                    renderTargetDescriptor = new RenderTextureDescriptor(resolution, resolution, GraphicsFormat.R16G16B16A16_SFloat, (int)DepthBits.None);
-                }
+                RenderTextureDescriptor renderTargetDescriptor = new RenderTextureDescriptor(resolution, resolution, GraphicsFormat.R16G16B16A16_SFloat, (int)DepthBits.None);
                 
                 DrawingSettings drawingSettings = CreateDrawingSettings(m_ShaderTagIdList, renderingData, cameraData, lightData, SortingCriteria.RenderQueue | SortingCriteria.SortingLayer | SortingCriteria.CommonTransparent);
                 drawingSettings.perObjectData = PerObjectData.None;
@@ -135,6 +109,15 @@ namespace StylizedWater3.DynamicEffects
                 
                 //Render target
                 passData.renderTarget = UniversalRenderer.CreateRenderGraphTexture(renderGraph, renderTargetDescriptor, WaterDynamicEffectsBufferName, true, FilterMode.Bilinear, TextureWrapMode.Clamp);
+                
+                //Seeing a compile error here? Update to Stylized Water v3.0.1+
+                #if UNITY_EDITOR || DEVELOPMENT_BUILD
+                if (RenderTargetDebugger.InspectedProperty == _WaterDynamicEffectsBufferID)
+                {
+                    StylizedWaterRenderFeature.DebugData debugData = frameContext.Get<StylizedWaterRenderFeature.DebugData>();
+                    debugData.currentHandle = passData.renderTarget;
+                }
+                #endif
                 
                 //Set up access for the height to normal pass
                 DynamicEffectsData data = frameContext.GetOrCreate<DynamicEffectsData>();
@@ -191,7 +174,6 @@ namespace StylizedWater3.DynamicEffects
         {
             Shader.DisableKeyword(ShaderParams.Keywords.DynamicEffects);
             Shader.SetGlobalVector(_WaterDynamicEffectsCoords, Vector4.zero);
-            RTHandles.Release(renderTarget);
         }
         
 #pragma warning disable CS0672

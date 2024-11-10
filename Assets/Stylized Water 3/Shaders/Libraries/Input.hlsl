@@ -83,6 +83,7 @@ CBUFFER_START(UnityPerMaterial)
 	half _IntersectionDistortion;
 	half _IntersectionRippleDist;
 	half _IntersectionRippleStrength;
+	float _IntersectionRippleSpeed;
 	half _IntersectionClipping;
 	bool _IntersectionSharp;
 	float _IntersectionSpeed;

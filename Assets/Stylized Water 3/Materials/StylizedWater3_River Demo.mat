@@ -53,6 +53,7 @@ Material:
     - _EdgeFade: 4
     - _IntersectionFoamOn: 0
     - _VertexColorDepth: 1
+    - _VertexColorFoam: 1
     - _WaveHeight: 0.25
     - _WaveNormalStr: 32
     m_Colors:

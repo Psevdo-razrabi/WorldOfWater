@@ -49,11 +49,8 @@ MonoBehaviour:
   sortingLayer: 0
   templateMaterial: {fileID: 2100000, guid: 12eaa93a19c95fa44b87902c14177480, type: 2}
   heightScale: 1
-  scaleHeightByTransform: 0
   foamAmount: 1
   normalStrength: 1
-  scaleNormalByHeight: 0
-  particleSystemRenderer: {fileID: 0}
 --- !u!96 &7777437526497805176
 TrailRenderer:
   serializedVersion: 3

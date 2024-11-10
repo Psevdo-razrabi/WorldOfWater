@@ -201,18 +201,19 @@ Material:
     - _GlossyReflections: 0
     - _HorizonDistance: 8
     - _IntersectionClipping: 0.706
-    - _IntersectionDistortion: 0.321
-    - _IntersectionFalloff: 0.945
+    - _IntersectionDistortion: 0
+    - _IntersectionFalloff: 1
     - _IntersectionFoamOn: 1
-    - _IntersectionLength: 3.62
-    - _IntersectionRippleDist: 16
-    - _IntersectionRippleStrength: 0.125
+    - _IntersectionLength: 3
+    - _IntersectionRippleDist: 32
+    - _IntersectionRippleSpeed: 3
+    - _IntersectionRippleStrength: 0.5
     - _IntersectionSharp: 1
     - _IntersectionSize: 0.944
     - _IntersectionSource: 0
-    - _IntersectionSpeed: 0.06999999
+    - _IntersectionSpeed: 0.1
     - _IntersectionStyle: 1
-    - _IntersectionTiling: 0.13999975
+    - _IntersectionTiling: 0.059999757
     - _IntersectionWaveDist: 33.28
     - _LightingMode: 2
     - _LightingOn: 1

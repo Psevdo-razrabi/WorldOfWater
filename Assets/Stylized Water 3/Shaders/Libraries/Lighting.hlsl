@@ -199,7 +199,7 @@ float3 ApplyLighting(inout SurfaceData surfaceData, inout float3 sceneColor, Lig
 	#endif
 	
 	uint pixelLightCount = GetAdditionalLightsCount();
-	#if _LIGHT_LAYERS && UNITY_VERSION >= 202220
+	#if _LIGHT_LAYERS
 	uint meshRenderingLayers = GetMeshRenderingLayer();
 	#endif
 
@@ -209,13 +209,10 @@ float3 ApplyLighting(inout SurfaceData surfaceData, inout float3 sceneColor, Lig
 	#endif
 	
 	LIGHT_LOOP_BEGIN(pixelLightCount)
-		#if UNITY_VERSION >= 202110 //URP 11+
-		Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowStrength.xxxx);	
-		#else
-		Light light = GetAdditionalLight(lightIndex, inputData.positionWS);
-		#endif
 
-		#if _LIGHT_LAYERS && UNITY_VERSION >= 202220
+		Light light = GetAdditionalLight(lightIndex, inputData.positionWS, shadowStrength.xxxx);	
+
+		#if _LIGHT_LAYERS
 		if (IsMatchingLightLayer(light.layerMask, meshRenderingLayers))
 		#endif
 		{
@@ -232,7 +229,7 @@ float3 ApplyLighting(inout SurfaceData surfaceData, inout float3 sceneColor, Lig
 			{
 				translucencyData.lightDir = light.direction;
 				translucencyData.lightColor = light.color * light.distanceAttenuation;
-				translucencyData.strength = translucencyStrength * light.shadowAttenuation;
+				translucencyData.strength = translucencyStrength * light.shadowAttenuation * (water.fog);
 				translucencyData.exponent = translucencyExp * light.distanceAttenuation;
 				
 				ApplyTranslucency(translucencyData, surfaceData.emission.rgb);
@@ -240,7 +237,7 @@ float3 ApplyLighting(inout SurfaceData surfaceData, inout float3 sceneColor, Lig
 			#endif
 			#endif
 
-			#if UNITY_VERSION >= 202110 && _ADDITIONAL_LIGHT_SHADOWS //URP 11+
+			#if _ADDITIONAL_LIGHT_SHADOWS //URP 11+
 			AdjustShadowStrength(light, shadowStrength, vFace);
 			#endif
 

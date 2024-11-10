@@ -80,6 +80,7 @@ namespace StylizedWater3
         private MaterialProperty _IntersectionDistortion;
         private MaterialProperty _IntersectionRippleDist;
         private MaterialProperty _IntersectionRippleStrength;
+        private MaterialProperty _IntersectionRippleSpeed;
         private MaterialProperty _IntersectionSpeed;
 
         private MaterialProperty _FoamTex;
@@ -272,6 +273,7 @@ namespace StylizedWater3
             _IntersectionDistortion = FindProperty("_IntersectionDistortion", props);
             _IntersectionRippleDist = FindProperty("_IntersectionRippleDist", props);
             _IntersectionRippleStrength = FindProperty("_IntersectionRippleStrength", props);
+            _IntersectionRippleSpeed = FindProperty("_IntersectionRippleSpeed", props);
             _IntersectionSpeed = FindProperty("_IntersectionSpeed", props);
             
             _FoamTex = FindProperty("_FoamTex", props);
@@ -1297,6 +1299,7 @@ namespace StylizedWater3
                     
                     EditorGUILayout.LabelField("Ripples", EditorStyles.boldLabel);
                     UI.Material.DrawFloatTicker(_IntersectionRippleDist, "Frequency", "Distance between each ripples over the total intersection length");
+                    UI.Material.DrawFloatTicker(_IntersectionRippleSpeed,"Speed", "Speed at which the ripples move");
                     DrawShaderProperty(_IntersectionRippleStrength, new GUIContent("Strength", "Sets how much the ripples should be blended in with the effect"));
                 }
 

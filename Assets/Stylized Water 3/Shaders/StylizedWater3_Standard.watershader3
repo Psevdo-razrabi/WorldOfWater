@@ -78,6 +78,7 @@
 		_IntersectionSpeed("Speed multiplier", float) = 0.1
 		_IntersectionRippleDist("Ripple frequency", float) = 32
 		_IntersectionRippleStrength("Ripple Strength", Range(0 , 1)) = 0.5
+		_IntersectionRippleSpeed("Ripple Speed", float) = 2
         _IntersectionDistortion("Distortion", Range(0 , 1)) = 0.2
 
 		//Surface Foam

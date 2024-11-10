@@ -115,7 +115,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WaveProfile:
-        m_Texture: {fileID: 5393152077581806659, guid: 343e9ebae18bc0f48811edac300d64d0, type: 2}
+        m_Texture: {fileID: 5393152077581806659, guid: 1ca4610f5bf9e2f4bb39535503a79eeb, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -205,6 +205,7 @@ Material:
     - _IntersectionFoamOn: 0
     - _IntersectionLength: 1.53
     - _IntersectionRippleDist: 64
+    - _IntersectionRippleSpeed: 1
     - _IntersectionRippleStrength: 1
     - _IntersectionSharp: 1
     - _IntersectionSize: 0.944
@@ -295,10 +296,10 @@ Material:
     - _VertexColorWaveFlattening: 0
     - _WaveDistance: 0.97
     - _WaveDistortion: 0.5
-    - _WaveFrequency: 1
-    - _WaveHeight: 0.211
+    - _WaveFrequency: 2
+    - _WaveHeight: 1
     - _WaveMaxLayers: 64
-    - _WaveNormalStr: 0.3
+    - _WaveNormalStr: 3.9
     - _WaveSpeed: 0.7
     - _WaveSteepness: 1
     - _WaveTint: 0.0356

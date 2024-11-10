@@ -1,4 +1,18 @@
-﻿3.0.0
+﻿3.0.1
+
+• Updated to reflect changes in Stylized Water 3 v3.0.1
+
+Added:
+- Generic height modifier prefab effect
+
+Changed:
+- Shoreline Wave Spawner, added the option to hide the spawned objects
+
+Fixed:
+- Effect not updating while manipulating an object when Scale By Transform was enabled
+- Scale By Transform option not respective negative scale values
+
+3.0.0
 
 What’s new with Stylized Water 3?
 

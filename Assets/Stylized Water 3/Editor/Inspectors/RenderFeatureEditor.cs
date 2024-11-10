@@ -47,7 +47,7 @@ namespace StylizedWater3
                 }
                 if (GUILayout.Button(new GUIContent(" Debugger", EditorGUIUtility.IconContent("Profiler.Rendering").image, "Inspect the render buffer outputs")))
                 {
-                    RenderTargetInspector.Open();
+                    RenderTargetDebuggerWindow.Open();
                 }
                 
             }

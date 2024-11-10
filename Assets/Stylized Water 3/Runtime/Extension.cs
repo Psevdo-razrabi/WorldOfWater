@@ -9,5 +9,8 @@ namespace StylizedWater3
     {
         public string name;
         public string description;
+
+        public string version;
+        public string minBaseVersion;
     }
 }

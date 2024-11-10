@@ -51,6 +51,10 @@ namespace StylizedWater3
             UniversalLightData lightData = frameData.Get<UniversalLightData>();
             UniversalCameraData cameraData = frameData.Get<UniversalCameraData>();
             
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+            frameData.GetOrCreate<StylizedWaterRenderFeature.DebugData>();
+            #endif
+            
             using (var builder = renderGraph.AddRasterRenderPass<PassData>("Water Constants", out var passData, m_ProfilingSampler))
             {
                 passData.ssr = settings.screenSpaceReflectionSettings.allow;

@@ -1,12 +1,5 @@
 fileFormatVersion: 2
 guid: 8d49667ce8580d64184c2df696d1a2e0
-AssetOrigin:
-  serializedVersion: 1
-  productId: 287769
-  packageName: Stylized Water 3
-  packageVersion: 3.0.0
-  assetPath: Assets/Stylized Water 3/Models/LowPoly_Plane.watermesh
-  uploadId: 705002
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -18,8 +11,15 @@ ScriptedImporter:
   waterMesh:
     shape: 0
     scale: 100
-    vertexDistance: 1
+    vertexDistance: 8
     UVTiling: 1
     noise: 0
     boundsPadding: 4
-    mesh: {instanceID: 0}
+    mesh: {fileID: -8670151273213183110, guid: 8d49667ce8580d64184c2df696d1a2e0, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 287769
+  packageName: Stylized Water 3
+  packageVersion: 3.0.1
+  assetPath: Assets/Stylized Water 3/Models/LowPoly_Plane.watermesh
+  uploadId: 705985

@@ -6,6 +6,8 @@
 #ifndef WATER_COMMON_INCLUDED
 #define WATER_COMMON_INCLUDED
 
+#define SW_VERSION 301
+
 //As per the "Shader" section of the documentation, this is primarily used for synchronizing animations in networked applications.
 float _CustomTime;
 #define TIME_FRAG_INPUT _CustomTime > 0 ? _CustomTime : input.uv.z

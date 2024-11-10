@@ -1,12 +1,5 @@
 fileFormatVersion: 2
 guid: d0abf58b1088fc044aaa6d97c5d51d65
-AssetOrigin:
-  serializedVersion: 1
-  productId: 287769
-  packageName: Stylized Water 3
-  packageVersion: 3.0.0
-  assetPath: Assets/Stylized Water 3/Models/HighPoly_Plane.watermesh
-  uploadId: 705002
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -23,3 +16,10 @@ ScriptedImporter:
     noise: 0
     boundsPadding: 4
     mesh: {instanceID: 0}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 287769
+  packageName: Stylized Water 3
+  packageVersion: 3.0.1
+  assetPath: Assets/Stylized Water 3/Models/HighPoly_Plane.watermesh
+  uploadId: 705985

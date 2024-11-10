@@ -1,11 +1,25 @@
-3.0.0 (November 3 2024)
+3.0.1 (November 4th 2024)
+This version also requires updating the Dynamic Effects extension to v3.0.1
+
+Added:
+- Intersection Foam, parameter to control the ripple speed separately
+
+Changed:
+- Render target inspector is now functional again
+
+Fixed:
+- Dynamic Effects extension not installed automatically
+- Point/spot lights no longer affecting the water after a certain distance
+- Incorrect configuration on Waterfall particle prefabs
+
+3.0.0 (October 31st 2024)
 
 What's new?
 • Rewritten rendering code for Render Graph support
 • Revamped wave animations, allowing for various types of waves
 • Height Pre-pass, allows other shaders to read out the water surface height.
 • GPU-based height query system, making rivers and Dynamic Effects readable
-• Water decals, snaps textures onto the water (oil spills, weeds, targeting reticles)
+• Water decals, snaps textures onto the water (oil spills, weeds, targeting reticules)
 • Improved wave crest foam shading (min/max range + bubbles)
 • Ocean mesh component, 8x8km mesh with gradual vertex density
 • Improved support for RigidBodies for the Align To Water component

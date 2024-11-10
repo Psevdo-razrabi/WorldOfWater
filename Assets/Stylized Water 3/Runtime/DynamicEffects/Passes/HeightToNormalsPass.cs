@@ -31,7 +31,7 @@ namespace StylizedWater3.DynamicEffects
         private static readonly int _WaterDynamicEffectsNormalsID = Shader.PropertyToID(WaterDynamicEffectsNormalsName);
         private static readonly int _HeightToNormalParams = Shader.PropertyToID("_HeightToNormalParams");
 
-        public class RenderTargetDebugContext : DebugInspector.RenderTarget
+        public class RenderTargetDebugContext : RenderTargetDebugger.RenderTarget
         {
             public RenderTargetDebugContext()
             {
@@ -72,6 +72,7 @@ namespace StylizedWater3.DynamicEffects
                 {
                     return;
                 }
+                
                 passData.input = frameData.renderTarget;
                 
                 renderTargetDescriptor = new RenderTextureDescriptor(resolution, resolution, GraphicsFormat.R8G8_UNorm, 0)
@@ -81,7 +82,7 @@ namespace StylizedWater3.DynamicEffects
                 };
 
                 passData.renderTarget = UniversalRenderer.CreateRenderGraphTexture(renderGraph, renderTargetDescriptor, WaterDynamicEffectsNormalsName, true, FilterMode.Bilinear, TextureWrapMode.Clamp);
-
+                
                 //CreateRenderGraphTexture function does not respect mipmap settings. Extract TextureDesc, set values and recreate again
                 if (mipmaps)
                 {
@@ -90,6 +91,15 @@ namespace StylizedWater3.DynamicEffects
                     rgDesc.autoGenerateMips = true;
                     passData.renderTarget = renderGraph.CreateTexture(rgDesc);
                 }
+                
+                //Seeing a compile error here? Update to Stylized Water v3.0.1+
+                #if UNITY_EDITOR || DEVELOPMENT_BUILD
+                if (RenderTargetDebugger.InspectedProperty == _WaterDynamicEffectsNormalsID)
+                {
+                    StylizedWaterRenderFeature.DebugData debugData = frameContext.Get<StylizedWaterRenderFeature.DebugData>();
+                    debugData.currentHandle = passData.renderTarget;
+                }
+                #endif
 
                 passData.material = material;
                 

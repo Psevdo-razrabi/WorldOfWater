@@ -30,7 +30,6 @@ Material:
   - _INTERSECTIONSHARP_ON
   - _RECEIVEDYNAMICEFFECTS_ON
   - _SMOOTH_INTERSECTION
-  - _VERTEXCOLORFOAM_ON
   - _VERTEXCOLORWAVEFLATTENING_ON
   - _WORLDSPACEUV_ON
   - _ZCLIP_ON
@@ -176,6 +175,7 @@ Material:
     - _IntersectionFoamOn: 1
     - _IntersectionLength: 1.48
     - _IntersectionRippleDist: 64
+    - _IntersectionRippleSpeed: 2
     - _IntersectionRippleStrength: 0
     - _IntersectionSharp: 1
     - _IntersectionSource: 0
@@ -210,6 +210,7 @@ Material:
     - _RefractionOn: 1
     - _RefractionStrength: 0.346
     - _RiverModeOn: 1
+    - _ScreenSpaceReflectionsEnabled: 0
     - _ShadingMode: 1
     - _ShadowStrength: 1
     - _SlopeAngleFalloff: 25
@@ -240,10 +241,11 @@ Material:
     - _UnderwaterRefractionOffset: 0.2
     - _UnderwaterSurfaceSmoothness: 0.8
     - _VertexColorDepth: 0
-    - _VertexColorFoam: 1
+    - _VertexColorFoam: 0
     - _VertexColorWaveFlattening: 1
     - _WaveDistance: 0.679
     - _WaveDistortion: 0.5
+    - _WaveFrequency: 1
     - _WaveHeight: 0.274
     - _WaveMaxLayers: 16
     - _WaveNormalStr: 0.9

@@ -508,8 +508,8 @@ float4 ForwardPassFragment(Varyings input, FRONT_FACE_TYPE_REAL vertexFace : FRO
 	#endif
 	//interSecGradient = terrainDepth;
 	
-	water.intersection = SampleIntersection(uv.xy + (offsetVector * _IntersectionDistortion), (TIME * -_Direction) * _IntersectionSpeed,
-		_IntersectionTiling, interSecGradient, _IntersectionFalloff, _IntersectionRippleDist, _IntersectionRippleStrength, _IntersectionClipping, _IntersectionSharp) * _IntersectionColor.a;
+	water.intersection = SampleIntersection(uv.xy + (offsetVector * _IntersectionDistortion), (TIME * -_Direction),
+		_IntersectionTiling, interSecGradient, _IntersectionFalloff, _IntersectionSpeed, _IntersectionRippleDist, _IntersectionRippleStrength, _IntersectionRippleSpeed, _IntersectionClipping, _IntersectionSharp) * _IntersectionColor.a;
 
 	#if UNDERWATER_ENABLED
 	//Hide on backfaces
@@ -852,7 +852,7 @@ float4 ForwardPassFragment(Varyings input, FRONT_FACE_TYPE_REAL vertexFace : FRO
 	inputData.fogCoord = InitializeInputDataFog(float4(positionWS, 1.0), input.fogFactorAndVertexLight.x);
 	inputData.vertexLighting = input.fogFactorAndVertexLight.yzw;
 	inputData.shadowMask = water.shadowMask.xxxx;
-
+	inputData.normalizedScreenSpaceUV = scene.positionSS.xy / scene.positionSS.w;
 	inputData.bakedGI = 0;
 	
 	#if defined(DYNAMICLIGHTMAP_ON)
@@ -885,14 +885,13 @@ float4 ForwardPassFragment(Varyings input, FRONT_FACE_TYPE_REAL vertexFace : FRO
 	=========== */
 	#if COLLAPSIBLE_GROUP
 	
-	#if UNITY_VERSION >= 202120 && defined(DEBUG_DISPLAY)
+	#if defined(DEBUG_DISPLAY)
 	inputData.positionCS = input.positionCS;
 	#if _NORMALMAP
 	inputData.tangentToWorld = water.tangentToWorldMatrix;
 	#else
 	inputData.tangentToWorld = 0;
 	#endif
-	inputData.normalizedScreenSpaceUV = scene.positionSS.xy / scene.positionSS.w;
 	inputData.shadowMask = water.shadowMask.xxxx;
 	#if defined(DYNAMICLIGHTMAP_ON)
 	inputData.dynamicLightmapUV = input.dynamicLightmapUV;

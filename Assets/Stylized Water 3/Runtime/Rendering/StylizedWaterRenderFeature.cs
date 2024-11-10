@@ -3,9 +3,16 @@
 //    • Copying or referencing source code for the production of new asset store, or public, content is strictly prohibited!
 //    • Uploading this file to a public repository will subject it to an automated DMCA takedown request.
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+#define DEBUG_AVAILABLE
+#endif
+
 #if URP
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.RenderGraphModule;
+using UnityEngine.Rendering.RenderGraphModule.Util;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 
@@ -52,6 +59,10 @@ namespace StylizedWater3
         private DistanceFieldPass distanceFieldPass;
         private RenderTransparentTexture transparentTexturePass;
         #endif
+
+        #if DEBUG_AVAILABLE
+        private DebugInspectorPass debugInspectorPass;
+        #endif
         
         [SerializeField]
         public ComputeShader heightReadbackCS;
@@ -81,6 +92,16 @@ namespace StylizedWater3
             #if SWS_DEV
             if(!terrainHeightPrePassSettings.terrainHeightVisualizationShader) terrainHeightPrePassSettings.terrainHeightVisualizationShader = Shader.Find(ShaderParams.ShaderNames.TerrainHeight);
             #endif
+        }
+        
+        public class DebugData : ContextItem
+        {
+            public TextureHandle currentHandle;
+            
+            public override void Reset()
+            {
+                currentHandle = TextureHandle.nullHandle;
+            }
         }
         
         public override void Create()
@@ -116,6 +137,11 @@ namespace StylizedWater3
             CreateFlowMapPass();
             CreateDynamicEffectsPasses();
             CreateUnderwaterRenderingPasses();
+
+            #if DEBUG_AVAILABLE
+            debugInspectorPass = new DebugInspectorPass();
+            debugInspectorPass.renderPassEvent = RenderPassEvent.AfterRenderingOpaques;
+            #endif
         }
 
         //Note: Actually prefer to render before transparents, but this creates a recursive RenderSingleCamera call
@@ -200,6 +226,10 @@ namespace StylizedWater3
             }
             
             AddUnderwaterRenderingPasses(renderer, ref renderingData);
+            
+            #if DEBUG_AVAILABLE
+            if (RenderTargetDebugger.InspectedProperty > 0) renderer.EnqueuePass(debugInspectorPass);
+            #endif
         }
 
         private void OnDisable()
@@ -215,6 +245,52 @@ namespace StylizedWater3
             DisposeDynamicEffectsPasses();
             DisposeUnderwaterRenderingPasses();
         }
+
+        #if DEBUG_AVAILABLE
+        private class DebugInspectorPass : ScriptableRenderPass
+        {
+            public override void RecordRenderGraph(RenderGraph renderGraph, ContextContainer frameData)
+            {
+                DebugData debugData = frameData.Get<DebugData>();
+                
+                //Whichever pass's render target PropertyID matches the selected one in the inspector window get assigned as the 'currentHandle'
+                if (debugData.currentHandle.IsValid())
+                {
+                    var destinationDesc = renderGraph.GetTextureDesc(debugData.currentHandle);
+                    destinationDesc.clearBuffer = false;
+
+                    RenderTextureDescriptor rtDsc = new RenderTextureDescriptor
+                    {
+                        width = destinationDesc.width,
+                        height = destinationDesc.height,
+                        graphicsFormat = destinationDesc.format,
+                        volumeDepth = 1,
+                        dimension = destinationDesc.dimension,
+                        useMipMap = destinationDesc.useMipMap,
+                        msaaSamples = 1
+                    };
+
+                    TextureDesc textureDesc = debugData.currentHandle.GetDescriptor(renderGraph);
+                    RenderingUtils.ReAllocateHandleIfNeeded(ref RenderTargetDebugger.CurrentRT, rtDsc, textureDesc.filterMode, textureDesc.wrapMode, textureDesc.anisoLevel, textureDesc.mipMapBias, textureDesc.name);
+
+                    TextureHandle destination = renderGraph.ImportTexture(RenderTargetDebugger.CurrentRT);
+
+                    //Copy TextureHandle into persistent RT
+                    renderGraph.AddCopyPass(debugData.currentHandle, destination, passName: "Water Debug");
+                }
+                else
+                {
+                    RenderTargetDebugger.CurrentRT = null;
+                }
+            }
+
+#pragma warning disable CS0672
+#pragma warning disable CS0618
+            public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData) { }
+#pragma warning restore CS0672
+#pragma warning restore CS0618
+        }
+        #endif
 
         public static void VerifySetup(string requesterName = null)
         {

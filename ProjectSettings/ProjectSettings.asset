@@ -828,6 +828,7 @@ PlayerSettings:
     PS4: DOTWEEN
     PS5: DOTWEEN
     QNX: DOTWEEN
+    Standalone: ATMOSPHERIC_HEIGHT_FOG
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

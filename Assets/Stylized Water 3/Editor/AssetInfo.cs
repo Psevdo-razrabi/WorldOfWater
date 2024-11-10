@@ -26,10 +26,10 @@ namespace StylizedWater3
         public const string ASSET_ID = "287769";
         public const string ASSET_ABRV = "SW3";
 
-        public const string INSTALLED_VERSION = "3.0.0";
+        public const string INSTALLED_VERSION = "3.0.1";
         
-        public const int SHADER_GENERATOR_VERSION_MAJOR = 2;
-        public const int SHADER_GENERATOR_MINOR = 2; 
+        public const int SHADER_GENERATOR_VERSION_MAJOR = 3;
+        public const int SHADER_GENERATOR_MINOR = 0; 
         public const int SHADER_GENERATOR_PATCH = 0;
         
         public const string MIN_UNITY_VERSION = "6000.0.15f1";
@@ -127,7 +127,20 @@ namespace StylizedWater3
         //Sorry, as much as I hate to intrude on an entire project, this is the only way in Unity to track importing or updating an asset
         public class ImportOrUpdateAsset : AssetPostprocessor
         {
-            private void OnPreprocessAsset()
+            private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromPath)
+            {
+                for (int i = 0; i < importedAssets.Length; i++)
+                {
+                    OnPreProcessAsset(importedAssets[i]);
+                }
+                
+                for (int i = 0; i < deletedAssets.Length; i++)
+                {
+                    OnPreProcessAsset(deletedAssets[i]);
+                }
+            }
+            
+            private static void OnPreProcessAsset(string m_assetPath)
             {
                 /*
                 //Importing/updating the Stylized Water 3 asset
@@ -140,23 +153,23 @@ namespace StylizedWater3
                 //These files change every version, so will trigger when updating or importing the first time
                 if (
                     //Importing the Underwater Rendering extension
-                    assetPath.EndsWith("RenderFeature.UnderwaterRendering.cs"))
+                    m_assetPath.EndsWith("Extension.UnderwaterRendering.cs"))
                     //Any further extensions...
                 {
                     OnImportExtension("Underwater Rendering");
                 }
 
-                if (assetPath.EndsWith("RenderFeature.DynamicEffects.cs"))
+                if (m_assetPath.EndsWith("Extension.DynamicEffects.cs"))
                 {
                     OnImportExtension("Dynamic Effects");
                 }
             }
 
-            private void OnImportExtension(string name)
+            private static void OnImportExtension(string name)
             {
                 Debug.Log($"[Stylized Water 3] {name} extension installed/deleted or updated. Reimporting water shader(s) to toggle integration.");
                 
-                //Re-import any .watershader files, since these depend on the installation state of extensions
+                //Re-import any .watershader3 files, since these depend on the installation state of extensions
                 WaterShaderImporter.ReimportAll();
             }
         }

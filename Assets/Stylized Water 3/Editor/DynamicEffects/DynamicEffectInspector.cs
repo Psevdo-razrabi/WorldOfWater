@@ -66,7 +66,7 @@ namespace StylizedWater3.DynamicEffects
         private void DrawNotifications()
         {
             #if URP
-            UI.DrawNotification( !AssetInfo.MeetsMinimumVersion(DynamicEffects.MinBaseVersion), "Version mismatch, requires Stylized Water 3 v" + DynamicEffects.MinBaseVersion +".\n\nUpdate to avoid any issues or resolve (shader) errors", "Update", () => AssetInfo.OpenInPackageManager(), MessageType.Error);
+            UI.DrawNotification( !AssetInfo.MeetsMinimumVersion(DynamicEffects.extension.minBaseVersion), "Version mismatch, requires Stylized Water 3 v" + DynamicEffects.extension.minBaseVersion +".\n\nUpdate to avoid any issues or resolve (shader) errors", "Update", () => AssetInfo.OpenInPackageManager(), MessageType.Error);
             
             UI.DrawNotification(UniversalRenderPipeline.asset == null, "The Universal Render Pipeline is not active", MessageType.Error);
             
@@ -84,6 +84,7 @@ namespace StylizedWater3.DynamicEffects
             UI.DrawNotification(renderFeaturePresent && !renderFeatureEnabled, "The Dynamic Effects render feature is disabled", "Enable", () => 
             { 
                 PipelineUtilities.ToggleRenderFeature<StylizedWaterRenderFeature>(true);
+                renderFeature.dynamicEffectsSettings.enabled = true;
                 renderFeatureEnabled = true; 
             }, MessageType.Warning);
             #else
@@ -93,7 +94,7 @@ namespace StylizedWater3.DynamicEffects
         
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.LabelField($"{AssetInfo.ASSET_NAME }: Dynamic Effects v{DynamicEffects.Version}", EditorStyles.centeredGreyMiniLabel);
+            EditorGUILayout.LabelField($"{AssetInfo.ASSET_NAME }: Dynamic Effects v{DynamicEffects.extension.version}", EditorStyles.centeredGreyMiniLabel);
             EditorGUILayout.Space();
             
             DrawNotifications();

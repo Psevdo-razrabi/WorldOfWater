@@ -49,21 +49,7 @@ namespace StylizedWater3.DynamicEffects
 
         [SerializeField] [HideInInspector]
         private GameObject m_InstancesRoot;
-
-        private Transform instancesRootTransform
-        {
-            get
-            {
-                if (m_InstancesRoot == null)
-                {
-                    m_InstancesRoot = new GameObject((waveEffect ? waveEffect.name : "Container") +GetInstanceID());
-                    m_InstancesRoot.hideFlags |= HideFlags.HideAndDontSave;
-                    m_InstancesRoot.transform.parent = transform;
-                    m_InstancesRoot.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-                }
-                return m_InstancesRoot.transform;
-            }
-        }
+        public bool hideInstances = true;
 
         [Space]
         
@@ -161,7 +147,7 @@ namespace StylizedWater3.DynamicEffects
                 }
                 waveInstances = Array.Empty<GameObject>();
             }
-            
+
             if (waveEffect && splineContainer)
             {
                 float splineLength = splineContainer.Spline.CalculateLength(splineContainer.transform.localToWorldMatrix);
@@ -187,12 +173,16 @@ namespace StylizedWater3.DynamicEffects
                     
                     position -= right * (waveDistanceFromShore + UnityEngine.Random.Range(0f, randomOffset));
                     position = splineContainer.transform.TransformPoint(position);
+                    right = splineContainer.transform.TransformDirection(right);
                     
                     if (i == 0) prevPos = position;
 
                     if (math.distance(position, prevPos) > waveDistanceBetween)
                     {
-                        GameObject wave = SpawnObject(waveEffect, instancesRootTransform);
+                        GameObject wave = SpawnObject(waveEffect, this.transform);
+                        
+                        wave.gameObject.hideFlags = hideInstances ? HideFlags.HideInHierarchy : HideFlags.None;
+                        
                         quaternion rotation = quaternion.LookRotationSafe(
                             Quaternion.AngleAxis(UnityEngine.Random.Range(-randomRotation, randomRotation), up) * right, up);
 

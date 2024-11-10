@@ -2,6 +2,7 @@
 {
 	Properties
 	{
+		[MaterialEnum(Off,0,Front,1,Back,2)] _Cull("Cull", Int) = 0
 		_BaseMap ("Texture (R=Height mask, G=Foam Mask)", 2D) = "white" {}
 		[Toggle] _RemapDisplacement ("Remap displacement", Float) = 0
 		_AnimationSpeed ("Panning Speed (XY)", Vector) = (0,0,0,0)
@@ -28,6 +29,7 @@
 		Blend SrcAlpha One
 		BlendOp Add
 		ZWrite Off
+		Cull [_Cull]
 		//ZClip Off
 		//ZTest Always
 		

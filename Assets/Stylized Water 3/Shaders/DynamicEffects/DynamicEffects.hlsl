@@ -3,6 +3,8 @@
 //    • Copying or referencing source code for the production of new asset store, or public, content is strictly prohibited!
 //    • Uploading this file to a public repository will subject it to an automated DMCA takedown request.
 
+#define SW_DE_VERSION 301
+
 #if !defined(SHADERGRAPH_PREVIEW)
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 #else

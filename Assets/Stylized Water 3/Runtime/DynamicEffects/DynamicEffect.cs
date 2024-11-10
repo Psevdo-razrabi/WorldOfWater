@@ -127,11 +127,21 @@ namespace StylizedWater3
             var height = heightScale * (scaleHeightByTransform ? this.transform.lossyScale.y : 1f);
             material.SetFloat(_HeightScale, height);
             material.SetFloat(_FoamStrength, foamAmount);
-            material.SetFloat(_NormalStrength, normalStrength * (scaleNormalByHeight ? height : 1f));
+            material.SetFloat(_NormalStrength, normalStrength * (scaleNormalByHeight ? Mathf.Abs(height) : 1f));
             
             renderer.sortingOrder = sortingLayer;
         }
 
+        private void OnDrawGizmosSelected()
+        {
+            if (scaleHeightByTransform && this.transform.hasChanged)
+            {
+                this.transform.hasChanged = false;
+                
+                UpdateMaterial();
+            }
+        }
+        
         #if UNITY_EDITOR
         [ContextMenu("Open Rendering Debugger")]
         private void OpenDebugger()

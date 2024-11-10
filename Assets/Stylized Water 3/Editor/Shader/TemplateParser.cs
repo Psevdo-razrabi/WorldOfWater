@@ -86,6 +86,11 @@ namespace StylizedWater3
         
         public static string CreateShaderCode(string templatePath, ref string[] lines, WaterShaderImporter importer, bool tessellation = false)
         {
+            if (importer == null)
+            {
+                throw new Exception("Failed to compile shader from template code. The importer is invalid, this should not even be possible. Whatever you did, undo it...");
+            }
+            
             //Extension installation states
             var underwaterInstalled = StylizedWaterEditor.UnderwaterRenderingInstalled();
             var dynamicEffectsInstalled = StylizedWaterEditor.DynamicEffectsInstalled();

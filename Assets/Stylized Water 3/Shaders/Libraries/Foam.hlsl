@@ -95,17 +95,17 @@ float2 SampleFoamTexture(float3 positionWS, float2 uv, float2 tiling, float subT
 TEXTURE2D(_IntersectionNoise);
 SAMPLER(sampler_IntersectionNoise);
 
-float SampleIntersection(float2 uv, float2 time, float tiling, float gradient, float falloff, half rippleDistance, float rippleStrength, float clipping, bool sharp)
+float SampleIntersection(float2 uv, float2 time, float tiling, float gradient, float falloff, float speed, half rippleDistance, float rippleStrength, float rippleSpeed, float clipping, bool sharp)
 {
 	float intersection = 0;
 	float dist = saturate(gradient / falloff);
 	
 	float2 nUV = uv * tiling;
-	half noise1 = SAMPLE_TEXTURE2D(_IntersectionNoise, sampler_IntersectionNoise, nUV + time.xy).r;
+	half noise1 = SAMPLE_TEXTURE2D(_IntersectionNoise, sampler_IntersectionNoise, nUV + (time.xy * speed)).r;
 
 	half noise2 = 0;
 	#if _ADVANCED_SHADING
-	noise2 = SAMPLE_TEXTURE2D(_IntersectionNoise, sampler_IntersectionNoise, (nUV * 0.8) - (time.xy)).r;
+	noise2 = SAMPLE_TEXTURE2D(_IntersectionNoise, sampler_IntersectionNoise, (nUV * 0.8) - (time.xy * speed)).r;
 	#endif
 	
 	#if UNITY_COLORSPACE_GAMMA
@@ -113,7 +113,7 @@ float SampleIntersection(float2 uv, float2 time, float tiling, float gradient, f
 	noise2 = SRGBToLinear(noise2);
 	#endif
 	
-	float sine = sin(time.y - (gradient * rippleDistance)) * rippleStrength;
+	float sine = sin((time.y * rippleSpeed) - (gradient * rippleDistance)) * rippleStrength;
 
 	half noise = saturate((max(noise1, noise2) + sine) * dist);
 

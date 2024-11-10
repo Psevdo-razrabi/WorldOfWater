@@ -16,7 +16,7 @@ ScriptedImporter:
     autoIntegration: 1
     fogIntegration: 1
     lightCookies: 0
-    additionalLightCaustics: 0
+    additionalLightCaustics: 1
     additionalLightTranslucency: 1
     customIncludeDirectives:
     - enabled: 1
@@ -37,6 +37,7 @@ ScriptedImporter:
     additionalPasses:
     - {fileID: 10900000, guid: 1568d394910f427499ec893ef4723b27, type: 3}
   dependencies:
+  - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterPass.hlsl
   - Assets/Stylized Water 3/Shaders/Libraries/URP.hlsl
   - Assets/Stylized Water 3/Shaders/Libraries/Input.hlsl
   - Assets/Stylized Water 3/Shaders/Libraries/Common.hlsl
@@ -46,10 +47,11 @@ ScriptedImporter:
   - Assets/Stylized Water 3/Shaders/Libraries/Gerstner.hlsl
   - Assets/Stylized Water 3/Shaders/Libraries/Lighting.hlsl
   - Assets/Stylized Water 3/Shaders/Libraries/Reflections.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Refraction.hlsl
   - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterFog.hlsl
   - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterShading.hlsl
   - Assets/Stylized Water 3/Shaders/Underwater/UnderwaterMask.hlsl
-  - Assets/Stylized Water 3/Shaders/Libraries/Features.hlsl
+  - Assets/Stylized Water 3/Shaders/Libraries/Normals.hlsl
   - Assets/Stylized Water 3/Shaders/Libraries/Foam.hlsl
   - Assets/Stylized Water 3/Shaders/Libraries/Caustics.hlsl
   - Assets/Stylized Water 3/Shaders/DynamicEffects/DynamicEffects.hlsl
@@ -62,6 +64,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 287769
   packageName: Stylized Water 3
-  packageVersion: 3.0.0
+  packageVersion: 3.0.1
   assetPath: Assets/Stylized Water 3/Shaders/StylizedWater3_Standard.watershader3
-  uploadId: 705002
+  uploadId: 705985

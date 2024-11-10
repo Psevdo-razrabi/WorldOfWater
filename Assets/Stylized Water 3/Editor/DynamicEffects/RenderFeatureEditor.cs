@@ -90,7 +90,7 @@ namespace StylizedWater3
             EditorGUILayout.LabelField("Dynamic Effects", EditorStyles.boldLabel);
             using (new EditorGUILayout.HorizontalScope())
             {
-                EditorGUILayout.LabelField($"Version {DynamicEffects.DynamicEffects.Version}", EditorStyles.miniLabel);
+                EditorGUILayout.LabelField($"Version {DynamicEffects.DynamicEffects.extension.version}", EditorStyles.miniLabel);
 
                 if (GUILayout.Button(new GUIContent(" Documentation", EditorGUIUtility.FindTexture("_Help"))))
                 {
