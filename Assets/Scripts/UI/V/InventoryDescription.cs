@@ -45,7 +45,7 @@ namespace Inventory
 
             if (_currentItem == null)
             {
-                Debug.Log("Slot is empty");
+                //Debug.Log("Slot is empty");
                 return;
             }
             
@@ -60,7 +60,7 @@ namespace Inventory
         {
             if (_currentItem == null)
             {
-                Debug.Log("Slot is empty");
+                //Debug.Log("Slot is empty");
                 return;
             }
             

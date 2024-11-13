@@ -8,4 +8,5 @@ public class PlayerPhysicsConfig : ScriptableObject
     [field: SerializeField] public float Gravity { get; private set; }
     [field: SerializeField] public float SlideGravity { get; private set; }
     [field: SerializeField] public float SlopeLimit { get; private set; }
+    [field: SerializeField] public bool UseLocalMomentum { get; private set; }
 }

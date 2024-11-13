@@ -101,7 +101,6 @@ namespace Sync
                 .Subscribe(_ =>
                 {
                     var loaded = IsAllLoaded();
-                    Debug.Log(loaded);
                     _onAllLoaded.OnNext(loaded);
                 });
         }

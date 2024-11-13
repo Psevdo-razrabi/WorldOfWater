@@ -28,7 +28,7 @@ namespace Helpers
 
         public void SetLayerMask(int layer) => _layerMask = layer;
         public void SetCastDirection(CastDirection castDirection) => _castDirection = castDirection;
-        public void SetCastOrigin(Vector3 pos) => _origin = _playerTransform.TransformPoint(pos);
+        public void SetCastOrigin(Vector3 pos) => _origin = _playerTransform.InverseTransformPoint(pos);
         public void SetCastLength(float castLength) => _castLength = castLength;
         
 
@@ -60,8 +60,8 @@ namespace Helpers
                 CastDirection.Forward => _playerTransform.forward,
                 CastDirection.Down => -_playerTransform.up,
                 CastDirection.Up => _playerTransform.up,
-                CastDirection.Left => _playerTransform.right,
-                CastDirection.Right => -_playerTransform.right,
+                CastDirection.Left => -_playerTransform.right,
+                CastDirection.Right => _playerTransform.right,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

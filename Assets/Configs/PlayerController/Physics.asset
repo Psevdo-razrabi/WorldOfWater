@@ -17,3 +17,4 @@ MonoBehaviour:
   <Gravity>k__BackingField: 30
   <SlideGravity>k__BackingField: 5
   <SlopeLimit>k__BackingField: 30
+  <UseLocalMomentum>k__BackingField: 0

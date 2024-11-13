@@ -8,6 +8,7 @@ namespace StateMachine
     {
         private Dictionary<Type, IState> _states = null;
         public IState currentStates { get; private set; }
+        public IState previouslyState { get; private set; }
         public bool isUpdate { get; private set; }
         public IReadOnlyDictionary<Type, IState> States => _states;
 
@@ -47,6 +48,7 @@ namespace StateMachine
 
         private void GetNewState<TState>() where TState : IState
         {
+            previouslyState = currentStates;
             var newState = GetState<TState>();
             currentStates = newState;
         }

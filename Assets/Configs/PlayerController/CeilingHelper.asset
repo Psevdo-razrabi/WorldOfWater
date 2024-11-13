@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33e8c8dbfe34bcabab3217dfe8c638e, type: 3}
-  m_Name: Movement
+  m_Script: {fileID: 11500000, guid: 983e70010f5642f481593aaebf6ddc0d, type: 3}
+  m_Name: CeilingHelper
   m_EditorClassIdentifier: 
-  <MovementSpeed>k__BackingField: 7
-  <JumpSpeed>k__BackingField: 10
-  <JumpDuration>k__BackingField: 0.4
-  <AirControlRate>k__BackingField: 2
+  <CeilingAngleLimit>k__BackingField: 10
+  <IsInDebugMode>k__BackingField: 1
+  <DebugDrawDuration>k__BackingField: 2

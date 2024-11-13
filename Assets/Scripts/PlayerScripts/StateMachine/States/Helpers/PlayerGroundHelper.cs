@@ -14,9 +14,9 @@ public class PlayerGroundHelper
     private Vector3 _currentGroundAdjustmentVelocity;
     private int _currentLayer;
     private bool _isUsingExtendedSensorRange = true;
+    private PlayerGroundHelperConfig _playerGroundHelper;
     private const int MAX_COUNT_LAYER = 32;
     
-
     private Rigidbody _rigidbody;
     private CapsuleCollider _capsuleCollider;
     private Transform _playerTransform;
@@ -36,6 +36,7 @@ public class PlayerGroundHelper
         _colliderThickness = playerGroundHelperConfig.ColliderThickness;
         _colliderOffset = playerGroundHelperConfig.ColliderOffset;
         _stepHeightRatio = playerGroundHelperConfig.StepHeightRatio;
+        _playerGroundHelper = playerGroundHelperConfig;
 
         Init();
     }
@@ -44,12 +45,13 @@ public class PlayerGroundHelper
 
     public void LateUpdate()
     {
+        if(_playerGroundHelper.IsInDebugMode == false) return;
         _raycastHelper.Draw();
     }
     
     public bool IsGrounded() => _isGrounded;
     public Vector3 GetGroundNormal() => _raycastHelper.GetNormal();
-
+    public void SetExtendSensorRange(bool isExtended) => _isUsingExtendedSensorRange = isExtended;
     public void SetVelocity(Vector3 velocity) =>
         _rigidbody.linearVelocity = velocity + _currentGroundAdjustmentVelocity;
 
@@ -67,6 +69,7 @@ public class PlayerGroundHelper
         _raycastHelper.Cast();
 
         _isGrounded = _raycastHelper.HasDetectedHit();
+        
         if(_isGrounded == false) return;
         var distance = _raycastHelper.GetDistance();
         var upperLimit = _colliderHeight * _playerTransform.localScale.x * (1f - _stepHeightRatio) * 0.5f;
@@ -97,7 +100,7 @@ public class PlayerGroundHelper
         _capsuleCollider.center = _colliderOffset * _colliderHeight +
                                   new Vector3(0f, _stepHeightRatio * _capsuleCollider.height / 2f, 0f);
 
-        if (_capsuleCollider.height / 2 < _capsuleCollider.radius)
+        if (_capsuleCollider.height / 2f < _capsuleCollider.radius)
         {
             _capsuleCollider.radius = _capsuleCollider.height / 2f;
         }
@@ -133,7 +136,7 @@ public class PlayerGroundHelper
         var ignoreRaycastLayer = LayerMask.GetMask("Ignore Raycast");
         layerMask &= ~(1 << ignoreRaycastLayer);
 
-        _currentLayer = layerMask;
+        _currentLayer = objectLayer;
         _raycastHelper.SetLayerMask(layerMask);
     }
 }

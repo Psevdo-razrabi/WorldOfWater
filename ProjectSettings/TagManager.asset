@@ -10,9 +10,9 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - 
   - Water
   - UI
-  - UiItem
   - Platform
   - PreviewObject
   - Player

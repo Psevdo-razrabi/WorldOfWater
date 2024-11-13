@@ -8,7 +8,7 @@ using Zenject;
 
 namespace StateMachine
 {
-    public class PlayerStateMachine : ITickable, IInitializable, IDisposable
+    public class PlayerStateMachine : ITickable, IInitializable, IDisposable, IFixedTickable
     {
         private List<IState> _states;
         private StateMachine _stateMachine;
@@ -22,6 +22,7 @@ namespace StateMachine
 
         public PlayerData GetData() => _stateMachineData.Data;
         public StateMachineData GetStateMachineData() => _stateMachineData;
+        public StateMachine GetStateMachine() => _stateMachine;
 
         public void TrySwapState<T>() where T : IState
         {
@@ -43,16 +44,26 @@ namespace StateMachine
             _stateMachine.currentStates.OnUpdateBehaviour();
         }
         
+        public void FixedTick()
+        {
+            _stateMachine.currentStates.OnFixedUpdateBehaviour();
+        }
+        
         public void Initialize()
         {
             _states = new()
             {
                 new PlayerIdle(this),
                 new PlayerMovement(this),
+                new PlayerRising(this),
+                new PlayerSliding(this),
+                new PlayerFalling(this),
+                new PlayerJumping(this)
             };
             
             _stateMachine = new StateMachine(_states);
             _stateMachine.SwitchStates<PlayerIdle>();
+            _stateMachineData.SetPlayerStateMachine(_stateMachine);
         }
 
         public void Dispose()

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea4e934592048e1aca78d8803ade282, type: 3}
   m_Name: GroundHelpers
   m_EditorClassIdentifier: 
-  <Rigidbody>k__BackingField: {fileID: 0}
-  <CapsuleCollider>k__BackingField: {fileID: 0}
-  <ColliderHeight>k__BackingField: 0
-  <ColliderThickness>k__BackingField: 0
-  <ColliderOffset>k__BackingField: 0
+  <StepHeightRatio>k__BackingField: 0
+  <ColliderHeight>k__BackingField: 2
+  <ColliderThickness>k__BackingField: 1
+  <ColliderOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <IsInDebugMode>k__BackingField: 1

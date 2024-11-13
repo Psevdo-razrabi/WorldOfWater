@@ -8,4 +8,5 @@ public class PlayerGroundHelperConfig : ScriptableObject
     [field: SerializeField] public float ColliderHeight { get; private set; } 
     [field: SerializeField] public float ColliderThickness { get; private set; }
     [field: SerializeField] public Vector3 ColliderOffset { get; private set; }
+    [field: SerializeField] public bool IsInDebugMode { get; private set; }
 }

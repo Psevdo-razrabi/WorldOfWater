@@ -14,6 +14,7 @@ namespace Data
         public RaycastHelper RaycastHelper { get; private set; }
         public PlayerGroundHelper PlayerGroundHelper { get; private set; }
         public PlayerInputReader PlayerInputReader { get; private set; }
+        public CeilingDetector CeilingDetector { get; private set; }
         
         [Inject]
         private void Construct(Player player)
@@ -25,6 +26,7 @@ namespace Data
             RaycastHelper = new RaycastHelper(player.transform, PlayerHelpersConfig.Raycast);
             PlayerGroundHelper = new PlayerGroundHelper(Player, PlayerHelpersConfig.GroundHelper, RaycastHelper);
             PlayerInputReader = new PlayerInputReader();
+            CeilingDetector = Player.CeilingDetector;
         }
 
         private void InitResources()

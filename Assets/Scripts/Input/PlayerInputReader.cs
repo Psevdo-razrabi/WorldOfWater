@@ -7,7 +7,7 @@ namespace NewInput
     public class PlayerInputReader : PlayerInput.IPlayerActions, IInputReader
     {
         public event Action<Vector3> Move = delegate { };
-        public event Action Jump = delegate { };
+        public event Action<bool> Jump = delegate { };
         public event Action TakeItem = delegate { };
         
         public Vector3 Direction
@@ -40,7 +40,15 @@ namespace NewInput
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            Jump?.Invoke();
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    Jump?.Invoke(true);
+                    break;
+                case InputActionPhase.Canceled:
+                    Jump?.Invoke(false);
+                    break;
+            }
         }
 
         public void OnTakeItem(InputAction.CallbackContext context)
