@@ -29,30 +29,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fd2ae46-a785-4153-8fda-838c87ea9a5d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Spase-Simulator/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example URP Asset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FlatKit/Demos/Common/URP Configs/[FlatKit] Example URP Asset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Prefabs/---GAMEPLAY---.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Prefabs/---GAMEPLAY---.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scenes/Gameplay.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scenes/Gameplay.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Scripts/Services/LobbiesService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Scripts/Services/LobbiesService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Particle based).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Particle based).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Trail based).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Boat Wake (Trail based).prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Ripple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Ripple.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Wave.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Shoreline Wave.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Directional Ripples.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Directional Ripples.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Foam Trail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Foam Trail.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Impact Ripple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Impact Ripple.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Raindrops.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Raindrops.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Stationary.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Stationary.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Trail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Ripples Trail.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Whirlpool.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Whirlpool.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Wind Gust.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Water Wind Gust.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Waterfall Impact Ripples.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/DynamicEffects/Waterfall Impact Ripples.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/StylizedWater3_Ocean.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/Prefabs/StylizedWater3_Ocean.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Falling boxes.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Falling boxes.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Random Spheres.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Stylized Water 3/_Demo/DynamicEffects/Random Spheres.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Azure[Sky] Dynamic Skybox/_Beta/Azure_v8_0_0b3.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Azure[Sky] Dynamic Skybox/_Replacements/Single_Pass_Instanced.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Azure[Sky] Dynamic Skybox/_Replacements/URP_10_1.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Azure[Sky] Dynamic Skybox/_Replacements/URP_7_5_1.unitypackage.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,53 +45,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.eflatun.scenereference/Runtime/SceneReferenceState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/Addressables.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/AsyncOperations/AsyncOperationBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/AsyncOperations/AsyncOperationStatus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/ResourceProviders/ISceneProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables/Runtime/ResourceManager/Util/MonoBehaviourCallbackHooks.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem/InputSystem/Editor/Settings/EditorPlayerSettingHelpers.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/Core/NetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/SceneManagement/ISceneManagerHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/SceneManagement/NetworkSceneManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects/Runtime/Transports/UTP/UnityTransport.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Lobbies/SDK/ILobbyService.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/Models/Allocation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/Models/JoinAllocation.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/Models/RelayServerEndpoint.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/SDK/IRelayService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.services.multiplayer/Runtime/Relay/SDK/RelayService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/jp.hadashikick.vcontainer/Runtime/Container.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/VP/mppmfd86daf9/Assets/Game/Scripts/Installer/GameplayEntryPoint.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../Summonlands/summonlands/Summonlands/Assets/_Game/Sources/Runtime/Battleground/Factories/ViewFactoryHub.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1d58f45f40ac406c9037065c4e196bb390a00/bb/815ec475/SceneEventProgressStatus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1f8babe234e540299e4f7387cdc20cd89b6200/0f/a796d985/SceneAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/321eb2db7c6d43ea8fc39b54eaca345246ae00/e2/d2f67c1e/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/383d6c4583864f4798fb03465c7f55d793200/d9/1983744c/ISession.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/39dcd6cb83f94d46afd27f779648424a1f4000/9d/5cb3c090/LayoutDataStore.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/42654e2f4321419e8a586fd526bf7c9e8f800/c6/729f7693/SceneEventProgressStatus.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/38/e9fd416a/IEquatable`1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/4d/db2e5316/Action`2.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/4e/29bf1000/HashSet`1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/66/98eafd1b/Stack`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/ad/131aff73/IProgress`1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/1a/981d3320/Object.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/4d/ddf4a4e4/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/52/66ae9cd6/Resources.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/87/8790d52b/LoadSceneMode.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b5bf0c891ea345fe93688f835df32fdc1dda00/be/422de424/Scene.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1349e8da9c0471283f06e515075baad91400/8a/5e924deb/Observable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1349e8da9c0471283f06e515075baad91400/91/d5a6a338/CompositeDisposable.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e1349e8da9c0471283f06e515075baad91400/97/1bf59225/Disposable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f7cc3521ec9c4bafa844ba0734eb58739a800/ff/b527397b/SceneEventProgressStatus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 2
-}</component>
   <component name="ProjectId" id="2nRUUMsaCuWIVTUqUI8lpkKIPhJ" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -118,21 +54,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor &amp; Play.executor&quot;: &quot;Debug&quot;,
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;origin/Ilya&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Рабочий стол/Builds/WorldOfWorld\Spase Simulator.exe" />
@@ -162,9 +88,8 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <list />
+        <set />
       </option>
       <method v="2" />
     </configuration>
@@ -172,9 +97,8 @@
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
-      <option name="projectPathOnTarget" />
       <option name="selectedOptions">
-        <list />
+        <set />
       </option>
       <method v="2" />
     </configuration>
@@ -201,6 +125,7 @@
       <workItem from="1730623592051" duration="3340000" />
       <workItem from="1730833189025" duration="12191000" />
       <workItem from="1730994947238" duration="20927000" />
+      <workItem from="1731414469658" duration="457000" />
     </task>
     <servers />
   </component>
@@ -224,6 +149,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -234,27 +160,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldViewModel.cs</url>
           <line>32</line>
-          <properties documentPath="C:\UnityProjects\Spase-Simulator\Assets\Game\Scripts\UI\Menu\JoinWorldViewModel.cs" containingFunctionPresentation="Method 'OnJoined'">
-            <startOffsets>
-              <option value="913" />
-            </startOffsets>
-            <endOffsets>
-              <option value="951" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\UnityProjects\Spase-Simulator\Assets\Game\Scripts\UI\Menu\JoinWorldViewModel.cs" />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Game/Scripts/UI/Menu/JoinWorldView.cs</url>
           <line>16</line>
-          <properties documentPath="C:\UnityProjects\Spase-Simulator\Assets\Game\Scripts\UI\Menu\JoinWorldView.cs" containingFunctionPresentation="Method 'Open'">
-            <startOffsets>
-              <option value="476" />
-            </startOffsets>
-            <endOffsets>
-              <option value="514" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\UnityProjects\Spase-Simulator\Assets\Game\Scripts\UI\Menu\JoinWorldView.cs" />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
