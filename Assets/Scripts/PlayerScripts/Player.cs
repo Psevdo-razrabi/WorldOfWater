@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(CapsuleCollider))]
 public class Player : MonoBehaviour, IPlayerParameters
 {
-    [field: SerializeField] public Transform playerCamera;
+    [field: SerializeField] public Camera playerCamera;
     public Rigidbody Rigidbody { get; private set; }
     public CapsuleCollider CapsuleCollider { get; private set; }
     public GameObject PlayerGameObject => this.gameObject;

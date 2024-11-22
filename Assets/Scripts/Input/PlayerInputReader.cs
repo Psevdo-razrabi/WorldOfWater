@@ -4,11 +4,12 @@ using UnityEngine.InputSystem;
 
 namespace NewInput
 {
-    public class PlayerInputReader : PlayerInput.IPlayerActions, IInputReader
+    public class PlayerInputReader : PlayerInput.IPlayerActions, IInputReader, IDisposable
     {
         public event Action<Vector3> Move = delegate { };
         public event Action<bool> Jump = delegate { };
         public event Action TakeItem = delegate { };
+        public event Action OpenInventory = delegate { };
         
         public Vector3 Direction
         {
@@ -58,7 +59,17 @@ namespace NewInput
 
         public void OnOpenInventory(InputAction.CallbackContext context)
         {
-            
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    OpenInventory?.Invoke();
+                    break;
+            }
+        }
+
+        public void Dispose()
+        {
+            _playerInput?.Dispose();
         }
     }
 }

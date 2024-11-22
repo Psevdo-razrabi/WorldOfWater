@@ -10,9 +10,12 @@ namespace State
     {
         private Timer _timerJump;
         private Action _jumpFinish = delegate { };
-
+        
         public PlayerJumping(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
-        { }
+        {
+            playerStateMachine.AddDispose(this);
+            playerStateMachine.GetStateMachineData().PlayerInputReader.Jump += HandleJumpingInput;
+        }
         
         public override void OnEnter()
         {
@@ -43,7 +46,7 @@ namespace State
         public override bool TrySwapState()
         {
             return (StateMachineData._jumpKeyIsPressed || StateMachineData._jumpKeyWasPressed) &&
-                    StateMachineData._jumpInputIsLocked == false;
+                    StateMachineData._jumpInputIsLocked == false && StateMachineData.IsInventoryOpen() == false;
         }
         
         public override void OnFixedUpdateBehaviour()
@@ -62,7 +65,7 @@ namespace State
 
         public void Dispose()
         {
-            
+            StateMachineData.PlayerInputReader.Jump -= HandleJumpingInput;
         }
 
         private void HandleJumping()
@@ -72,6 +75,19 @@ namespace State
             momentum = VectorMath.RemoveDotVector(momentum, transform.up);
             momentum += transform.up * StateMachineData.MovementConfig.JumpSpeed;
             StateMachineData._momentum = momentum;
+        }
+        
+        private void HandleJumpingInput(bool isButtonPressed)
+        {
+            if (StateMachineData._jumpKeyIsPressed == false && isButtonPressed)
+                StateMachineData._jumpKeyWasPressed = true;
+
+            if (StateMachineData._jumpKeyIsPressed && isButtonPressed == false)
+            {
+                StateMachineData._jumpInputIsLocked = false;
+            }
+
+            StateMachineData._jumpKeyIsPressed = isButtonPressed;
         }
 
         private void JumpStart()

@@ -7,6 +7,7 @@ namespace Sync
 {
     public class ResourcesBootstrap : MonoBehaviour
     {
+        [SerializeField] private AddressablesReferences _addressablesReferences;
         private LoaderResources _loaderResources;
         private ConfigLoader _configLoader;
         private PrefabLoader _prefabLoader;
@@ -31,8 +32,9 @@ namespace Sync
             ResourceManager.Instance.RegisterLoader(TypeSync.Prefab, _prefabLoader);
             _prefabLoader.SetProperties(ResourcesName.Slot, "Slot");
             _prefabLoader.SetProperties(ResourcesName.Icon, "GhostIcon");
-            _configLoader.SetProperties(ResourcesName.PlayerHelpers, "PlayerHelpers");
-            _configLoader.SetProperties(ResourcesName.PlayerController, "Controller");
+            _configLoader.SetPropertiesForLoadToResources(ResourcesName.PlayerHelpers, "PlayerHelpers");
+            _configLoader.SetPropertiesForLoadToResources(ResourcesName.PlayerController, "Controller");
+            _configLoader.SetPropertiesForLoadToAddressables(ResourcesName.ItemsConfigs, _addressablesReferences.ItemsReferences);
 
             await UniTask.WaitForSeconds(0.5f);
             ResourceManager.Instance.MergeProperties();

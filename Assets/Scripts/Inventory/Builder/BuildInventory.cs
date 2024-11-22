@@ -10,6 +10,7 @@ namespace Helpers
         private IEnumerable<ItemDescription> _items;
         private int _capacity;
         private UiAnimation _uiAnimation;
+        private ItemOperationMediator _itemOperationMediator;
         private readonly InventoryDescription _inventoryDescription;
         private readonly InventoryItemAnimator _inventoryItemAnimator;
 
@@ -33,6 +34,12 @@ namespace Helpers
             return this;
         }
 
+        public BuildInventory WithItemOperation(ItemOperationMediator itemOperationMediator)
+        {
+            _itemOperationMediator = itemOperationMediator;
+            return this;
+        }
+
         public BuildInventory WithAnimation(UiAnimation animation)
         {
             _uiAnimation = animation;
@@ -42,8 +49,8 @@ namespace Helpers
         public InventoryStorage Build()
         {
             InventoryModel model = _items != null
-                ? new InventoryModel(_items, _capacity, _uiAnimation, _inventoryItemAnimator)
-                : new InventoryModel(Array.Empty<ItemDescription>(), _capacity, _uiAnimation, _inventoryItemAnimator);
+                ? new InventoryModel(_items, _capacity, _uiAnimation, _inventoryItemAnimator, _itemOperationMediator)
+                : new InventoryModel(Array.Empty<ItemDescription>(), _capacity, _uiAnimation, _inventoryItemAnimator, _itemOperationMediator);
             InventoryPresenter inventoryPresenter = new InventoryPresenter(_inventoryView, model, _inventoryDescription, _capacity);
             return new InventoryStorage(_inventoryView, model, inventoryPresenter);
         }

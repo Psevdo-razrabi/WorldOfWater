@@ -99,7 +99,7 @@ namespace Loader
         }
     }
 
-    public struct UploadedResources<T>
+    public class UploadedResources<T>
     {
         public T resources;
         public AsyncOperationHandle<T> operationHandle;
@@ -111,7 +111,7 @@ namespace Loader
         }
     }
 
-    public struct UploadedResourcesList<T>
+    public class UploadedResourcesList<T>
     {
         public List<T> resources;
         public AsyncOperationHandle<IList<T>> operationHandle;

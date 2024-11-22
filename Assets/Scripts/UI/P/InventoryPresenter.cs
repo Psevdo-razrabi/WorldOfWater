@@ -34,6 +34,8 @@ namespace Inventory
         {
             _inventoryView.OnDrop += HandleSlot;
             _inventoryView.OnCopy += CopySlot;
+            _inventoryView.OnCopyGhostIcon += CopyParametersToGhostIcon;
+            _inventoryView.OnOpenInventory += _inventoryView.OpenInventoryAnimation;
             
             _inventoryDescription.OnGetItem += GetItemInventory;
             _inventoryDescription.SetMeshes += SetMeshes;
@@ -57,12 +59,25 @@ namespace Inventory
                 .Subscribe(_ => HandleModelChange())
                 .AddTo(_compositeDisposable);
 
+            _inventoryModel.OnOpenInventory
+                .Subscribe((isActive) =>
+                {
+                    _inventoryModel.OpenInventory(isActive);
+                    OpenInventory(isActive);
+                })
+                .AddTo(_compositeDisposable);
+
             _inventoryView.IsActiveGrid
                 .Subscribe(_inventoryView.OnActiveGrid)
                 .AddTo(_compositeDisposable);
             
             await _inventoryView.InitializeView(_inventoryModel.DataView);
             await _inventoryDescription.InitializeView(_inventoryModel.DataView);
+        }
+
+        private void OpenInventory(bool isActive)
+        {
+            _inventoryView.InvokeOpenInventory(isActive);
         }
 
         private void SetMeshes(Material material, Mesh mesh)
@@ -102,6 +117,11 @@ namespace Inventory
             secondSlot.SetIndex(firstSlot.Index);
             secondSlot.SetStackLabel(firstSlot._stackLabel.text);
         }
+
+        private void CopyParametersToGhostIcon(ViewSlot currentSlot, GhostIconView ghostIconView)
+        {
+            ghostIconView.SetImage(currentSlot.Sprite);
+        }
         
         private void AddEventTrigger(EventTriggerType eventTriggerType, Action<BaseEventData> callback, ViewSlot slot)
         {
@@ -114,7 +134,7 @@ namespace Inventory
             eventTrigger.triggers.Add(entry);
         }
 
-        private void HandleSlot(ViewSlot originalSlot, ViewSlot closestSlot)
+        private void HandleSlot(ViewSlot originalSlot, ViewSlot closestSlot, GhostIconView ghostIconView)
         {
             if (originalSlot.Index == closestSlot.Index || closestSlot.GuidItem.Equals(GuidItem.IsEmpty()))
             {
@@ -136,6 +156,8 @@ namespace Inventory
             {
                 _inventoryModel.Swap(originalSlot.Index, closestSlot.Index);
             }
+            
+            ghostIconView.Clear();
         }
 
         public void Dispose()
@@ -144,6 +166,7 @@ namespace Inventory
             _inventoryView.OnCopy -= CopySlot;
             _inventoryDescription.OnGetItem -= GetItemInventory;
             _inventoryDescription.SetTexts -= SetTexts;
+            _inventoryView.OnOpenInventory -= _inventoryView.OpenInventoryAnimation;
             
             foreach (var view in _storageViews)
             {

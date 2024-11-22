@@ -16,3 +16,5 @@ MonoBehaviour:
     type: 2}
   <PhysicsConfig>k__BackingField: {fileID: 11400000, guid: 9f0848bad062fde44abbd6a3cd1622b6,
     type: 2}
+  <FindItemConfig>k__BackingField: {fileID: 11400000, guid: d98e4c92fe228e944ae0c221f1d13b8d,
+    type: 2}

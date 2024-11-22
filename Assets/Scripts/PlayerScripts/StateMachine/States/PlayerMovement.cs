@@ -1,5 +1,4 @@
 ﻿using System;
-using Helpers.Extensions;
 using StateMachine;
 using UnityEngine;
 
@@ -27,18 +26,18 @@ namespace State
         public override bool TrySwapState()
         {
             return StateMachineData.IsGroundForGround() && StateMachineData.IsGroundTooSteep() == false &&
-                   StateMachineData.IsInputZero() == false;
+                   StateMachineData.IsInputZero() == false && StateMachineData.IsInventoryOpen() == false;
         }
         
         public override void OnFixedUpdateBehaviour()
         {
             CalculateFriction();
             base.OnFixedUpdateBehaviour();
-            HandleMomentumGround();
         }
         
         public override void OnUpdateBehaviour()
         {
+            base.OnUpdateBehaviour();
             StateMachine.TrySwapState<PlayerIdle>();
             StateMachine.TrySwapState<PlayerRising>();
             StateMachine.TrySwapState<PlayerSliding>();
@@ -49,14 +48,6 @@ namespace State
         protected override void CalculateFriction()
         {
             StateMachineData.friction = StateMachineData.PhysicsConfig.GroundFriction;
-        }
-
-        private void HandleMomentumGround()
-        {
-            if (VectorMath.GetDotProduct(StateMachineData.verticalMovement, StateMachineData._transform.up) < 0f)
-            {
-                StateMachineData.verticalMovement = Vector3.zero;
-            }
         }
 
         public void Dispose()

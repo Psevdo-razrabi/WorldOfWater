@@ -30,8 +30,7 @@ namespace State
                 return StateMachineData._jumpIsFinished;
             }
 
-            return StateMachineData.IsRising();
-            
+            return StateMachineData.IsRising() && StateMachineData.IsInventoryOpen() == false;
         }
 
         public override void OnFixedUpdateBehaviour()

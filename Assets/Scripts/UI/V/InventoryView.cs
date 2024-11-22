@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Sync;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,11 +11,16 @@ namespace Inventory
     public class InventoryView : StorageView
     {
         [field: SerializeField] protected RectTransform listSlots;
-        private ViewSlot _prefabSlots;
         [field: SerializeField] protected GridLayoutGroup grid;
-        private ViewSlot _ghostIcon;
         [field: SerializeField] protected Canvas canvas;
+        [field: SerializeField] protected CanvasGroup canvasGroup;
+        [field: SerializeField] protected RectTransform inventoryView;
+        private GhostIconView _ghostIcon;
+        private ViewSlot _currentSlot;
+        private ViewSlot _prefabSlots;
+        private UiAnimation _uiAnimation;
         private RectTransform _rectTransform;
+        private RectTransform _screenDescriptionTransform;
         private List<ViewSlot> _slots;
 
         public override async UniTask InitializeView(DataView dataView)
@@ -28,18 +34,33 @@ namespace Inventory
         {
             grid.enabled = isActive;
         }
+
+        public void OpenInventoryAnimation(bool isActive)
+        {
+            canvasGroup.blocksRaycasts = isActive;
+            canvasGroup.interactable = isActive;
+            _uiAnimation.AnimationWithPositionX(inventoryView, isActive ? 0 : 2000, 0.5f, Ease.OutBack);
+        }
         
         private async UniTask InitializeSlots(DataView dataView)
         {
             ClearSlots();
             InitSlots(dataView.Capacity).Forget();
+            InitTempSlot();
             _slots = InvokeGetViewSlots();
+            _uiAnimation = dataView.Animation;
             AddEvents(dataView.Capacity);
             InitGhostIcon();
             
             LayoutRebuilder.ForceRebuildLayoutImmediate(listSlots);
 
             await ReloadGrid();
+        }
+
+        private void InitTempSlot()
+        {
+            _currentSlot = Instantiate(_prefabSlots);
+            _currentSlot.transform.localScale = Vector3.zero;
         }
 
         private void ClearSlots()
@@ -55,9 +76,13 @@ namespace Inventory
         private void OnBeginDrag(PointerEventData handler)
         {
             if (!handler.pointerClick.TryGetComponent(out ViewSlot slot)) return;
-            InvokeCopy(slot, _ghostIcon);
+            
+            InvokeCopy(slot, _currentSlot);
+            InvokeCopyGhostIcon(slot, _ghostIcon);
+            
             slot.Clear();
             _ghostIcon.gameObject.SetActive(true);
+            _uiAnimation.AnimationWithAlpha(_ghostIcon.Image, 0.5f, 0.01f, Ease.OutQuad);
             _rectTransform.anchoredPosition = slot.GetComponent<RectTransform>().anchoredPosition;
         }
 
@@ -70,12 +95,12 @@ namespace Inventory
         {
             _ghostIcon.gameObject.SetActive(false);
             
-            ViewSlot closestSlot = FindClosestSlot(handler.position, _slots, canvas);
+            ViewSlot closestSlot = FindClosestSlot(handler.position, _slots);
             
             if (closestSlot != null)
-                InvokeDrop(_ghostIcon, closestSlot);
+                InvokeDrop(_currentSlot, closestSlot, _ghostIcon);
             else
-                InvokeCopy(_ghostIcon, _slots[_ghostIcon.Index]);
+                InvokeCopy(_currentSlot, _slots[_currentSlot.Index]);
         }
         
         private async UniTask ReloadGrid()
@@ -131,7 +156,7 @@ namespace Inventory
             
             _ghostIcon = ResourceManager.Instance
                 .GetResources<GameObject>(ResourceManager.Instance.GetOrRegisterKey(ResourcesName.Icon))
-                .GetComponent<ViewSlot>();
+                .GetComponent<GhostIconView>();
         }
     }
 }

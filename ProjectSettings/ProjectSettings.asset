@@ -818,22 +818,24 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: DOTWEEN
+    Android: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
     Bratwurst: DOTWEEN
-    EmbeddedLinux: DOTWEEN
-    GameCoreScarlett: DOTWEEN
-    GameCoreXboxOne: DOTWEEN
-    LinuxHeadlessSimulation: DOTWEEN
-    Nintendo Switch: DOTWEEN
-    PS4: DOTWEEN
-    PS5: DOTWEEN
-    QNX: DOTWEEN
-    Standalone: DOTWEEN;UNITASK_DOTWEEN_SUPPORT
-    WebGL: DOTWEEN
-    Windows Store Apps: DOTWEEN
-    XboxOne: DOTWEEN
-    iPhone: DOTWEEN
-    tvOS: DOTWEEN
+    EmbeddedLinux: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    GameCoreScarlett: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    GameCoreXboxOne: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    LinuxHeadlessSimulation: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    Nintendo Switch: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    PS4: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    PS5: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    QNX: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    ReservedCFE: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    Standalone: UNITASK_DOTWEEN_SUPPORT;URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    VisionOS: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    WebGL: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    Windows Store Apps: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    XboxOne: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    iPhone: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
+    tvOS: URP_OUTLINE;EPO_DOTWEEN;DOTWEEN
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:

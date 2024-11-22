@@ -17,5 +17,12 @@ namespace Loader
         {
             await _loaderFromResources.LoadResources(path, type, action);
         }
+
+        public async UniTask LoadAllAssetWithLabel<T>(AssetLabelReference labelReference, Action<UploadedResourcesList<T>> action) where T : Object
+        {
+            var task = _loaderFromAddressables.LoadAllResourcesUseLabel<T>(labelReference);
+            var resources = await task;
+            action.Invoke(resources);
+        }
     }
 }

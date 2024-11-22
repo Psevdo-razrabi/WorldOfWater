@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Sync
 {
@@ -11,6 +12,6 @@ namespace Sync
         IReadOnlyList<Func<UniTask>> Loaders { get; }
         ReactiveProperty<bool> IsLoaded { get; }
         UniTask LoadFromResources(string path, string key);
-        UniTask LoadFromAddressables();
+        UniTask LoadFromAddressablesWithLabel(AssetLabelReference labelReference, string key);
     }
 }

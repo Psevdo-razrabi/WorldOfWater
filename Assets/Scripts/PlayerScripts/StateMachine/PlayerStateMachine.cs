@@ -72,6 +72,7 @@ namespace StateMachine
             {
                 dispose.Dispose();
             }
+            _stateMachineData.Dispose();
         }
 
         [Inject]

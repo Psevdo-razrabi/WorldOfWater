@@ -1,4 +1,6 @@
-﻿using Helpers;
+﻿using Cysharp.Threading.Tasks;
+using Helpers;
+using Inventory;
 using NewInput;
 using Sync;
 using UnityEngine;
@@ -15,9 +17,12 @@ namespace Data
         public PlayerGroundHelper PlayerGroundHelper { get; private set; }
         public PlayerInputReader PlayerInputReader { get; private set; }
         public CeilingDetector CeilingDetector { get; private set; }
+        public InventoryModel InventoryModel { get; private set; }
+
+        public bool IsInit { get; private set; } = false;
         
         [Inject]
-        private void Construct(Player player)
+        private async void Construct(Player player, Inventory.Inventory inventory)
         {
             InitResources();
             
@@ -27,6 +32,10 @@ namespace Data
             PlayerGroundHelper = new PlayerGroundHelper(Player, PlayerHelpersConfig.GroundHelper, RaycastHelper);
             PlayerInputReader = new PlayerInputReader();
             CeilingDetector = Player.CeilingDetector;
+            
+            await UniTask.WaitUntil(() => inventory.IsInit);
+            InventoryModel = inventory.InventoryStorage.InventoryModel;
+            IsInit = true;
         }
 
         private void InitResources()

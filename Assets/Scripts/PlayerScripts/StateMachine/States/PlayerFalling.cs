@@ -9,6 +9,7 @@ namespace State
     {
         public PlayerFalling(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
+            playerStateMachine.AddDispose(this);
         }
 
         public override void OnEnter()
@@ -42,7 +43,7 @@ namespace State
                     StateMachineData.ceilingDetector.HitCeiling());
             }
 
-            return StateMachineData.IsGroundForGround() == false;
+            return StateMachineData.IsGroundForGround() == false && StateMachineData.IsInventoryOpen() == false;
         }
         
         public override void OnUpdateBehaviour()

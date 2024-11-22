@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks;
 using Loader;
 using R3;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Sync
 {
@@ -19,19 +20,25 @@ namespace Sync
             _loaderResources = loaderResources;
         }
         
-        public void SetProperties(string key, string path)
+        public void SetPropertiesForLoadToResources(string key, string path)
         {
             _list.Add(() => LoadFromResources(path, key));
-        }          
+        }        
+        
+        public void SetPropertiesForLoadToAddressables(string key, AssetLabelReference reference)
+        {
+            _list.Add(() => LoadFromAddressablesWithLabel(reference, key));
+        }  
 
         public async UniTask LoadFromResources(string path, string key)
         {
             await _loaderResources.LoadAssetFromResources(path, typeof(ScriptableObject), (obj) => ResourceManager.Instance.SaveResources(key, obj));
         }
 
-        public async UniTask LoadFromAddressables()
+        public async UniTask LoadFromAddressablesWithLabel(AssetLabelReference labelReference, string key)
         {
-            await UniTask.Yield();
+            await _loaderResources.LoadAllAssetWithLabel<ScriptableObject>(labelReference, 
+                (resources) => ResourceManager.Instance.SaveResources(key, resources));
         }
     }
 }

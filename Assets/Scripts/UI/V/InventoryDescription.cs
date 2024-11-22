@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +18,11 @@ namespace Inventory
         private RectTransform _descriptionScreenTransform;
         private List<ViewSlot> _slots;
         private Item _currentItem;
+        private ViewSlot _viewSlot;
+        private Vector3 _prevMousePos;
+        private readonly Vector2 _descriptionOffset = new (205f, -285f);
+        private bool _isSelected;
+        
         public event Action<Material, Mesh> SetMeshes = delegate { };
         public event Action<string, string> SetTexts = delegate { };
 
@@ -29,6 +36,12 @@ namespace Inventory
             _slots = InvokeGetViewSlots();
             _uiAnimation = dataView.Animation;
             screenDescription.transform.localScale = Vector3.zero;
+
+            Observable
+                .EveryUpdate()
+                .Where(_ => _isSelected)
+                .Subscribe(_ => SetDescriptionToMouse())
+                .AddTo(this);
             
             foreach (var slot in _slots)
             {
@@ -40,8 +53,10 @@ namespace Inventory
         
         private void OnPointerEnter(PointerEventData eventData)
         {
-            var slot = FindClosestSlot(eventData.position, _slots, canvas);
-            _currentItem = InvokeGetItem(slot.Index);
+            _viewSlot = FindClosestSlot(eventData.position, _slots);
+            _currentItem = InvokeGetItem(_viewSlot.Index);
+            
+            _uiAnimation.AnimationWithPunch(_viewSlot.transform, new Vector3(0.2f, 0.2f, 0f), 0.2f, Ease.OutBack).Forget();
 
             if (_currentItem == null)
             {
@@ -54,6 +69,7 @@ namespace Inventory
             
             ShowAndHideDescription(0f, 1f);
             _descriptionScreenTransform.anchoredPosition = eventData.delta / canvas.scaleFactor;
+            _isSelected = true;
         }
 
         private void OnPointerExit(PointerEventData eventData)
@@ -65,6 +81,15 @@ namespace Inventory
             }
             
             ShowAndHideDescription(1f, 0f);
+            _isSelected = false;
+        }
+        
+        private void SetDescriptionToMouse()
+        {
+            if(Input.mousePosition == _prevMousePos) return;
+            _prevMousePos = Input.mousePosition;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out Vector2 movePos);
+            _descriptionScreenTransform.transform.position = canvas.transform.TransformPoint(movePos + _descriptionOffset);
         }
 
         private void AssignEventTriggers(ViewSlot slot)

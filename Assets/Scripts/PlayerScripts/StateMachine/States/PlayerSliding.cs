@@ -26,7 +26,7 @@ namespace State
 
         public override bool TrySwapState()
         {
-            return StateMachineData.IsGroundForGround() && StateMachineData.IsGroundTooSteep();
+            return StateMachineData.IsGroundForGround() && StateMachineData.IsGroundTooSteep() && StateMachineData.IsInventoryOpen() == false;
         }
         
         public override void OnFixedUpdateBehaviour()
@@ -39,6 +39,7 @@ namespace State
         
         public override void OnUpdateBehaviour()
         {
+            base.OnUpdateBehaviour();
             StateMachine.TrySwapState<PlayerMovement>();
             StateMachine.TrySwapState<PlayerIdle>();
             StateMachine.TrySwapState<PlayerRising>();
