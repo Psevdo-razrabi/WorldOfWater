@@ -5,8 +5,7 @@ public static class R3Extensions
 {
     public static IDisposable Subscribe(this ReactiveCommand command, Action action)
     {
-        Action<Unit> actionWithUnit = _ => action();
-        return command.Subscribe(actionWithUnit);
+        return command.Subscribe(_ => action());
     }
 
     public static void Execute(this ReactiveCommand command)
