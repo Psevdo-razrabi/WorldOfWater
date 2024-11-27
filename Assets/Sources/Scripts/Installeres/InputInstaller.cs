@@ -22,7 +22,7 @@ namespace Game.DI
         {
             BindInstance(_inputController);
             BindNewInstance<InputSwitcher>();
-            BindNewInstance<HookThrowInputContoller>();
+            BindNewInstance<ThrowInputContoller>();
             BindNewInstance<HookOnWaterInputController>();
         }
     }

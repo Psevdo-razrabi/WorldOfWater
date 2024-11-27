@@ -3,18 +3,18 @@ using Sources.Scripts.UI.ThrowToolsUI;
 using UnityEngine.InputSystem;
 using Zenject;
 
-public class HookThrowInputContoller : IInputController
+public class ThrowInputContoller : IInputController
 {
     private InputSystem _inputSystem;
     private ThrowHook _hook;
-    private ThrowToolsPresenter _hookPresenter;
+    private ThrowToolsPresenter _toolPresenter;
     
     [Inject]
-    public HookThrowInputContoller(InputSystem inputSystem, ThrowHook hook, ThrowToolsPresenter hookPresenter)
+    public ThrowInputContoller(InputSystem inputSystem, ThrowHook hook, ThrowToolsPresenter toolPresenter)
     {
         _inputSystem = inputSystem;
         _hook = hook;
-        _hookPresenter = hookPresenter;
+        _toolPresenter = toolPresenter;
     }
 
     public void Enable()
@@ -46,12 +46,12 @@ public class HookThrowInputContoller : IInputController
     
     private void OnThrowHookPerfomed(InputAction.CallbackContext obj)
     {
-        _hookPresenter.ThrowPerfermed();
+        _toolPresenter.ThrowPerfermed();
     }
     
     private void OnThrowHookCanceled(InputAction.CallbackContext obj)
     {
-        _hookPresenter.ThrowCanceled();
+        _toolPresenter.ThrowCanceled();
     }
     
     private void OnHookBackPerfomed(InputAction.CallbackContext obj)

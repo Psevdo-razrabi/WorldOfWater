@@ -8,22 +8,22 @@ namespace Sources.Scripts.Hook.InputControllers
     {
         private InputSystem _inputSystem;
         private InputSwitcher _inputSwitcher;
-        private HookThrowInputContoller _hookThrowInputContoller;
+        private ThrowInputContoller _throwInputContoller;
         private HookOnWaterInputController _hookOnWaterInputController;
         
         [Inject]
-        public void Construct(InputSystem inputSystem, InputSwitcher inputSwitcher, HookThrowInputContoller hookThrowInputContoller, HookOnWaterInputController hookOnWaterInputController)
+        public void Construct(InputSystem inputSystem, InputSwitcher inputSwitcher, ThrowInputContoller throwInputContoller, HookOnWaterInputController hookOnWaterInputController)
         {
             _inputSystem = inputSystem;
             _inputSwitcher = inputSwitcher;
-            _hookThrowInputContoller = hookThrowInputContoller;
+            _throwInputContoller = throwInputContoller;
             _hookOnWaterInputController = hookOnWaterInputController;
         }
 
         private void Awake()
         {
             EnableInputSystem();
-            _inputSwitcher.SwitchController(_hookThrowInputContoller);
+            _inputSwitcher.SwitchController(_throwInputContoller);
         }
 
         public void SwitchInput()
