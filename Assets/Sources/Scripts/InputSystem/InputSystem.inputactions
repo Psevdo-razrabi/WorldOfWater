@@ -6,7 +6,7 @@
             "id": "033ee448-9b33-422b-9c7b-dbedc5f2e4cc",
             "actions": [
                 {
-                    "name": "HookThrow",
+                    "name": "ToolThrow",
                     "type": "Button",
                     "id": "e5581492-29e1-4cff-b9d1-a1bb98b8de53",
                     "expectedControlType": "Button",
@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "HookBack",
+                    "name": "ToolBack",
                     "type": "Button",
                     "id": "cb787e7c-f9dc-413f-85ad-79659e48c5e0",
                     "expectedControlType": "Button",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HookThrow",
+                    "action": "ToolThrow",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HookBack",
+                    "action": "ToolBack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

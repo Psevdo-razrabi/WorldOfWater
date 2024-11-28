@@ -12,7 +12,6 @@ public class ThrowHook : MonoBehaviour
     [SerializeField] private HookConfig _hookConfig;
     [SerializeField] private Hook _hook;
     [SerializeField] private Transform _hookPoint;
-    [SerializeField] private LineRenderer _lineRenderer;
     
     private CompositeDisposable _compositeDisposable = new();
     private Rigidbody _rigidbodyHook;
@@ -58,7 +57,7 @@ public class ThrowHook : MonoBehaviour
         
     public void HookBackPerformed()
     {
-        _hookModel.SwitchHookThrowState(false);
+        _hookModel.SwitchToolThrowState(false);
         SwitchTakedHookState();
         _hook.transform.position = _hookPoint.transform.position;
     }

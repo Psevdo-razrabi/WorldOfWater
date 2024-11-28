@@ -5,10 +5,8 @@ using UniRx;
 
 public class HookModel : ThrowToolsModel
 {
-    private ReactiveProperty<float> _circleFillValue = new();
-    public IReactiveProperty<float> CircleFillValue => _circleFillValue;
-    
     public HookConfig HookConfig { get; private set; }
+
     public override bool IsThrowed { get; protected set; }
     public override IThrowToolConfig ToolConfig { get; protected set; }
 
@@ -21,13 +19,12 @@ public class HookModel : ThrowToolsModel
         }
     }
 
-    public override void HookThrowed(float circleFillValue)
+    public override void ToolThrowed(float circleFillValue)
     {
-        SwitchHookThrowState(true);
-        _circleFillValue.Value = circleFillValue;
+        SwitchToolThrowState(true);
+        CircleFillValue.Value = circleFillValue;
     }
-
-    public void SwitchHookThrowState(bool isThrow)
+    public override void SwitchToolThrowState(bool isThrow)
     {
         IsThrowed = isThrow;
     }

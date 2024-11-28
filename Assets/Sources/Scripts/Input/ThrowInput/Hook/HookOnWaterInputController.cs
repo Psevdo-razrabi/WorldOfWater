@@ -38,9 +38,9 @@ public class HookOnWaterInputController : IInputController
         _inputSystem.Game.WaterBack.canceled -= PullHookCanceled;
     }
 
-    private void SubscribeBackHook() => _inputSystem.Game.HookBack.performed += HookBackPerformed;
+    private void SubscribeBackHook() => _inputSystem.Game.ToolBack.performed += HookBackPerformed;
     
-    private void UnSubscribeBackHook() => _inputSystem.Game.HookBack.performed -= HookBackPerformed;
+    private void UnSubscribeBackHook() => _inputSystem.Game.ToolBack.performed -= HookBackPerformed;
 
     private void PullHookStarted(InputAction.CallbackContext obj)
     {

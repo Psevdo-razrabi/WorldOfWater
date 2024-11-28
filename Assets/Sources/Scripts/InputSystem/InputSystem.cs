@@ -28,7 +28,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             ""id"": ""033ee448-9b33-422b-9c7b-dbedc5f2e4cc"",
             ""actions"": [
                 {
-                    ""name"": ""HookThrow"",
+                    ""name"": ""ToolThrow"",
                     ""type"": ""Button"",
                     ""id"": ""e5581492-29e1-4cff-b9d1-a1bb98b8de53"",
                     ""expectedControlType"": ""Button"",
@@ -37,7 +37,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HookBack"",
+                    ""name"": ""ToolBack"",
                     ""type"": ""Button"",
                     ""id"": ""cb787e7c-f9dc-413f-85ad-79659e48c5e0"",
                     ""expectedControlType"": ""Button"",
@@ -63,7 +63,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HookThrow"",
+                    ""action"": ""ToolThrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -74,7 +74,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HookBack"",
+                    ""action"": ""ToolBack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -96,8 +96,8 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
 }");
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
-        m_Game_HookThrow = m_Game.FindAction("HookThrow", throwIfNotFound: true);
-        m_Game_HookBack = m_Game.FindAction("HookBack", throwIfNotFound: true);
+        m_Game_ToolThrow = m_Game.FindAction("ToolThrow", throwIfNotFound: true);
+        m_Game_ToolBack = m_Game.FindAction("ToolBack", throwIfNotFound: true);
         m_Game_WaterBack = m_Game.FindAction("WaterBack", throwIfNotFound: true);
     }
 
@@ -160,15 +160,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     // Game
     private readonly InputActionMap m_Game;
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
-    private readonly InputAction m_Game_HookThrow;
-    private readonly InputAction m_Game_HookBack;
+    private readonly InputAction m_Game_ToolThrow;
+    private readonly InputAction m_Game_ToolBack;
     private readonly InputAction m_Game_WaterBack;
     public struct GameActions
     {
         private @InputSystem m_Wrapper;
         public GameActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
-        public InputAction @HookThrow => m_Wrapper.m_Game_HookThrow;
-        public InputAction @HookBack => m_Wrapper.m_Game_HookBack;
+        public InputAction @ToolThrow => m_Wrapper.m_Game_ToolThrow;
+        public InputAction @ToolBack => m_Wrapper.m_Game_ToolBack;
         public InputAction @WaterBack => m_Wrapper.m_Game_WaterBack;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
@@ -179,12 +179,12 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameActionsCallbackInterfaces.Add(instance);
-            @HookThrow.started += instance.OnHookThrow;
-            @HookThrow.performed += instance.OnHookThrow;
-            @HookThrow.canceled += instance.OnHookThrow;
-            @HookBack.started += instance.OnHookBack;
-            @HookBack.performed += instance.OnHookBack;
-            @HookBack.canceled += instance.OnHookBack;
+            @ToolThrow.started += instance.OnToolThrow;
+            @ToolThrow.performed += instance.OnToolThrow;
+            @ToolThrow.canceled += instance.OnToolThrow;
+            @ToolBack.started += instance.OnToolBack;
+            @ToolBack.performed += instance.OnToolBack;
+            @ToolBack.canceled += instance.OnToolBack;
             @WaterBack.started += instance.OnWaterBack;
             @WaterBack.performed += instance.OnWaterBack;
             @WaterBack.canceled += instance.OnWaterBack;
@@ -192,12 +192,12 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IGameActions instance)
         {
-            @HookThrow.started -= instance.OnHookThrow;
-            @HookThrow.performed -= instance.OnHookThrow;
-            @HookThrow.canceled -= instance.OnHookThrow;
-            @HookBack.started -= instance.OnHookBack;
-            @HookBack.performed -= instance.OnHookBack;
-            @HookBack.canceled -= instance.OnHookBack;
+            @ToolThrow.started -= instance.OnToolThrow;
+            @ToolThrow.performed -= instance.OnToolThrow;
+            @ToolThrow.canceled -= instance.OnToolThrow;
+            @ToolBack.started -= instance.OnToolBack;
+            @ToolBack.performed -= instance.OnToolBack;
+            @ToolBack.canceled -= instance.OnToolBack;
             @WaterBack.started -= instance.OnWaterBack;
             @WaterBack.performed -= instance.OnWaterBack;
             @WaterBack.canceled -= instance.OnWaterBack;
@@ -220,8 +220,8 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     public GameActions @Game => new GameActions(this);
     public interface IGameActions
     {
-        void OnHookThrow(InputAction.CallbackContext context);
-        void OnHookBack(InputAction.CallbackContext context);
+        void OnToolThrow(InputAction.CallbackContext context);
+        void OnToolBack(InputAction.CallbackContext context);
         void OnWaterBack(InputAction.CallbackContext context);
     }
 }

@@ -1,5 +1,6 @@
 using Sources.Scripts.UI.Interfaces;
 using Sources.Scripts.UI.ThrowToolsUI.Hook;
+using UnityEngine;
 
 namespace Sources.Scripts.UI.ThrowToolsUI
 {
@@ -15,6 +16,7 @@ namespace Sources.Scripts.UI.ThrowToolsUI
 
         public void GetModel(ThrowToolsModel throwToolsModel)
         {
+            Debug.Log("ааа");
             _throwToolsModel = throwToolsModel;
         }
         
@@ -26,7 +28,7 @@ namespace Sources.Scripts.UI.ThrowToolsUI
 
         public void ThrowCanceled()
         {
-            _throwToolsModel.HookThrowed(_circleLoadbarView.FillAmount);
+            _throwToolsModel.ToolThrowed(_circleLoadbarView.FillAmount);
             _circleLoadbarView.CancelLoading();
         }
     }
