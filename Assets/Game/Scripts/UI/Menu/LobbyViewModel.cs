@@ -24,7 +24,6 @@ namespace Game.MVVM.Menu
         private async void OnLeaved()
         {
             await _lobbiesService.LeaveLobby();
-            await _scenesService.LoadScene(SceneType.MainMenu);
         }
     }
 }

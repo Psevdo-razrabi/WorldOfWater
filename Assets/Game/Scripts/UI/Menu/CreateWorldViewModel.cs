@@ -38,7 +38,6 @@ namespace Game.MVVM.Menu
 
         private async void OnCreateClicked()
         {
-            await _scenesService.LoadScene(SceneType.Gameplay);
             await _lobbiesService.CreateLobby();
         }
     }

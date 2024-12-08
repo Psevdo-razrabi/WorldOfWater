@@ -1,37 +1,35 @@
-using System;
 using System.Linq;
 using Cysharp.Threading.Tasks;
-using Game.MVVM;
 using Game.MVVM.Menu;
 using R3;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
-using Unity.Services.Authentication;
-using Unity.Services.Core;
-using Unity.Services.Lobbies;
-using Unity.Services.Lobbies.Models;
 using Unity.Services.Relay;
-using Unity.Services.Relay.Models;
 using UnityEngine;
-using VContainer.Unity;
 
 namespace Game.Services
 {
     public class LobbiesService
     {
         private ViewsService _viewsService;
+        private ScenesService _scenesService;
 
         public string JoinCode { get; private set; }
 
         public ReactiveCommand Connected { get; } = new();
         
-        public LobbiesService(ViewsService viewsService)
+        public LobbiesService(ViewsService viewsService, ScenesService scenesService)
         {
             _viewsService = viewsService;
+            _scenesService = scenesService;
+            
+            NetworkManager.Singleton.OnClientDisconnectCallback += ClientDisconnected;
         }
 
         public async UniTask CreateLobby()
         {
+            await _scenesService.LoadScene(SceneType.Gameplay);
+            
             NetworkManager.Singleton.NetworkConfig.ConnectionApproval = true;
             NetworkManager.Singleton.ConnectionApprovalCallback = ConnectionApproval;
             var allocation = await RelayService.Instance.CreateAllocationAsync(4);
@@ -50,6 +48,8 @@ namespace Game.Services
 
         public async UniTask JoinLobby(string joinCode)
         {
+            await _scenesService.LoadScene(SceneType.Gameplay);
+            
             var allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
             var endpoint = allocation.ServerEndpoints.First(c => c.ConnectionType == "dtls");
 
@@ -65,6 +65,7 @@ namespace Game.Services
         public async UniTask LeaveLobby()
         {
             NetworkManager.Singleton.Shutdown();
+            await _scenesService.LoadScene(SceneType.MainMenu);
         }
         
         private void ConnectionApproval(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)
@@ -72,6 +73,20 @@ namespace Game.Services
             response.Approved = true;
             response.CreatePlayerObject = true;
             response.Pending = false; 
+        }
+
+        private void ClientDisconnected(ulong clientId)
+        {
+            if (NetworkManager.Singleton.LocalClientId == clientId)
+            {
+                NetworkManager.Singleton.Shutdown();
+                _scenesService.LoadScene(SceneType.MainMenu);
+                _viewsService.Close();
+                _viewsService.Open<CreateWorldView>();
+                _viewsService.Open<JoinWorldView>();
+                
+                Debug.Log($"Client disconnected: {clientId}");
+            }
         }
 
         /*public async UniTask CreateLobby(string worldName = "NewWorld")

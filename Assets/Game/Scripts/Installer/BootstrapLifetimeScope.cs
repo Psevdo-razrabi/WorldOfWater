@@ -34,6 +34,7 @@ namespace Game.DI
             builder.Register<LobbiesService>(Lifetime.Singleton);
             builder.Register<AuthenticationsService>(Lifetime.Singleton);
             builder.Register<ScenesService>(Lifetime.Singleton);
+            builder.Register<ChatService>(Lifetime.Singleton).AsImplementedInterfaces().AsSelf();
         }
     }
 }

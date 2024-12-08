@@ -1,5 +1,6 @@
 ﻿using R3;
 using System;
+using Unity.Netcode;
 using UnityEngine;
 using VContainer;
 
@@ -28,9 +29,9 @@ namespace Game.MVVM
         }
     }
 
-    public abstract class View : MonoBehaviour
+    public abstract class View : NetworkBehaviour
     {
-        public abstract void Open();
+        public virtual void Open() {}
         public virtual void Close() {}
     }
 }

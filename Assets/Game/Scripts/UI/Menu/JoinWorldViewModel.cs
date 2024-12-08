@@ -29,7 +29,6 @@ namespace Game.MVVM.Menu
 
         private async void OnJoined()
         {
-            await _scenesService.LoadScene(SceneType.Gameplay);
             await _lobbiesService.JoinLobby(Code);
         }
     }

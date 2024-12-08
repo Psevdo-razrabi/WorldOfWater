@@ -1,5 +1,6 @@
 ﻿using R3;
 using System;
+using ObservableCollections;
 
 public static class R3Extensions
 {
@@ -11,5 +12,15 @@ public static class R3Extensions
     public static void Execute(this ReactiveCommand command)
     {
         command.Execute(Unit.Default);
+    }
+
+    public static void OnNext(this Subject<Unit> subject)
+    {
+        subject.OnNext(Unit.Default);
+    }
+
+    public static IDisposable Subscribe(this Observable<Unit> observable, Action action)
+    {
+        return observable.Subscribe(_ => action());
     }
 }
