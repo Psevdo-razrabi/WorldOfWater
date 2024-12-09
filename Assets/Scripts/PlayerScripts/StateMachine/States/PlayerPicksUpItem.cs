@@ -1,5 +1,8 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
+using Inventory;
 using StateMachine;
+using UnityEngine;
 
 namespace State
 {
@@ -8,6 +11,28 @@ namespace State
         public PlayerPicksUpItem(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
             playerStateMachine.AddDispose(this);
+        }
+
+        public override async void OnEnter()
+        {
+            base.OnEnter();
+            Debug.Log("Вход в поднятие предмета");
+            await UniTask.WaitForSeconds(1f); //todo animation
+            StateMachineData._isPickUpItem = false;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            Debug.Log("Выход из подьема предмета");
+        }
+
+        public override void OnUpdateBehaviour()
+        {
+            base.OnUpdateBehaviour();
+            StateMachine.TrySwapState<PlayerIdle>();
+            StateMachine.TrySwapState<PlayerMovement>();
+            StateMachine.TrySwapState<PlayerJumping>();
         }
 
         public override bool TrySwapState()

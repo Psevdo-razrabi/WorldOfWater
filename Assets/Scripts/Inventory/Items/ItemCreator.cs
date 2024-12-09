@@ -1,8 +1,10 @@
-﻿namespace Inventory
+﻿using Factory;
+
+namespace Inventory
 {
     public class ItemCreator
     {
         public Item CreateItem(ItemDescription itemDescription, int quantity) =>
-            Factory.CreateItem(itemDescription, quantity);
+            ItemFactory.CreateItem(itemDescription, quantity);
     }
 }

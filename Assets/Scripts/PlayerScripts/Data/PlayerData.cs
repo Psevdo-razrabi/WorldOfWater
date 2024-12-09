@@ -17,12 +17,13 @@ namespace Data
         public PlayerGroundHelper PlayerGroundHelper { get; private set; }
         public PlayerInputReader PlayerInputReader { get; private set; }
         public CeilingDetector CeilingDetector { get; private set; }
-        public InventoryModel InventoryModel { get; private set; }
+        public InventoryModel InventoryModel { get; private set; } //через медиатор сделать
+        public ItemOperationMediator Mediator { get; private set; }
 
         public bool IsInit { get; private set; } = false;
         
         [Inject]
-        private async void Construct(Player player, Inventory.Inventory inventory)
+        private async void Construct(Player player, Inventory.Inventory inventory, PlayerInput playerInput)
         {
             InitResources();
             
@@ -30,11 +31,12 @@ namespace Data
             Player.Init();
             RaycastHelper = new RaycastHelper(player.transform, PlayerHelpersConfig.Raycast);
             PlayerGroundHelper = new PlayerGroundHelper(Player, PlayerHelpersConfig.GroundHelper, RaycastHelper);
-            PlayerInputReader = new PlayerInputReader();
+            PlayerInputReader = new PlayerInputReader(playerInput);
             CeilingDetector = Player.CeilingDetector;
             
             await UniTask.WaitUntil(() => inventory.IsInit);
             InventoryModel = inventory.InventoryStorage.InventoryModel;
+            Mediator = inventory.ItemOperationMediator;
             IsInit = true;
         }
 

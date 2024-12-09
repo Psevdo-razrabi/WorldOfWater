@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372c03395236a964cb4bd1dc69966043, type: 3}
   m_Name: Item
   m_EditorClassIdentifier: 
-  <ItemType>k__BackingField: 1
+  <ItemType>k__BackingField: 2
   <NameItem>k__BackingField: Metal
   <MaxStack>k__BackingField: 10
   <Sprite>k__BackingField: {fileID: 21300000, guid: ffb02d288a83f3d4f9ec608f2dc6c1bb,

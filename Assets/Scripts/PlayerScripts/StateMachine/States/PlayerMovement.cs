@@ -1,5 +1,6 @@
 ﻿using System;
 using StateMachine;
+using StateMachine.Enums;
 using UnityEngine;
 
 namespace State
@@ -14,6 +15,8 @@ namespace State
         public override void OnEnter()
         {
             base.OnEnter();
+            StateMachineData.InvokeGaitState(GaitState.Walk);
+            EnableOrDisableWalk(true);
             OnGroundContactRegained();
             Debug.Log("Вход в ходьбу");
         }
@@ -21,12 +24,14 @@ namespace State
         public override void OnExit()
         {
             base.OnExit();
+            EnableOrDisableWalk(false);
         }
 
         public override bool TrySwapState()
         {
             return StateMachineData.IsGroundForGround() && StateMachineData.IsGroundTooSteep() == false &&
-                   StateMachineData.IsInputZero() == false && StateMachineData.IsInventoryOpen() == false;
+                   StateMachineData.IsInputZero() == false && StateMachineData.IsInventoryOpen() == false && 
+                   StateMachineData.IsPickUpItem() == false;
         }
         
         public override void OnFixedUpdateBehaviour()
@@ -39,20 +44,27 @@ namespace State
         {
             base.OnUpdateBehaviour();
             StateMachine.TrySwapState<PlayerIdle>();
+            StateMachine.TrySwapState<PlayerPicksUpItem>();
             StateMachine.TrySwapState<PlayerRising>();
             StateMachine.TrySwapState<PlayerSliding>();
             StateMachine.TrySwapState<PlayerFalling>();
             StateMachine.TrySwapState<PlayerJumping>();
         }
-        
-        protected override void CalculateFriction()
-        {
-            StateMachineData.friction = StateMachineData.PhysicsConfig.GroundFriction;
-        }
 
         public void Dispose()
         {
             
+        }
+        
+        protected override void CalculateFriction()
+        {
+            StateMachineData._friction = StateMachineData.PhysicsConfig.GroundFriction;
+        }
+        
+        
+        private void EnableOrDisableWalk(bool enable)
+        {
+            StateMachineData.InvokeWalk(enable);
         }
     }
 }

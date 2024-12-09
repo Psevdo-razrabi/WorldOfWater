@@ -7,6 +7,8 @@ namespace State
 {
     public class PlayerFalling : PlayerBehaviour, IDisposable
     {
+        private float _fallStartTime;
+
         public PlayerFalling(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
         {
             playerStateMachine.AddDispose(this);
@@ -16,12 +18,14 @@ namespace State
         {
             base.OnEnter();
             Debug.Log("Вход в падение");
+            ResetFallingDuration();
             FallStart();
         }
         
         public override void OnExit()
         {
             base.OnExit();
+            ResetFallingDuration();
         }
 
         public override void OnFixedUpdateBehaviour()
@@ -29,7 +33,7 @@ namespace State
             CalculateFriction();
             base.OnFixedUpdateBehaviour();
         }
-
+        
         public override bool TrySwapState()
         {
             if (StateMachine.GetStateMachine().currentStates is PlayerJumping)
@@ -48,6 +52,7 @@ namespace State
         
         public override void OnUpdateBehaviour()
         {   
+            UpdateFallingDuration();
             StateMachine.TrySwapState<PlayerMovement>();
             StateMachine.TrySwapState<PlayerIdle>();
             StateMachine.TrySwapState<PlayerRising>();
@@ -61,7 +66,18 @@ namespace State
         
         protected override void CalculateFriction()
         {
-            StateMachineData.friction = StateMachineData.PhysicsConfig.AirFriction;
+            StateMachineData._friction = StateMachineData.PhysicsConfig.AirFriction;
+        }
+        
+        private void ResetFallingDuration()
+        {
+            _fallStartTime = Time.time;
+            StateMachineData._fallingDuration = 0f;
+        }
+        
+        private void UpdateFallingDuration()
+        {
+            StateMachineData._fallingDuration = Time.time - _fallStartTime;
         }
 
         private void FallStart()

@@ -34,7 +34,8 @@ namespace Sync
             _prefabLoader.SetProperties(ResourcesName.Icon, "GhostIcon");
             _configLoader.SetPropertiesForLoadToResources(ResourcesName.PlayerHelpers, "PlayerHelpers");
             _configLoader.SetPropertiesForLoadToResources(ResourcesName.PlayerController, "Controller");
-            _configLoader.SetPropertiesForLoadToAddressables(ResourcesName.ItemsConfigs, _addressablesReferences.ItemsReferences);
+            _configLoader.SetPropertiesForLoadToAddressablesWithLabel(ResourcesName.ItemsConfigs, _addressablesReferences.ItemsReferences);
+            _configLoader.SetPropertiesForLoadToAddressablesWithReference(ResourcesName.ItemsPrefabConfigs, _addressablesReferences.ItemsPrefabs);
 
             await UniTask.WaitForSeconds(0.5f);
             ResourceManager.Instance.MergeProperties();

@@ -266,6 +266,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ItemsReferences>k__BackingField:
     m_LabelString: Item
+  <ItemsPrefabs>k__BackingField:
+    m_AssetGUID: f03d541bd43e9c84eb5c863773c14426
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &5978104155080765143
 GameObject:
   m_ObjectHideFlags: 0

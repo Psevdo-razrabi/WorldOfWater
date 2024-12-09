@@ -22,15 +22,16 @@ namespace NewInput
         
         private PlayerInput _playerInput;
         private InputObserver _inputObserver;
-        
+
+        public PlayerInputReader(PlayerInput playerInput)
+        {
+            _playerInput = playerInput;
+        }
+
         public void EnablePlayerAction()
         {
-            if (_playerInput == null)
-            {
-                _playerInput = new PlayerInput();
-                _inputObserver = new InputObserver(_playerInput);
-                _playerInput.Player.SetCallbacks(this);
-            }
+            _inputObserver = new InputObserver(_playerInput);
+            _playerInput.Player.SetCallbacks(this);
             _playerInput.Enable();
         }
         
@@ -54,7 +55,12 @@ namespace NewInput
 
         public void OnTakeItem(InputAction.CallbackContext context)
         {
-            TakeItem?.Invoke();
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    TakeItem?.Invoke();
+                    break;
+            }
         }
 
         public void OnOpenInventory(InputAction.CallbackContext context)

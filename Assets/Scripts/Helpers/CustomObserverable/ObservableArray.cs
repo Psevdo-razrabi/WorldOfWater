@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Inventory;
 using R3;
 
 namespace Helpers
@@ -29,6 +30,11 @@ namespace Helpers
         {
             _elements = new T[_elements.Length];
             OnNext();
+        }
+
+        public T[] GetArray()
+        {
+            return _elements;
         }
 
         public void Update()

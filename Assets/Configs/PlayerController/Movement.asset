@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33e8c8dbfe34bcabab3217dfe8c638e, type: 3}
   m_Name: Movement
   m_EditorClassIdentifier: 
-  <MovementSpeed>k__BackingField: 7
-  <JumpSpeed>k__BackingField: 10
+  <MovementSpeed>k__BackingField: 2
+  <JumpSpeed>k__BackingField: 5
   <JumpDuration>k__BackingField: 0.4
   <AirControlRate>k__BackingField: 2

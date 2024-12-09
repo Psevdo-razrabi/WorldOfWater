@@ -8,5 +8,7 @@ namespace State
         public CapsuleCollider CapsuleCollider { get; }
         public GameObject PlayerGameObject { get; }
         public Transform PlayerTransform { get; }
+        public Transform RearRayPosition { get; }
+        public Transform FrontRayPosition { get; }
     }
 }

@@ -1,10 +1,11 @@
 ﻿namespace Inventory
 {
-    public enum EItemType
+    public enum EItemType : byte
     {
-        Wood = 0,
-        Metal = 1,
-        Plastic = 2,
-        Cloth = 3
+        None = 0,
+        Wood = 1,
+        Metal = 2,
+        Plastic = 3,
+        Cloth = 4
     }
 }

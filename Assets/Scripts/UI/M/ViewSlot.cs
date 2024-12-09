@@ -9,7 +9,9 @@ public class ViewSlot : MonoBehaviour
     [field: SerializeField] public TextMeshProUGUI _stackLabel { get; private set; }
     public int Index { get; private set; }
     public Sprite Sprite { get; private set; }
-    public GuidItem GuidItem { get; private set; } = GuidItem.IsEmpty();
+    public GuidItem GuidItem { get; private set; } = GuidItem.ToEmpty();
+
+    public bool IsEmpty => Sprite == null && Image.sprite == default && GuidItem.Equals(new GuidItem(0, 0, 0, 0));
 
     public void SetIndex(int index)
     {
@@ -42,6 +44,6 @@ public class ViewSlot : MonoBehaviour
         Image.sprite = default;
         Image.color = new Color(1, 1, 1, 0f);
         _stackLabel.text = default;
-        GuidItem = GuidItem.IsEmpty();
+        GuidItem = GuidItem.ToEmpty();
     }
 }

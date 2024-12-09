@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Helpers;
+using NewInput;
 using UnityEngine;
 using Zenject;
 
@@ -14,13 +15,17 @@ namespace Inventory
         [SerializeField] private InventoryItemAnimator _inventoryItemAnimator;
         
         private BuildInventory _build;
+        private UiInput _uiInput;
         
         public InventoryStorage InventoryStorage { get; private set; }
+        public ItemOperationMediator ItemOperationMediator { get; private set; }
         public bool IsInit { get; private set; } = false;
 
         [Inject]
-        private void Construct(ItemOperationMediator itemOperationMediator)
+        private void Construct(ItemOperationMediator itemOperationMediator, UiInput uiInput)
         {
+            ItemOperationMediator = itemOperationMediator;
+            _uiInput = uiInput;
             InitInventory(itemOperationMediator);
         }
         
@@ -30,6 +35,7 @@ namespace Inventory
             InventoryStorage = _build
                 .WithStartingItem(startingItem)
                 .WithAnimation(new UiAnimation())
+                .WithInput(_uiInput)
                 .WithCapacity(capacity)
                 .WithItemOperation(itemOperationMediator)
                 .Build();

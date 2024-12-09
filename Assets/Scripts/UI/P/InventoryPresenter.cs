@@ -41,6 +41,8 @@ namespace Inventory
             _inventoryDescription.SetMeshes += SetMeshes;
             _inventoryDescription.SetTexts += SetTexts;
 
+            _inventoryModel.UIInput.DropItem += DropSlot;
+
             foreach (var view in _storageViews)
             {
                 view.OnEventTriggerAdd += AddEventTrigger;
@@ -97,7 +99,7 @@ namespace Inventory
             for (int i = 0; i < _capacity; i++)
             {
                 var item = _inventoryModel.Get(i);
-                if (item == null || item.Id.Equals(GuidItem.IsEmpty()))
+                if (item == null || item.Id.Equals(GuidItem.ToEmpty()))
                 {
                     _slots[i].Clear();
                 }
@@ -136,28 +138,36 @@ namespace Inventory
 
         private void HandleSlot(ViewSlot originalSlot, ViewSlot closestSlot, GhostIconView ghostIconView)
         {
-            if (originalSlot.Index == closestSlot.Index || closestSlot.GuidItem.Equals(GuidItem.IsEmpty()))
+            if (originalSlot.Index == closestSlot.Index || closestSlot.GuidItem.Equals(GuidItem.ToEmpty()))
             {
                 _inventoryModel.Swap(originalSlot.Index, closestSlot.Index);
                 return;
             }
-            
-            //Any actions with inventory
 
             var currentItemId = _inventoryModel.Get(originalSlot.Index).ItemDescription.Id;
             var targetItemId = _inventoryModel.Get(closestSlot.Index).ItemDescription.Id;
 
-            if (currentItemId.Equals(targetItemId) &&
-                _inventoryModel.Get(closestSlot.Index).ItemDescription.MaxStack > 1)
+            var item = _inventoryModel.Get(closestSlot.Index);
+
+            if (currentItemId.Equals(targetItemId) && item.ItemDescription.MaxStack > 1 && item.Quantity + 1 < item.ItemDescription.MaxStack)
             {
                 _inventoryModel.CombineItem(originalSlot.Index, closestSlot.Index);
             }
+            
             else
             {
                 _inventoryModel.Swap(originalSlot.Index, closestSlot.Index);
             }
             
             ghostIconView.Clear();
+        }
+
+        private void DropSlot()
+        {
+            if (_inventoryDescription.viewSlot.IsEmpty == false)
+            {
+                _inventoryModel.DropItem(_inventoryDescription.viewSlot.Index);
+            }
         }
 
         public void Dispose()
@@ -167,6 +177,7 @@ namespace Inventory
             _inventoryDescription.OnGetItem -= GetItemInventory;
             _inventoryDescription.SetTexts -= SetTexts;
             _inventoryView.OnOpenInventory -= _inventoryView.OpenInventoryAnimation;
+            _inventoryModel.UIInput.DropItem -= DropSlot;
             
             foreach (var view in _storageViews)
             {

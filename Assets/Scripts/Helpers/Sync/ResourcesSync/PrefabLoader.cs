@@ -5,6 +5,7 @@ using Loader;
 using R3;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
 
 namespace Sync
 {
@@ -35,6 +36,11 @@ namespace Sync
         {
             await _loaderResources.LoadAllAssetWithLabel<GameObject>(labelReference, 
                 (resources) => ResourceManager.Instance.SaveResources(key, resources));
+        }
+
+        public async UniTask LoadFromAddressablesWithReference<T>(AssetReferenceT<T> labelReference, string key) where T : Object
+        {
+            await UniTask.Yield();
         }
     }
 }

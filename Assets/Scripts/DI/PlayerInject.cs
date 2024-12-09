@@ -1,5 +1,6 @@
 ﻿using Data;
 using Inventory;
+using NewInput;
 using UnityEngine;
 
 namespace DI
@@ -10,8 +11,15 @@ namespace DI
         [SerializeField] private Inventory.Inventory _inventory;
         public override void InstallBindings()
         {
+            BindPlayer();
+            BindInput();
             BindInventory();
             BindData();
+        }
+
+        private void BindPlayer()
+        {
+            BindInstance(_player);
         }
 
         private void BindData()
@@ -25,6 +33,13 @@ namespace DI
             BindNewInstance<ItemTypeResolver>();
             BindNewInstance<ItemCreator>();
             BindNewInstance<ItemOperationMediator>();
+            BindNewInstance<ObjectPoolInventory>();
+        }
+
+        private void BindInput()
+        {
+            BindNewInstance<PlayerInput>();
+            BindNewInstance<UiInput>();
         }
     }
 }

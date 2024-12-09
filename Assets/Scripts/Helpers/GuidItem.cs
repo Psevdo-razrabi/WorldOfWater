@@ -26,7 +26,7 @@ namespace Helpers
             _fourth = fourth;
         }
 
-        public static GuidItem IsEmpty() => new GuidItem(0, 0, 0, 0);
+        public static GuidItem ToEmpty() => new GuidItem(0, 0, 0, 0);
         
         public bool Equals(GuidItem other)
         {

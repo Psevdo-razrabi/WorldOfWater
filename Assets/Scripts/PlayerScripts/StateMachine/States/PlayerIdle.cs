@@ -1,6 +1,6 @@
 ﻿using System;
-using Helpers.Extensions;
 using StateMachine;
+using StateMachine.Enums;
 using UnityEngine;
 
 namespace State
@@ -15,6 +15,7 @@ namespace State
         public override void OnEnter()
         {
             base.OnEnter();
+            StateMachineData.InvokeGaitState(GaitState.Idle);
             Debug.Log("Вход в idle");
             OnGroundContactRegained();
         }
@@ -27,7 +28,7 @@ namespace State
         public override bool TrySwapState()
         {
             return StateMachineData.IsGroundForGround() && StateMachineData.IsGroundTooSteep() == false &&
-                   StateMachineData.IsInputZero() && StateMachineData.IsInventoryOpen();
+                   StateMachineData.IsInputZero() && StateMachineData.IsPickUpItem() == false;
         }
 
         public override void OnFixedUpdateBehaviour()
@@ -41,6 +42,7 @@ namespace State
             base.OnUpdateBehaviour();
             StateMachine.TrySwapState<PlayerMovement>();
             StateMachine.TrySwapState<PlayerRising>();
+            StateMachine.TrySwapState<PlayerPicksUpItem>();
             StateMachine.TrySwapState<PlayerSliding>();
             StateMachine.TrySwapState<PlayerFalling>();
             StateMachine.TrySwapState<PlayerJumping>();
@@ -48,7 +50,7 @@ namespace State
 
         protected override void CalculateFriction()
         {
-            StateMachineData.friction = StateMachineData.PhysicsConfig.GroundFriction;
+            StateMachineData._friction = StateMachineData.PhysicsConfig.GroundFriction;
         }
 
         public void Dispose()

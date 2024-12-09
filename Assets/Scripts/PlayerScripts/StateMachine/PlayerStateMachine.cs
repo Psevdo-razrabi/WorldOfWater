@@ -58,7 +58,8 @@ namespace StateMachine
                 new PlayerRising(this),
                 new PlayerSliding(this),
                 new PlayerFalling(this),
-                new PlayerJumping(this)
+                new PlayerJumping(this),
+                new PlayerPicksUpItem(this)
             };
             
             _stateMachine = new StateMachine(_states);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GroundHelpers
   m_EditorClassIdentifier: 
   <StepHeightRatio>k__BackingField: 0.2
-  <ColliderHeight>k__BackingField: 2
-  <ColliderThickness>k__BackingField: 1
-  <ColliderOffset>k__BackingField: {x: 0, y: 0, z: 0}
+  <ColliderHeight>k__BackingField: 1.83
+  <ColliderThickness>k__BackingField: 0.5
+  <ColliderOffset>k__BackingField: {x: 0, y: 0.52, z: 0}
   <IsInDebugMode>k__BackingField: 1

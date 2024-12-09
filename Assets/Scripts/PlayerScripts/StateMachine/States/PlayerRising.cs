@@ -54,7 +54,7 @@ namespace State
         
         protected override void CalculateFriction()
         {
-            StateMachineData.friction = StateMachineData.PhysicsConfig.AirFriction;
+            StateMachineData._friction = StateMachineData.PhysicsConfig.AirFriction;
         }
     }
 }

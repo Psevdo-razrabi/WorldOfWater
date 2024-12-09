@@ -6,6 +6,8 @@ using UnityEngine;
 public class Player : MonoBehaviour, IPlayerParameters
 {
     [field: SerializeField] public Camera playerCamera;
+    [field: SerializeField] public Transform RearRayPosition { get; private set; }
+    [field: SerializeField] public Transform FrontRayPosition { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
     public CapsuleCollider CapsuleCollider { get; private set; }
     public GameObject PlayerGameObject => this.gameObject;

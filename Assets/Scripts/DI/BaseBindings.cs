@@ -1,3 +1,4 @@
+using Factory;
 using Zenject;
 
 public abstract class BaseBindings : MonoInstaller
@@ -20,4 +21,5 @@ public abstract class BaseBindings : MonoInstaller
             .AsSingle()
             .WithArguments(argument)
             .NonLazy();
+    
 }

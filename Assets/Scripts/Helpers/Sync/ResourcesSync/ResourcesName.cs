@@ -7,5 +7,6 @@
         public static readonly string PlayerHelpers = "HelpersConfig";
         public static readonly string PlayerController = "ControllerConfig";
         public static readonly string ItemsConfigs = "ItemsConfig";
+        public static readonly string ItemsPrefabConfigs = "ItemsPrefabConfigs";
     }
 }

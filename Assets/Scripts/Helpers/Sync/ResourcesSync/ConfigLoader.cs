@@ -5,6 +5,7 @@ using Loader;
 using R3;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
 
 namespace Sync
 {
@@ -25,9 +26,14 @@ namespace Sync
             _list.Add(() => LoadFromResources(path, key));
         }        
         
-        public void SetPropertiesForLoadToAddressables(string key, AssetLabelReference reference)
+        public void SetPropertiesForLoadToAddressablesWithLabel(string key, AssetLabelReference reference)
         {
             _list.Add(() => LoadFromAddressablesWithLabel(reference, key));
+        }  
+        
+        public void SetPropertiesForLoadToAddressablesWithReference(string key, AssetReferenceT<ScriptableObject> reference)
+        {
+            _list.Add(() => LoadFromAddressablesWithReference(reference, key));
         }  
 
         public async UniTask LoadFromResources(string path, string key)
@@ -38,6 +44,12 @@ namespace Sync
         public async UniTask LoadFromAddressablesWithLabel(AssetLabelReference labelReference, string key)
         {
             await _loaderResources.LoadAllAssetWithLabel<ScriptableObject>(labelReference, 
+                (resources) => ResourceManager.Instance.SaveResources(key, resources));
+        }
+
+        public async UniTask LoadFromAddressablesWithReference<T>(AssetReferenceT<T> labelReference, string key) where T : Object
+        {
+            await _loaderResources.LoadAllAssetWithLabel(labelReference,
                 (resources) => ResourceManager.Instance.SaveResources(key, resources));
         }
     }

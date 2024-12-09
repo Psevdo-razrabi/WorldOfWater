@@ -15,13 +15,17 @@ public class PlayerGroundHelper
     private int _currentLayer;
     private bool _isUsingExtendedSensorRange = true;
     private PlayerGroundHelperConfig _playerGroundHelper;
+    private float _inclineAngle;
     private const int MAX_COUNT_LAYER = 32;
     
     private Rigidbody _rigidbody;
     private CapsuleCollider _capsuleCollider;
     private Transform _playerTransform;
+    private Transform _rearRayPos;
+    private Transform _frontRayPos;
     private GameObject _playerObject;
     private RaycastHelper _raycastHelper;
+
     #endregion
     
     public PlayerGroundHelper(IPlayerParameters playerParameters, PlayerGroundHelperConfig playerGroundHelperConfig, RaycastHelper raycastHelper)
@@ -37,6 +41,9 @@ public class PlayerGroundHelper
         _colliderOffset = playerGroundHelperConfig.ColliderOffset;
         _stepHeightRatio = playerGroundHelperConfig.StepHeightRatio;
         _playerGroundHelper = playerGroundHelperConfig;
+
+        _rearRayPos = playerParameters.RearRayPosition;
+        _frontRayPos = playerParameters.FrontRayPosition;
 
         Init();
     }
@@ -54,6 +61,21 @@ public class PlayerGroundHelper
     public void SetExtendSensorRange(bool isExtended) => _isUsingExtendedSensorRange = isExtended;
     public void SetVelocity(Vector3 velocity) =>
         _rigidbody.linearVelocity = velocity + _currentGroundAdjustmentVelocity;
+
+    public float GroundInclineCheck()
+    {
+        var rayDistance = Mathf.Infinity;
+        _rearRayPos.rotation = Quaternion.Euler(_playerTransform.rotation.x, 0, 0);
+        _frontRayPos.rotation = Quaternion.Euler(_playerTransform.rotation.x, 0, 0);
+
+        _raycastHelper.Cast(_rearRayPos, -Vector3.up, rayDistance, out RaycastHit rearHit);
+        _raycastHelper.Cast(_frontRayPos, -Vector3.up, rayDistance, out RaycastHit frontHit);
+    
+        var hitDifference = frontHit.point - rearHit.point;
+        var xPlaneLength = new Vector2(hitDifference.x, hitDifference.z).magnitude;
+    
+        return Mathf.Lerp(_inclineAngle, Mathf.Atan2(hitDifference.y, xPlaneLength) * Mathf.Rad2Deg, 20f * Time.deltaTime);
+    }
 
     public void CheckForGround()
     {

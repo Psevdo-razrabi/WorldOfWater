@@ -1,5 +1,6 @@
 using StateMachine;
 using StateMachine.Data;
+using StateMachine.Events;
 
 public class StateMachineInject : BaseBindings
 {
@@ -11,6 +12,7 @@ public class StateMachineInject : BaseBindings
     private void BindStateMachine()
     {
         BindNewInstance<PlayerStateMachine>();
+        BindNewInstance<StateMachineEvent>();
         BindNewInstance<StateMachineData>();
     }
 }

@@ -46,7 +46,7 @@ namespace State
         public override bool TrySwapState()
         {
             return (StateMachineData._jumpKeyIsPressed || StateMachineData._jumpKeyWasPressed) &&
-                    StateMachineData._jumpInputIsLocked == false && StateMachineData.IsInventoryOpen() == false;
+                    StateMachineData._jumpInputIsLocked == false && StateMachineData.IsInventoryOpen() == false && StateMachineData.IsPickUpItem() == false;
         }
         
         public override void OnFixedUpdateBehaviour()
@@ -101,7 +101,7 @@ namespace State
             _timerJump = new Timer(StateMachineData.MovementConfig.JumpDuration, _jumpFinish);
             _timerJump.Start();
             StateMachineData._jumpInputIsLocked = true;
-            InvokeJump(momentum);
+            StateMachineData.InvokeJump(momentum);
             StateMachineData._momentum = momentum;
             
             CheckIsUseLocalMomentum();
@@ -114,7 +114,7 @@ namespace State
         
         protected override void CalculateFriction()
         {
-            StateMachineData.friction = StateMachineData.PhysicsConfig.AirFriction;
+            StateMachineData._friction = StateMachineData.PhysicsConfig.AirFriction;
         }
     }
 }

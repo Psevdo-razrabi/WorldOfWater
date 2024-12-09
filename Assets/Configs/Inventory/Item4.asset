@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 372c03395236a964cb4bd1dc69966043, type: 3}
   m_Name: Item4
   m_EditorClassIdentifier: 
-  <ItemType>k__BackingField: 3
+  <ItemType>k__BackingField: 4
   <NameItem>k__BackingField: Cloth
   <MaxStack>k__BackingField: 3
   <Sprite>k__BackingField: {fileID: 21300000, guid: ff2f00f5bd16c6a49a5d0255606b27f0,

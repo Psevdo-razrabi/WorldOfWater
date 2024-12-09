@@ -18,10 +18,11 @@ namespace Inventory
         private RectTransform _descriptionScreenTransform;
         private List<ViewSlot> _slots;
         private Item _currentItem;
-        private ViewSlot _viewSlot;
         private Vector3 _prevMousePos;
         private readonly Vector2 _descriptionOffset = new (205f, -285f);
         private bool _isSelected;
+        
+        public ViewSlot viewSlot;
         
         public event Action<Material, Mesh> SetMeshes = delegate { };
         public event Action<string, string> SetTexts = delegate { };
@@ -53,10 +54,10 @@ namespace Inventory
         
         private void OnPointerEnter(PointerEventData eventData)
         {
-            _viewSlot = FindClosestSlot(eventData.position, _slots);
-            _currentItem = InvokeGetItem(_viewSlot.Index);
+            viewSlot = FindClosestSlot(eventData.position, _slots);
+            _currentItem = InvokeGetItem(viewSlot.Index);
             
-            _uiAnimation.AnimationWithPunch(_viewSlot.transform, new Vector3(0.2f, 0.2f, 0f), 0.2f, Ease.OutBack).Forget();
+            _uiAnimation.AnimationWithPunch(viewSlot.transform, new Vector3(0.2f, 0.2f, 0f), 0.2f, Ease.OutBack).Forget();
 
             if (_currentItem == null)
             {

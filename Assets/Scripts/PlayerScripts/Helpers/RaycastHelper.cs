@@ -40,6 +40,14 @@ namespace Helpers
             Physics.Raycast(worldOrigin, worldDirection, out hitInfo, _castLength, _layerMask,
                 QueryTriggerInteraction.Ignore);
         }
+        
+        public void Cast(Transform transform, Vector3 origin, float castLength, out RaycastHit hit)
+        {
+            var worldOrigin = transform.TransformPoint(origin);
+            
+            Physics.Raycast(transform.position, worldOrigin, out hit, castLength, _layerMask,
+                QueryTriggerInteraction.Ignore);
+        }
 
         public void Draw()
         {

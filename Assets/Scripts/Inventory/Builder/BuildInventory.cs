@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Inventory;
+using NewInput;
 
 namespace Helpers
 {
@@ -10,6 +11,7 @@ namespace Helpers
         private IEnumerable<ItemDescription> _items;
         private int _capacity;
         private UiAnimation _uiAnimation;
+        private UiInput _uiInput;
         private ItemOperationMediator _itemOperationMediator;
         private readonly InventoryDescription _inventoryDescription;
         private readonly InventoryItemAnimator _inventoryItemAnimator;
@@ -34,6 +36,12 @@ namespace Helpers
             return this;
         }
 
+        public BuildInventory WithInput(UiInput input)
+        {
+            _uiInput = input;
+            return this;
+        }
+
         public BuildInventory WithItemOperation(ItemOperationMediator itemOperationMediator)
         {
             _itemOperationMediator = itemOperationMediator;
@@ -49,8 +57,8 @@ namespace Helpers
         public InventoryStorage Build()
         {
             InventoryModel model = _items != null
-                ? new InventoryModel(_items, _capacity, _uiAnimation, _inventoryItemAnimator, _itemOperationMediator)
-                : new InventoryModel(Array.Empty<ItemDescription>(), _capacity, _uiAnimation, _inventoryItemAnimator, _itemOperationMediator);
+                ? new InventoryModel(_items, _capacity, _uiAnimation, _inventoryItemAnimator, _itemOperationMediator, _uiInput)
+                : new InventoryModel(Array.Empty<ItemDescription>(), _capacity, _uiAnimation, _inventoryItemAnimator, _itemOperationMediator, _uiInput);
             InventoryPresenter inventoryPresenter = new InventoryPresenter(_inventoryView, model, _inventoryDescription, _capacity);
             return new InventoryStorage(_inventoryView, model, inventoryPresenter);
         }

@@ -7,6 +7,8 @@ using NewInput;
 using PlayerScripts.SO;
 using R3;
 using State;
+using StateMachine.Enums;
+using StateMachine.Events;
 using UnityEngine;
 using Zenject;
 
@@ -28,14 +30,30 @@ namespace StateMachine.Data
         public Vector3 _savedMovementVelocity;
         public Vector3 verticalMovement;
         public Vector3 horizontalMovement;
-        public float friction;
+        public Vector3 _direction;
+        public float _movementInputDuration;
+        public float _friction;
+        public float _locomotionStartTimer;
+        public float _leanDelay;
+        public float _headLookDelay;
+        public float _bodyLookDelay;
+        public float _inclineAngle;
+        public float _locomotionStartDirection;
+        public float _newDirectionDifferenceAngle;
+        public float _fallingDuration;
         public bool _jumpKeyIsPressed; 
         public bool _jumpKeyWasPressed;
         public bool _jumpInputIsLocked;
         public bool _jumpIsFinished;
         public bool _isPickUpItem;
-        public ReactiveProperty<bool> IsOpenInventory { get; set; } = new();
+        public bool _isStopped = true;
+        public bool _isStarting;
+        public bool _movementInputTapped;
+        public bool _movementInputPressed;
+        public bool _movementInputHeld;
+        public ReactiveProperty<bool> IsOpenInventory { get; } = new();
         private CompositeDisposable _compositeDisposable = new();
+        private StateMachineEvent _stateMachineEvent;
         #endregion
 
         #region Configs
@@ -46,14 +64,27 @@ namespace StateMachine.Data
 
         #endregion
 
+        public void InvokeLand(Vector3 vector) => _stateMachineEvent.InvokeLand(vector);
+        
+        public void InvokeJump(Vector3 vector) => _stateMachineEvent.InvokeJump(vector);
+
+        public void InvokeGaitState(GaitState state) => _stateMachineEvent.InvokeGateState((int)state);
+
+        public void InvokeWalk(bool enable) => _stateMachineEvent.InvokeWalk(enable);
+
+        public void InvokeStartMovement(bool isStart) => _stateMachineEvent.InvokeStartMove(isStart);
+        
         public void CheckForGround() => _groundHelper.CheckForGround();
 
+        public float GroundInclineCheck() => _groundHelper.GroundInclineCheck();
+        
         public Vector3 GetMomentum() => Data.PlayerControllerConfig.PhysicsConfig.UseLocalMomentum
                 ? _transform.localToWorldMatrix * _momentum
                 : _momentum;
 
         public Transform GetTransform() => _transform;
         public Vector3 GetVelocity() => _savedVelocity;
+        public Vector3 GetDirection() => _direction;
         public Vector3 GetMovementVelocity() => _savedMovementVelocity;
         public void SetPlayerStateMachine(StateMachine stateMachine) => this.stateMachine = stateMachine;
 
@@ -71,6 +102,7 @@ namespace StateMachine.Data
                                           Vector3.Angle(_groundHelper.GetGroundNormal(), _transform.up) >
                                           Data.PlayerControllerConfig.PhysicsConfig.SlopeLimit;
         
+        
         public void Dispose()
         {
             PlayerInputReader?.Dispose();
@@ -78,7 +110,7 @@ namespace StateMachine.Data
         }
         
         [Inject]
-        private async void Construct(PlayerData playerData)
+        private async void Construct(PlayerData playerData, StateMachineEvent stateMachineEvent)
         {
             Data = playerData;
             _transform = Data.Player.transform;
@@ -90,6 +122,7 @@ namespace StateMachine.Data
             ceilingDetector = Data.CeilingDetector;
             _cameraTransform = Data.Player.playerCamera.transform;
             _camera = Data.Player.playerCamera;
+            _stateMachineEvent = stateMachineEvent;
             
             await Subscribe();
         }
