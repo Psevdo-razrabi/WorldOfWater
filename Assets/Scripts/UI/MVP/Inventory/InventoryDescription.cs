@@ -32,10 +32,10 @@ namespace Inventory
             _descriptionScreenTransform = screenDescription.GetComponent<RectTransform>();
         }
 
-        public override async UniTask InitializeView(DataView dataView)
+        public override async UniTask InitializeViewInventory(DataViewInventory dataViewInventory)
         {
             _slots = InvokeGetViewSlots();
-            _uiAnimation = dataView.Animation;
+            _uiAnimation = dataViewInventory.Animation;
             screenDescription.transform.localScale = Vector3.zero;
 
             Observable

@@ -8,7 +8,7 @@ namespace Inventory
 
         private void Update()
         {
-            _inventory.InventoryStorage.InventoryModel.DataView.Coins.Value += 1;
+            _inventory.InventoryStorage.InventoryModel.DataViewInventory.Coins.Value += 1;
         }
     }
 }

@@ -80,6 +80,18 @@ namespace Helpers
             return false;
         }
 
+        public bool TryGet(int index, out T element)
+        {
+            if (index >= 0 && index < Count)
+            {
+                element = _elements[index];
+                return true;
+            }
+
+            element = default;
+            return false;
+        }
+
         private void ConvertInitListToArray(IList<T> list, int size)
         {
             if (list == null) return;

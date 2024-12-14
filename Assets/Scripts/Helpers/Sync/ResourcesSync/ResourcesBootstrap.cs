@@ -36,6 +36,7 @@ namespace Sync
             _configLoader.SetPropertiesForLoadToResources(ResourcesName.PlayerController, "Controller");
             _configLoader.SetPropertiesForLoadToAddressablesWithLabel(ResourcesName.ItemsConfigs, _addressablesReferences.ItemsReferences);
             _configLoader.SetPropertiesForLoadToAddressablesWithReference(ResourcesName.ItemsPrefabConfigs, _addressablesReferences.ItemsPrefabs);
+            _configLoader.SetPropertiesForLoadToAddressablesWithReference(ResourcesName.QuickSlotParameters, _addressablesReferences.ParametersQuickSlot);
 
             await UniTask.WaitForSeconds(0.5f);
             ResourceManager.Instance.MergeProperties();

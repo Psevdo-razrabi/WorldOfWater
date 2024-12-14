@@ -1,6 +1,8 @@
 ﻿using Data;
 using Inventory;
+using Inventory.QuickSlot.Mediators;
 using NewInput;
+using QuickSlot;
 using UnityEngine;
 
 namespace DI
@@ -9,11 +11,13 @@ namespace DI
     {
         [SerializeField] private Player _player;
         [SerializeField] private Inventory.Inventory _inventory;
+        [SerializeField] private QuickBarSlotView _quickBarSlotView;
         public override void InstallBindings()
         {
             BindPlayer();
             BindInput();
             BindInventory();
+            BindQuickSlot();
             BindData();
         }
 
@@ -34,6 +38,14 @@ namespace DI
             BindNewInstance<ItemCreator>();
             BindNewInstance<ItemOperationMediator>();
             BindNewInstance<ObjectPoolInventory>();
+        }
+
+        private void BindQuickSlot()
+        {
+            BindInstance(_quickBarSlotView);
+            BindNewInstance<QuickBarSlotsModel>();
+            BindNewInstance<QuickSlotInputMediator>();
+            BindNewInstance<QuickBarSlotPresenter>();
         }
 
         private void BindInput()

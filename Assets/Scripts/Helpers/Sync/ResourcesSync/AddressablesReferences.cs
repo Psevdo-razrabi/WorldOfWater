@@ -8,5 +8,6 @@ namespace Sync
     {
         [field: SerializeField] public AssetLabelReference ItemsReferences { get; private set; }
         [field: SerializeField] public AssetReferenceT<ScriptableObject> ItemsPrefabs { get; private set; }
+        [field: SerializeField] public AssetReferenceT<ScriptableObject> ParametersQuickSlot { get; private set; }
     }
 }

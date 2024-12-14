@@ -167,6 +167,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FirstSlotQuickBar"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4cd2f51-33b1-40d6-89af-ec27848a3aef"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondSlotQuickBar"",
+                    ""type"": ""Button"",
+                    ""id"": ""76d70cf5-5e80-4f92-bf40-5faf9d1df4a4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThirdSlotQuickBar"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3a7e2c9-c137-41da-879f-5b94d3d5f19b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FourthSlotQuickBar"",
+                    ""type"": ""Button"",
+                    ""id"": ""321ee1b1-c5d7-41ca-87a3-1200dda66acb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FifthSlotQuickBar"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a7eb71a-4f72-4971-8ba4-ef00855dce34"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SixthSlotQuickBar"",
+                    ""type"": ""Button"",
+                    ""id"": ""36306569-b12e-4ca6-bbbd-c216dc3d0736"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -178,6 +232,72 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DropItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce8f72be-fdb8-491c-9afa-178e09e11327"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FirstSlotQuickBar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26918df4-88c7-45f2-a486-e5c9e596e511"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondSlotQuickBar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""00ff9f65-f396-47d2-830f-ba238d6b930a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThirdSlotQuickBar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1f66164-be43-4bfb-8587-764a65b367d6"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FourthSlotQuickBar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""020a2080-be1a-407e-add1-6d5b8e70fc45"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FifthSlotQuickBar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f34db6d-def4-440f-90cc-65e9a9312e0f"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SixthSlotQuickBar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -195,6 +315,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // Ui
         m_Ui = asset.FindActionMap("Ui", throwIfNotFound: true);
         m_Ui_DropItem = m_Ui.FindAction("DropItem", throwIfNotFound: true);
+        m_Ui_FirstSlotQuickBar = m_Ui.FindAction("FirstSlotQuickBar", throwIfNotFound: true);
+        m_Ui_SecondSlotQuickBar = m_Ui.FindAction("SecondSlotQuickBar", throwIfNotFound: true);
+        m_Ui_ThirdSlotQuickBar = m_Ui.FindAction("ThirdSlotQuickBar", throwIfNotFound: true);
+        m_Ui_FourthSlotQuickBar = m_Ui.FindAction("FourthSlotQuickBar", throwIfNotFound: true);
+        m_Ui_FifthSlotQuickBar = m_Ui.FindAction("FifthSlotQuickBar", throwIfNotFound: true);
+        m_Ui_SixthSlotQuickBar = m_Ui.FindAction("SixthSlotQuickBar", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -333,11 +459,23 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Ui;
     private List<IUiActions> m_UiActionsCallbackInterfaces = new List<IUiActions>();
     private readonly InputAction m_Ui_DropItem;
+    private readonly InputAction m_Ui_FirstSlotQuickBar;
+    private readonly InputAction m_Ui_SecondSlotQuickBar;
+    private readonly InputAction m_Ui_ThirdSlotQuickBar;
+    private readonly InputAction m_Ui_FourthSlotQuickBar;
+    private readonly InputAction m_Ui_FifthSlotQuickBar;
+    private readonly InputAction m_Ui_SixthSlotQuickBar;
     public struct UiActions
     {
         private @PlayerInput m_Wrapper;
         public UiActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @DropItem => m_Wrapper.m_Ui_DropItem;
+        public InputAction @FirstSlotQuickBar => m_Wrapper.m_Ui_FirstSlotQuickBar;
+        public InputAction @SecondSlotQuickBar => m_Wrapper.m_Ui_SecondSlotQuickBar;
+        public InputAction @ThirdSlotQuickBar => m_Wrapper.m_Ui_ThirdSlotQuickBar;
+        public InputAction @FourthSlotQuickBar => m_Wrapper.m_Ui_FourthSlotQuickBar;
+        public InputAction @FifthSlotQuickBar => m_Wrapper.m_Ui_FifthSlotQuickBar;
+        public InputAction @SixthSlotQuickBar => m_Wrapper.m_Ui_SixthSlotQuickBar;
         public InputActionMap Get() { return m_Wrapper.m_Ui; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,6 +488,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DropItem.started += instance.OnDropItem;
             @DropItem.performed += instance.OnDropItem;
             @DropItem.canceled += instance.OnDropItem;
+            @FirstSlotQuickBar.started += instance.OnFirstSlotQuickBar;
+            @FirstSlotQuickBar.performed += instance.OnFirstSlotQuickBar;
+            @FirstSlotQuickBar.canceled += instance.OnFirstSlotQuickBar;
+            @SecondSlotQuickBar.started += instance.OnSecondSlotQuickBar;
+            @SecondSlotQuickBar.performed += instance.OnSecondSlotQuickBar;
+            @SecondSlotQuickBar.canceled += instance.OnSecondSlotQuickBar;
+            @ThirdSlotQuickBar.started += instance.OnThirdSlotQuickBar;
+            @ThirdSlotQuickBar.performed += instance.OnThirdSlotQuickBar;
+            @ThirdSlotQuickBar.canceled += instance.OnThirdSlotQuickBar;
+            @FourthSlotQuickBar.started += instance.OnFourthSlotQuickBar;
+            @FourthSlotQuickBar.performed += instance.OnFourthSlotQuickBar;
+            @FourthSlotQuickBar.canceled += instance.OnFourthSlotQuickBar;
+            @FifthSlotQuickBar.started += instance.OnFifthSlotQuickBar;
+            @FifthSlotQuickBar.performed += instance.OnFifthSlotQuickBar;
+            @FifthSlotQuickBar.canceled += instance.OnFifthSlotQuickBar;
+            @SixthSlotQuickBar.started += instance.OnSixthSlotQuickBar;
+            @SixthSlotQuickBar.performed += instance.OnSixthSlotQuickBar;
+            @SixthSlotQuickBar.canceled += instance.OnSixthSlotQuickBar;
         }
 
         private void UnregisterCallbacks(IUiActions instance)
@@ -357,6 +513,24 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @DropItem.started -= instance.OnDropItem;
             @DropItem.performed -= instance.OnDropItem;
             @DropItem.canceled -= instance.OnDropItem;
+            @FirstSlotQuickBar.started -= instance.OnFirstSlotQuickBar;
+            @FirstSlotQuickBar.performed -= instance.OnFirstSlotQuickBar;
+            @FirstSlotQuickBar.canceled -= instance.OnFirstSlotQuickBar;
+            @SecondSlotQuickBar.started -= instance.OnSecondSlotQuickBar;
+            @SecondSlotQuickBar.performed -= instance.OnSecondSlotQuickBar;
+            @SecondSlotQuickBar.canceled -= instance.OnSecondSlotQuickBar;
+            @ThirdSlotQuickBar.started -= instance.OnThirdSlotQuickBar;
+            @ThirdSlotQuickBar.performed -= instance.OnThirdSlotQuickBar;
+            @ThirdSlotQuickBar.canceled -= instance.OnThirdSlotQuickBar;
+            @FourthSlotQuickBar.started -= instance.OnFourthSlotQuickBar;
+            @FourthSlotQuickBar.performed -= instance.OnFourthSlotQuickBar;
+            @FourthSlotQuickBar.canceled -= instance.OnFourthSlotQuickBar;
+            @FifthSlotQuickBar.started -= instance.OnFifthSlotQuickBar;
+            @FifthSlotQuickBar.performed -= instance.OnFifthSlotQuickBar;
+            @FifthSlotQuickBar.canceled -= instance.OnFifthSlotQuickBar;
+            @SixthSlotQuickBar.started -= instance.OnSixthSlotQuickBar;
+            @SixthSlotQuickBar.performed -= instance.OnSixthSlotQuickBar;
+            @SixthSlotQuickBar.canceled -= instance.OnSixthSlotQuickBar;
         }
 
         public void RemoveCallbacks(IUiActions instance)
@@ -384,5 +558,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     public interface IUiActions
     {
         void OnDropItem(InputAction.CallbackContext context);
+        void OnFirstSlotQuickBar(InputAction.CallbackContext context);
+        void OnSecondSlotQuickBar(InputAction.CallbackContext context);
+        void OnThirdSlotQuickBar(InputAction.CallbackContext context);
+        void OnFourthSlotQuickBar(InputAction.CallbackContext context);
+        void OnFifthSlotQuickBar(InputAction.CallbackContext context);
+        void OnSixthSlotQuickBar(InputAction.CallbackContext context);
     }
 }

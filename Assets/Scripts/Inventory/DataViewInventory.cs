@@ -3,14 +3,14 @@ using R3;
 
 namespace Inventory
 {
-    public class DataView
+    public class DataViewInventory
     {
         public readonly int Capacity;
         public readonly ReactiveProperty<int> Coins;
         public readonly UiAnimation Animation;
         public readonly ObservableArray<Item> Items;
 
-        public DataView(ReactiveProperty<int> coins, int capacity, ObservableArray<Item> items, UiAnimation animation)
+        public DataViewInventory(ReactiveProperty<int> coins, int capacity, ObservableArray<Item> items, UiAnimation animation)
         {
             Coins = coins;
             Capacity = capacity;

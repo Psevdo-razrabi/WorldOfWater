@@ -8,5 +8,6 @@
         public static readonly string PlayerController = "ControllerConfig";
         public static readonly string ItemsConfigs = "ItemsConfig";
         public static readonly string ItemsPrefabConfigs = "ItemsPrefabConfigs";
+        public static readonly string QuickSlotParameters = "QuickBarParameters";
     }
 }

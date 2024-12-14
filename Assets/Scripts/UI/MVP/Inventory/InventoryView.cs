@@ -23,13 +23,13 @@ namespace Inventory
         private RectTransform _screenDescriptionTransform;
         private List<ViewSlot> _slots;
 
-        public override async UniTask InitializeView(DataView dataView)
+        public override async UniTask InitializeViewInventory(DataViewInventory dataViewInventory)
         {
-            LoadAssets();
-            await InitializeSlots(dataView);
+            LoadAssets(out _prefabSlots, out _ghostIcon, ResourcesName.Slot, ResourcesName.Icon);
+            await InitializeSlots(dataViewInventory);
             await UniTask.Yield();
         }
-        
+
         public void OnActiveGrid(bool isActive)
         {
             grid.enabled = isActive;
@@ -42,10 +42,10 @@ namespace Inventory
             _uiAnimation.AnimationWithPositionX(inventoryView, isActive ? 0 : 2000, 0.5f, Ease.OutBack);
         }
         
-        private async UniTask InitializeSlots(DataView dataView)
+        private async UniTask InitializeSlots(DataViewInventory dataView)
         {
-            ClearSlots();
-            InitSlots(dataView.Capacity).Forget();
+            ClearSlots(listSlots);
+            InitSlots(dataView.Capacity, _prefabSlots, listSlots).Forget();
             InitTempSlot();
             _slots = InvokeGetViewSlots();
             _uiAnimation = dataView.Animation;
@@ -61,16 +61,6 @@ namespace Inventory
         {
             _currentSlot = Instantiate(_prefabSlots);
             _currentSlot.transform.localScale = Vector3.zero;
-        }
-
-        private void ClearSlots()
-        {
-            var slots = listSlots.GetComponentsInChildren<ViewSlot>();
-
-            foreach (var slot in slots)
-            {
-                Destroy(slot);
-            }
         }
         
         private void OnBeginDrag(PointerEventData handler)
@@ -109,54 +99,19 @@ namespace Inventory
             _isActiveGrid.OnNext(false);
         }
 
-        private void InitSlot(int index)
-        {
-            var slot = Instantiate(_prefabSlots, listSlots);
-            _isSlots.OnNext(slot);
-            slot.SetIndex(index);
-        }
-
         private void InitGhostIcon()
         {
             _ghostIcon = Instantiate(_ghostIcon, listSlots);
             _rectTransform = _ghostIcon.GetComponent<RectTransform>();
             _ghostIcon.gameObject.SetActive(false);
         }
-        
-        private void AssignEventTriggers(ViewSlot slot)
-        {
-            InvokeEventTriggerAdd(EventTriggerType.BeginDrag, (eventData) => OnBeginDrag((PointerEventData)eventData), slot);
-            InvokeEventTriggerAdd(EventTriggerType.Drag, (eventData) => OnDrag((PointerEventData)eventData), slot);
-            InvokeEventTriggerAdd(EventTriggerType.EndDrag, (eventData) => OnEndDrag((PointerEventData)eventData), slot);
-        }
-
-        private async UniTaskVoid InitSlots(int capacity)
-        {
-            for (int i = 0; i < capacity; i++)
-            {
-                InitSlot(i);
-            }
-            
-            await UniTask.Yield();
-        }
 
         private void AddEvents(int capacity)
         {
             for (int i = 0; i < capacity; i++)
             {
-                AssignEventTriggers(_slots[i]);
+                AssignEventTriggers(_slots[i], OnBeginDrag, OnDrag, OnEndDrag);
             }
-        }
-
-        private void LoadAssets()
-        {
-            _prefabSlots = ResourceManager.Instance
-                .GetResources<GameObject>(ResourceManager.Instance.GetOrRegisterKey(ResourcesName.Slot))
-                .GetComponent<ViewSlot>();
-            
-            _ghostIcon = ResourceManager.Instance
-                .GetResources<GameObject>(ResourceManager.Instance.GetOrRegisterKey(ResourcesName.Icon))
-                .GetComponent<GhostIconView>();
         }
     }
 }

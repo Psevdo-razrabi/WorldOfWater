@@ -272,6 +272,12 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  <ParametersQuickSlot>k__BackingField:
+    m_AssetGUID: 62d43f3bac620434d8844dcfc8653922
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &5978104155080765143
 GameObject:
   m_ObjectHideFlags: 0
